@@ -34,8 +34,8 @@ Route::get('login',function(){
 })->name("index.login");
 
 
-Route::fallback(function (){
-
-    return redirect('');
-});
+//Route::fallback(function (){
+//
+//    return redirect('');
+//});
 

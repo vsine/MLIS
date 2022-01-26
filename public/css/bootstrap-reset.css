@@ -8,7 +8,7 @@ Project:	OLIVE ADMIN
 Version:	1.1
 Last change:	[INITIAL RELEASE]
 Assigned to:	Olive Enterprise (Surat,IN)
-Primary use:	Admin Side Used Template. 
+Primary use:	Admin Side Used Template.
 -------------------------------------------------------------------*/
 
 
@@ -121,7 +121,7 @@ a:hover {
 .form-control {
     border: 1px solid #e2e2e4;
     box-shadow: none;
-    color: #c2c2c2;
+    color: #4a4a4a;
 }
 
 .form-control:focus,#focusedInput {

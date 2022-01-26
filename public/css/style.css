@@ -10,7 +10,7 @@ Project:	OLIVE ADMIN
 Version:	1.1
 Last change:	[INITIAL RELEASE]
 Assigned to:	Olive Enterprise (Surat,IN)
-Primary use:	Admin Side Used Template. 
+Primary use:	Admin Side Used Template.
 -------------------------------------------------------------------*/
 
 
@@ -47,8 +47,8 @@ a (visited,hover,Activated):	#2A3542 (light Black)
 4. Header
 5. Chart & Graph / Task  / Badge
 6. Timeline / Revenue / User info /Followers /Calender / Weather / Font Awesome
-7. Mailing Pages (Mail inbox / Mail Display) 
-8. Error Pages (404/500) 
+7. Mailing Pages (Mail inbox / Mail Display)
+8. Error Pages (404/500)
 9. Profile
 10. Table
 11. General Page /  carousel / gritter /form  / Slider / Switch / Tag Input / Date picker / CKEditor / Widget
@@ -61,8 +61,8 @@ a (visited,hover,Activated):	#2A3542 (light Black)
 
 
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
-
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);*/
+/**/
 
 
 /*------------------------------------------------------------------
@@ -173,9 +173,10 @@ a,a:hover,a:focus {
 	margin-bottom: 15px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
-	border: 1px solid #eaeaea;
+	border: 1px solid #e0e2e4;
 	box-shadow: none;
-	font-size: 12px;
+	font-size: 15px;
+    font-weight: bold;
 }
 
 .form-signin .btn-login {
@@ -190,7 +191,7 @@ a,a:hover,a:focus {
 
 .form-signin p {
 	text-align: center;
-	color: #b6b6b6;
+	color: #0e2e42;
 	font-size: 16px;
 	font-weight: 300;
 }
@@ -518,7 +519,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	.dropdown-menu.extended {
 		box-shadow: 0 2px 8px rgba(0,0,0,0.176)!important;
-	};
+	}
 }
 
 .dropdown-menu.extended li p {
@@ -1061,9 +1062,10 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 /**/
 
 .panel-body.chart-texture {
-	background: url("../img/chart-texture.jpg");
+	background: url("../img/p1.png") no-repeat;
 	-webkit-border-radius: 4px 4px 0px 0px;
 	border-radius: 4px 4px 0px 0px;
+
 }
 
 
@@ -1507,7 +1509,7 @@ h3.timeline-title {
     /* Safari and Chrome */
 	.panel-footer.revenue-foot {
 		margin-bottom: -4px;
-	};
+    }
 }
 
 .panel-footer.revenue-foot ul {
@@ -5225,10 +5227,19 @@ tr.odd.gradeX td.sorting_1, tr.even.gradeX td.sorting_1, table.display tr.even.g
 	background-repeat: repeat;
 }
 
+html{
+    background: #02bac6 url("../img/p1.png") no-repeat;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+
+}
+
 .login-screen {
-	background: #02bac6 url("../img/lock-bg.jpg");
-	background-size: cover;
-	background-repeat: repeat;
+
+    background: rgba(0, 0, 0, 0);
+	/*background-size: cover;*/
+	/*background-repeat: repeat;*/
 }
 
 .lock-wrapper {
