@@ -1,2 +1,11 @@
 
 
+.auth-fluid .auth-fluid-right {
+    padding:6rem 3rem;
+    -webkit-box-flex:1;
+    -ms-flex:1;
+    flex:1;
+    position:relative;
+    color:#fff;
+    background-color:rgba(0,0,0,.3)
+   }
