@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('check')->get('user', function () {
     return view('welcome');
 });
+
+Route::get('login',[\App\Http\Controllers\LoginController::class,'index']);
