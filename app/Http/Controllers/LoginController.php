@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    public function login_api(Request $request)
+    public function login_verify(Request $request)
     {
         $pasw=str_replace(' ','+',$request->input('password'));
         $realpasw=RSAUtils::privateDecrypt($pasw,RSAUtils::PRIVATE_KEY);
@@ -20,11 +20,13 @@ class LoginController extends Controller
         $pasw=$request->input('password');
         if(DB::table('users')->where('username',$user)
         ->where('password',$pasw)->exists()){
-
+//            DB::table('users')->where('username',$user)->update([
+//                'last_token'=>request()->session()->token()
+//            ]);
         }else
            return redirect('login');
 
-        return 'login';
+        return request()->session()->all();
     }
     public function login_page(){
         return view('login');

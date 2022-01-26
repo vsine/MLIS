@@ -121,7 +121,7 @@
             enctool.setPublicKey(publicKeyStr);
             var enuser=enctool.encryptLong($('#password').val());
             alert(enuser)
-            window.location.href="api/login?username="+$('#username').val()+"&"+"password="+enuser;
+            window.location.href="login/verify?username="+$('#username').val()+"&"+"password="+enuser;
 
         });
     });
