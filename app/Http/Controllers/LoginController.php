@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    public function index(Request $request)
+    public function login_api(Request $request)
     {
         $pasw=str_replace(' ','+',$request->input('password'));
         $realpasw=RSAUtils::privateDecrypt($pasw,RSAUtils::PRIVATE_KEY);
@@ -27,5 +27,8 @@ class LoginController extends Controller
         }
 
         return 'login';
+    }
+    public function login_page(){
+        return view('login');
     }
 }
