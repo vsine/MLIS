@@ -1,7 +1,0 @@
-/* $modal
- ------------------------------------------*/
-
-.modal-content {
-  @include box-shadow(none);
-  @include rounded($border-radius-large);
-}
