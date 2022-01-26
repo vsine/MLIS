@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->share('title','实训基地管理系统');
     }
 }
