@@ -29,10 +29,11 @@ Route::prefix('admin')->middleware('check')->group(function (){
     });
 });
 
-Route::get('login',[\App\Http\Controllers\LoginController::class,'index']);
+Route::get('login',[\App\Http\Controllers\LoginController::class,'index'])->name("index.login");
 
 
 Route::fallback(function (){
+
     return redirect('');
 });
 
