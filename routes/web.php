@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::prefix("admin")->middleware("check")->group(function (){
+//    Route::get("task/{id}",[\App\Http\Controllers\TaskController::Class,"read"]);
+//});
+
+
 Route::get('',function (){
     return view('welcome');
 });
@@ -24,7 +29,7 @@ Route::prefix('admin')->group(function (){
     });
 });
 
-Route::get('login',[]);
+Route::get('login',[\App\Http\Controllers\LoginController::class,'index']);
 
 
 Route::fallback(function (){
