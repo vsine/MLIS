@@ -21,14 +21,17 @@
     <link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
     <link href="css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
     <!--[if lt IE 9]>
-
-
     <script src="js/html5shiv.js">
     </script>
     <script src="js/respond.min.js">
     </script>
     <![endif]-->
+
     <!-- END STYLESHEET-->
+    <script type="text/javascript" src="js/jsencrypt.js">
+    </script>
+    <script type="text/javascript" src="js/ende.js">
+    </script>
 </head>
 <body class="login-screen">
 
@@ -68,14 +71,14 @@
 
 <!-- BEGIN SECTION -->
 <div class="container">
-    <form class="form-signin" action="api/login">
+    <form class="form-signin" id="loginform" action="api/login">
         <h2 class="form-signin-heading">
             {{env('web_title')}}
         </h2>
         <!-- LOGIN WRAPPER  -->
         <div class="login-wrap">
-            <input type="text" class="form-control" placeholder="账号" name="username" autofocus>
-            <input type="password" class="form-control" placeholder="密码" name="password">
+            <input type="text" class="form-control" placeholder="账号" id="username" autofocus>
+            <input type="password" class="form-control" placeholder="密码" id="password">
             <label class="checkbox">
                 <input type="checkbox" value="remember-me">
                 下次自动登录
@@ -85,7 +88,7 @@
               </a>
             </span>
             </label>
-            <button class="btn btn-lg btn-login btn-block" type="submit">
+            <button class="btn btn-lg btn-login btn-block" type="button" id="submit">
                 登录
             </button>
             <p>
@@ -113,7 +116,16 @@
         $('#apply').click(function () {
             alert("请联系系统负责人")
         });
+        $('#submit').click(function (){
+            var enctool=new JSEncrypt();
+            enctool.setPublicKey(publicKeyStr);
+            var enuser=enctool.encryptLong($('#password').val());
+            alert(enuser)
+            window.location.href="api/login?username="+$('#username').val()+"&"+"password="+enuser;
+
+        });
     });
+
 </script>
 </body>
 </html>
