@@ -80,8 +80,8 @@
             <input type="text" class="form-control" placeholder="账号" id="username" autofocus>
             <input type="password" class="form-control" placeholder="密码" id="password">
             <label class="checkbox">
-                <input type="checkbox" value="remember-me">
-                下次自动登录
+                <input type="checkbox" value="remember-me" disabled checked="checked">
+                自动登录
                 <span class="pull-right">
               <a data-toggle="modal" href="#myModal">
                 忘记密码?

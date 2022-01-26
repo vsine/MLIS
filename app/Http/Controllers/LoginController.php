@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -13,9 +14,18 @@ class LoginController extends Controller
         $realpasw=RSAUtils::privateDecrypt($pasw,RSAUtils::PRIVATE_KEY);
         $request['password']=$realpasw;
         $request->validate(['username'=>'required|min:5',
-            'password'=>'min:6',
+                            'password'=>'min:6',
         ]);
+        $user=$request->input('username');
+        $pasw=$request->input('password');
 
-        return ;
+        if(DB::table('users')->where('username',$user)
+            ->where('password',$pasw)->exists()){
+
+        }else{
+           return redirect('login');
+        }
+
+        return 'login';
     }
 }
