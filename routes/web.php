@@ -24,6 +24,8 @@ Route::prefix('admin')->group(function (){
     });
 });
 
+Route::get('login',[]);
+
 
 Route::fallback(function (){
     return redirect('');
