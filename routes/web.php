@@ -29,13 +29,9 @@ Route::prefix('admin')->middleware('check')->group(function (){
     });
 });
 
-Route::get('login',function(){
-    return view('login');
-})->name("index.login");
-
-
-//Route::fallback(function (){
-//
-//    return redirect('');
-//});
+Route::get('login',[\App\Http\Controllers\LoginController::class,
+    'login_page'])->name("index.login");
+Route::fallback(function (){
+    return redirect('');
+});
 

@@ -18,13 +18,11 @@ class LoginController extends Controller
         ]);
         $user=$request->input('username');
         $pasw=$request->input('password');
-
         if(DB::table('users')->where('username',$user)
-            ->where('password',$pasw)->exists()){
+        ->where('password',$pasw)->exists()){
 
-        }else{
+        }else
            return redirect('login');
-        }
 
         return 'login';
     }
