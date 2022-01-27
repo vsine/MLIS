@@ -14,10 +14,10 @@ class CheckMiddleware
         $username=Session::get('username');
         $last_token=DB::table('users')->where('username',$username)
             ->value('last_token');
-        if ($username==$last_token){
+        if (Session::token()==$last_token){
 
         }else{
-            redirect()->route('index.login',null,301);
+         return redirect()->route('index.login',null,301);
         }
         return $next($request);
     }
