@@ -144,16 +144,19 @@
         });
         $('#submit').click(function (){
             $("#submit").attr('disabled',true);
-            var enctool=new JSEncrypt();
-            enctool.setPublicKey(publicKeyStr);
-            var enuser=enctool.encryptLong($('#password').val());
-            //window.location.replace("login/verify?username="+$('#username').val()+"&"+"password="+enuser)
-            if ($('#username').val()==''|enuser==''){
-                $('#myc').text('用户名或者密码不能为空。')
+
+            if ($('#username').val().length<5|$('#password').val().length<6){
+                $('#myc').text('用户名大于五位。密码大于六位');
                 $('#myModal1').modal('show');
                 $("#submit").attr('disabled',false);
                 return;
             }
+
+            var enctool=new JSEncrypt();
+            enctool.setPublicKey(publicKeyStr);
+            var enuser=enctool.encryptLong($('#password').val());
+            //window.location.replace("login/verify?username="+$('#username').val()+"&"+"password="+enuser)
+
 
             $.post('login/verify',{
                 '_token' : '{{ csrf_token() }}'
