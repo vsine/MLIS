@@ -30,9 +30,8 @@ Route::post('login/verify',[\App\Http\Controllers\LoginController::class,'login_
 
 
 Route::prefix('admin')->middleware('check')->group(function (){
-    Route::get('',function (){
-        return view('admin.indrx');
-    })->name('admin.index');
+    Route::get('',[\App\Http\Controllers\AdminController::class,
+        'index'])->name('admin.index');
     Route::fallback(function (){
         return redirect('');
     });

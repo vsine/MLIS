@@ -2,6 +2,6 @@
 
 
 @section('body')
-   <h1>你好世界</h1>
+   <h1>你好世界{{$dd}}</h1>
 @endsection
 
