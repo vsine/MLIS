@@ -140,8 +140,10 @@
 <script type="text/javascript">
     $(document).ready(function (){
         $('#apply').click(function () {
-            alert("请联系系统负责人")
+            $('#myc').text('请联系系统负责人');
+            $('#myModal1').modal('show');
         });
+
         $('#submit').click(function (){
             $("#submit").attr('disabled',true);
 
