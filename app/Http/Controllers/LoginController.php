@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -24,6 +25,7 @@ class LoginController extends Controller
             DB::table('users')->where('username',$user)->update([
                 'last_token'=>request()->session()->token()
             ]);
+            Session::put('username',$user);
             return 'ok';
         }else{
             return 'fail';
