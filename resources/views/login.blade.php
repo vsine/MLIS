@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="myhtml">
 <head>
     <!-- BEGIN META -->
     <meta charset="utf-8">

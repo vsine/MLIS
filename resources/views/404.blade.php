@@ -9,20 +9,20 @@
     <!-- END META -->
 
     <!-- BEGIN SHORTCUT ICON -->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <!-- END SHORTCUT ICON -->
 
     <title>404</title>
 
     <!-- BEGIN STYLESHEET -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
-    <link href="css/bootstrap-reset.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON STYLESHEET -->
-    <link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
-    <link href="css/style-responsive.css" rel="stylesheet"><!-- THEME BASIC RESPONSIVE  CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
+    <link href="/css/bootstrap-reset.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
+    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON STYLESHEET -->
+    <link href="/css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
+    <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME BASIC RESPONSIVE  CSS -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
     <!-- END STYLESHEET -->
 </head>

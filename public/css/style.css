@@ -1,5 +1,4 @@
-
-
+@import url(./mycss.css);
 /*------------------------------------------------------------------
 
 [OLIVE ENTERPRISE]
@@ -5227,13 +5226,7 @@ tr.odd.gradeX td.sorting_1, tr.even.gradeX td.sorting_1, table.display tr.even.g
 	background-repeat: repeat;
 }
 
-html{
-    background: #02bac6 url("../img/p1.jpg") no-repeat;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
 
-}
 
 .login-screen {
 

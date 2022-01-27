@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 //Route::prefix("admin")->middleware("check")->group(function (){
 //    Route::get("task/{id}",[\App\Http\Controllers\TaskController::Class,"read"]);
 //});
+//路由存在先后顺序优先规则
+
 //主页
 Route::get('',function (){
     return view('welcome');
@@ -22,9 +24,7 @@ Route::get('',function (){
 //登录
 Route::get('login',[\App\Http\Controllers\LoginController::class,
     'login_page'])->name("index.login");
-Route::fallback(function (){
-    return redirect('');
-});
+
 Route::post('login/verify',[\App\Http\Controllers\LoginController::class,'login_verify']);
 
 
@@ -33,9 +33,11 @@ Route::prefix('admin')->middleware('check')->group(function (){
     Route::get('',[\App\Http\Controllers\AdminController::class,
         'index'])->name('admin.index');
     Route::fallback(function (){
-        return redirect('');
+        return view('404');
     });
 });
 
 
-
+Route::fallback(function (){
+    return redirect('');
+});
