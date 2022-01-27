@@ -148,7 +148,7 @@
             $("#submit").attr('disabled',true);
 
             if ($('#username').val().length<5|$('#password').val().length<6){
-                $('#myc').text('用户名大于五位。密码大于六位');
+                $('#myc').text('用户名大于五位,密码大于六位.');
                 $('#myModal1').modal('show');
                 $("#submit").attr('disabled',false);
                 return;
