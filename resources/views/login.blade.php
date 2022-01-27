@@ -153,13 +153,10 @@
                 $("#submit").attr('disabled',false);
                 return;
             }
-
             var enctool=new JSEncrypt();
             enctool.setPublicKey(publicKeyStr);
             var enuser=enctool.encryptLong($('#password').val());
             //window.location.replace("login/verify?username="+$('#username').val()+"&"+"password="+enuser)
-
-
             $.post('login/verify',{
                 '_token' : '{{ csrf_token() }}'
                 ,'username':   $('#username').val(),
@@ -167,11 +164,15 @@
             },function (data) {
                 if(data=='ok'){
                     window.location.replace("admin");
-                }else {
+                }else if(data=='expire'){
+                    $('#myc').text('密钥失效')
+                    $('#myModal1').modal('show');
+                }
+                else {
                     $('#myc').text('账号或者密码错误')
                     $('#myModal1').modal('show');
-                    $("#submit").attr('disabled',false);
                 }
+                $("#submit").attr('disabled',false);
             }).error(function (xhr,status,info){
                 //只有失败才执行
                 $('#myc').text('可能未知错误请刷新浏览器再尝试登录'+info)

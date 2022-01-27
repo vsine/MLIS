@@ -20,20 +20,24 @@ class LoginController extends Controller
         ]);
         $user=$request->input('username');
         $user_obj=DB::table('users')->where('username',$user);
-        if($user_obj->where('password',$pasw_fact)->exists()){
+        $key_verify=($pasw_key==$user_obj->value('last_key'));
+        if($user_obj->where('password',$pasw_fact)->exists()&&
+            !($key_verify)){
             $user_obj->update([
                 'last_token' => Session::token(),
-                'last_ky' => $pasw_key
+                'last_key' => $pasw_key
             ]);
             Session::put('username',$user);
             return 'ok';
+        }else if ($key_verify){
+            return 'expire';
         }else{
             return 'fail';
         }
 
     }
     public function login_page(){
-        if(\request()->session()->token()==DB::table('users')->value('last_token')){
+        if(Session::token()==DB::table('users')->value('last_token')){
             return redirect()->route('admin.index',null,301);
         }
         return view('login');
