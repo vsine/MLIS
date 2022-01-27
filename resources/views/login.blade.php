@@ -83,9 +83,9 @@
             </div>
             <form action="api/find">
                 <div class="modal-body">
-                    <h3 id="myc">
+                    <h4 id="myc">
                         输入您的账号，尝试联系管理员。
-                    </h3>
+                    </h4>
                 </div>
 
             </form>
