@@ -38,7 +38,7 @@ class LoginController extends Controller
     }
     public function login_page(){
         if(Session::token()==DB::table('users')->value('last_token')){
-            return redirect()->route('admin.index',null,301);
+            return redirect()->route('admin.index');
         }
         return view('login');
     }

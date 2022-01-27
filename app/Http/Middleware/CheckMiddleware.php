@@ -17,7 +17,7 @@ class CheckMiddleware
         if (Session::token()==$last_token){
 
         }else{
-         return redirect()->route('index.login',null,301);
+         return redirect()->route('index.login');
         }
         return $next($request);
     }
