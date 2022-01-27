@@ -69,6 +69,32 @@
 </div>
 <!-- END MODAL -->
 
+<!-- MODAL -->
+<div  id="myModal1" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    警告
+                </h4>
+            </div>
+            <form action="api/find">
+                <div class="modal-body">
+                    <h3 id="myc">
+                        输入您的账号，尝试联系管理员。
+                    </h3>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END MODAL -->
+
+
 <!-- BEGIN SECTION -->
 <div class="container">
     <form class="form-signin" id="loginform" action="api/login">
@@ -117,11 +143,36 @@
             alert("请联系系统负责人")
         });
         $('#submit').click(function (){
+            $("#submit").attr('disabled',true);
             var enctool=new JSEncrypt();
             enctool.setPublicKey(publicKeyStr);
             var enuser=enctool.encryptLong($('#password').val());
-            alert(enuser)
-            window.location.href="login/verify?username="+$('#username').val()+"&"+"password="+enuser;
+            //window.location.replace("login/verify?username="+$('#username').val()+"&"+"password="+enuser)
+            if ($('#username').val()==''|enuser==''){
+                $('#myc').text('用户名或者密码不能为空。')
+                $('#myModal1').modal('show');
+                $("#submit").attr('disabled',false);
+                return;
+            }
+
+            $.post('login/verify',{
+                '_token' : '{{ csrf_token() }}'
+                ,'username':   $('#username').val(),
+                'password':   enuser
+            },function (data) {
+                if(data=='ok'){
+                    window.location.replace("admin");
+                }else {
+                    $('#myc').text('账号或者密码错误')
+                    $('#myModal1').modal('show');
+                    $("#submit").attr('disabled',false);
+                }
+            }).error(function (xhr,status,info){
+                //只有失败才执行
+                $('#myc').text('可能未知错误请刷新浏览器再尝试登录'+info)
+                $('#myModal1').modal('show');
+                $("#submit").attr('disabled',false);
+            });;
 
         });
     });

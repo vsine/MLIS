@@ -10,7 +10,8 @@ class LoginController extends Controller
 {
     public function login_verify(Request $request)
     {
-        $pasw=str_replace(' ','+',$request->input('password'));
+        //$pasw=str_replace(' ','+',$request->input('password'));
+        $pasw=$request->input('password');
         $realpasw=RSAUtils::privateDecrypt($pasw,RSAUtils::PRIVATE_KEY);
         $request['password']=$realpasw;
         $request->validate(['username'=>'required|min:5',
@@ -20,15 +21,19 @@ class LoginController extends Controller
         $pasw=$request->input('password');
         if(DB::table('users')->where('username',$user)
         ->where('password',$pasw)->exists()){
-//            DB::table('users')->where('username',$user)->update([
-//                'last_token'=>request()->session()->token()
-//            ]);
-        }else
-           return redirect('login');
-
-        return request()->session()->all();
+            DB::table('users')->where('username',$user)->update([
+                'last_token'=>request()->session()->token()
+            ]);
+            return 'ok';
+        }else{
+            return 'fail';
+        }
+        return '';
     }
     public function login_page(){
+        if(\request()->session()->token()==DB::table('users')->value('last_token')){
+            return redirect()->route('admin.index',null,301);
+        }
         return view('login');
     }
 }
