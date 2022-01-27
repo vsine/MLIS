@@ -12,7 +12,8 @@ class CheckMiddleware
     public function handle(Request $request, Closure $next)
     {
         $username=Session::get('username');
-        DB::table('users')->where('username',$username)->value('last_token');
+        $last_token=DB::table('users')->where('username',$username)
+            ->value('last_token');
         return $next($request);
     }
 }
