@@ -1355,7 +1355,7 @@
 <script src="js/calendar/clndr.js"></script><!-- CALENDER JS -->
 <script src="js/calendar/evnt.calendar.init.js"></script><!-- CALENDER EVENT JS -->
 <script src="js/calendar/moment-2.2.1.js"></script><!-- CALENDER MOMENT JS -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script><!-- UNDERSCORE JS -->
+<script src="js/underscore-min.js"></script><!-- UNDERSCORE JS -->
 <script src="assets/jquery-knob/js/jquery.knob.js" ></script><!-- JQUERY KNOB JS -->
 <script >
     //knob
