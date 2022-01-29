@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- END SHORTCUT ICON -->
     <title>
-        Olive Admin - Flat & Responsive Bootstrap Admin Template
+        {{env('WEB_TITLE')}}
     </title>
     <!-- BEGIN STYLESHEET-->
     <link href="css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
