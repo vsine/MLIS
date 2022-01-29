@@ -16,12 +16,12 @@ var Script = function () {
     jQuery('#sidebar .sub-menu > a').click(function () {
         var o = ($(this).offset());
      //  diff = 250 - o.top;
-		 var offset = o.top - $('#sidebar').height() / 2;
-		 offset=offset+150;
+		//  var offset = o.top - $('#sidebar').height() / 2;
+		//  offset=offset+150;
 		//alert(offset);滚动
         //$('#sidebar').animate({scrollTop: offset}, 500);
-		$('#sidebar').animate({scrollTop: 0}, 500);
-       
+		// $('#sidebar').animate({scrollTop: 0}, 500);
+
     });
     $(function () {
         function responsiveView() {
