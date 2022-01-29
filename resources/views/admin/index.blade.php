@@ -962,59 +962,7 @@
             <!-- END ROW  -->
             <!-- BEGIN ROW  -->
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <footer class="project-category">
-                                <ul>
-                                    <li class="active">
-                                        <h5>
-                                            Project 1
-                                        </h5>
-                                        <div id="work-progress6">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            Project 2
-                                        </h5>
-                                        <div id="work-progress7">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            Project 3
-                                        </h5>
-                                        <div id="work-progress8">
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h1>
-                                    Projects accomplished
-                                </h1>
-                            </footer>
-                            <!-- END  FOOTER -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <div class="bio-chart">
-                                <input class="knob" data-width="100" data-height="100" data-displayPrevious=true data-thickness=".2" value="78" data-fgColor="#f9a3a3" data-bgColor="#e8e8e8">
-                                <h4 class="red">
-                                    Profit
-                                </h4>
-                            </div>
-                            <div class="bio-chart">
-                                <input class="knob" data-width="100" data-height="100" data-displayPrevious=true data-thickness=".2" value="63" data-fgColor="#fcce54" data-bgColor="#e8e8e8">
-                                <h4 class="yellow">
-                                    Expansion
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <!-- END ROW  -->
         </section>
