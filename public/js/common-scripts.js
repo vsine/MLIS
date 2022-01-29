@@ -14,7 +14,7 @@ $(function () {
 var Script = function () {
 'use strict';
     jQuery('#sidebar .sub-menu > a').click(function () {
-        var o = ($(this).offset());
+        //var o = ($(this).offset());
      //  diff = 250 - o.top;
 		//  var offset = o.top - $('#sidebar').height() / 2;
 		//  offset=offset+150;
