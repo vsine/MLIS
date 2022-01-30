@@ -127,7 +127,8 @@
                     </span>
                                 <span class="subject">
                       <span class="from">
-                        毛小文
+                        毛小文y
+
                       </span>
                       <span class="time">
                         Just now
@@ -204,9 +205,13 @@
 {{--                </li>--}}
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" src="img/user.png">
+                        <img class="portrait" alt="" src="img/boy.png">
                         <span class="username">
-                  毛小文
+                   @php
+                         echo \Illuminate\Support\Facades\DB::table('users')
+                         ->where('username',\Illuminate\Support\Facades\Session::get('username'))
+                         ->value('name');
+                   @endphp
                 </span>
                         <b class="caret">
                         </b>
@@ -691,12 +696,12 @@
         <section class="wrapper">
             <!-- BEGIN ROW  -->
             <div class="row state-overview">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-4 col-xs-6">
                     <section class="panel">
 112
                     </section>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-8 col-xs-6">
                     <section class="panel">
                         112
                     </section>

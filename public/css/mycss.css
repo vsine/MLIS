@@ -4,3 +4,8 @@
     width: 100%;
     background-size: cover;
 }
+
+.portrait{
+    width: 30px;
+    height: 30px;
+}
