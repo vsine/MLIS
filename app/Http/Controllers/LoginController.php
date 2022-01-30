@@ -16,8 +16,7 @@ class LoginController extends Controller
         $pasw_fact=RSAUtils::privateDecrypt($pasw_key,RSAUtils::PRIVATE_KEY);
         $request['password']=$pasw_fact;
         $request->validate(['username'=>'required|min:5',
-                            'password'=>'min:6',
-        ]);
+                            'password'=>'min:6',]);
         $user=$request->input('username');
         $user_obj=DB::table('users')->where('username',$user);
         $key_verify=($pasw_key==$user_obj->value('last_key'));
