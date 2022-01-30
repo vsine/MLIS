@@ -34,7 +34,6 @@ class LoginController extends Controller
         }else{
             return 'expire';
         }
-
     }
     public function login_page(){
         if(Session::token()==DB::table('users')->value('last_token')){
