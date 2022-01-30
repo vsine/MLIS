@@ -717,9 +717,9 @@
     <!-- BEGIN FOOTER -->
     <footer class="site-footer">
         <div class="text-center">
-            2013 &copy; Olive Admin by
-            <a href="" target="_blank">
-                Olive Enterprise
+            2022 &copy; 实训基地管理系统 by
+            <a href="#" target="_self">
+                毛小文
             </a>
             <a href="#top" class="go-top">
                 <i class="fa fa-angle-up">
