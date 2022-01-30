@@ -35,6 +35,7 @@ Route::prefix('admin')->middleware('check')->group(function (){
     Route::fallback(function (){
         return view('404');
     });
+    Route::get('out',[\App\Http\Controllers\AdminController::class,'loginout']);
 });
 
 

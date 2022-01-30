@@ -216,30 +216,17 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class=" fa fa-suitcase">
-                                </i>
-                                Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
                                 <i class="fa fa-cog">
                                 </i>
-                                Settings
+                                账号设置
                             </a>
                         </li>
+
                         <li>
-                            <a href="#">
-                                <i class="fa fa-bell-o">
-                                </i>
-                                Notification
-                            </a>
-                        </li>
-                        <li>
-                            <a href="login.html">
+                            <a href="/admin/out">
                                 <i class="fa fa-key">
                                 </i>
-                                Log Out
+                               退出登录
                             </a>
                         </li>
                     </ul>
@@ -707,6 +694,11 @@
                 <div class="col-lg-3 col-sm-6">
                     <section class="panel">
 112
+                    </section>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <section class="panel">
+                        112
                     </section>
                 </div>
 
