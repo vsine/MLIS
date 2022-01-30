@@ -21,7 +21,8 @@ class LoginController extends Controller
         $user=$request->input('username');
         $user_obj=DB::table('users')->where('username',$user);
         $key_verify=($pasw_key==$user_obj->value('last_key'));
-        if($user_obj->where('password',$pasw_fact)->exists()&&
+        $pasw_verify=$user_obj->where('password',$pasw_fact)->exists();
+        if($pasw_verify&&
             !($key_verify)){
             $user_obj->update([
                 'last_token' => Session::token(),
@@ -29,10 +30,10 @@ class LoginController extends Controller
             ]);
             Session::put('username',$user);
             return 'ok';
-        }else if ($key_verify){
-            return 'expire';
-        }else{
+        }else if (!($pasw_verify)){
             return 'fail';
+        }else{
+            return 'expire';
         }
 
     }
