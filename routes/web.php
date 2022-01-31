@@ -39,9 +39,7 @@ Route::prefix('admin')->middleware('check')->group(function (){
 });
 
 Route::prefix('task')->middleware('task')->group(function (){
-    Route::get('',function (){
-        return '122';
-    });
+    Route::get('',[\App\Http\Controllers\TaskController::class,'index']);
     Route::fallback(function (){
         return '404';
     });
