@@ -4,7 +4,7 @@
     <div class="row state-overview">
         <div class="col-lg-12 col-sm-4 col-xs-6">
             <section class="panel">
-                112
+                {{$id}}
             </section>
         </div>
         <div class="col-lg-4 col-sm-8 col-xs-6">
