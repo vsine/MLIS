@@ -296,34 +296,12 @@
     </aside>
     <!-- END SIDEBAR -->
     <!-- BEGIN MAIN CONTENT -->
-
-
     <div id="main-content">
-        <!-- BEGIN WRAPPER  -->
-        <section class="wrapper">
-            <!-- BEGIN ROW  -->
-            <div class="row state-overview">
-                <div class="col-lg-12 col-sm-4 col-xs-6">
-                    <section class="panel">
-                        112
-                    </section>
-                </div>
-                <div class="col-lg-4 col-sm-8 col-xs-6">
-                    <section class="panel">
-                        112
-                    </section>
-                </div>
 
-            </div>
-            <!-- END ROW  -->
+        @if($id=='home')
+        @include('admin.home')
+        @endif
 
-            <!-- BEGIN ROW  -->
-            <div class="row">
-
-            </div>
-            <!-- END ROW  -->
-        </section>
-        <!-- END WRAPPER  -->
     </div>
     <!-- END MAIN CONTENT -->
     <!-- BEGIN FOOTER -->

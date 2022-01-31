@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index(Request $request,$id)
     {
-        return view('admin.index',['dd'=>['123']]);
+        return view('admin.index',['id'=>$id]);
     }
     public function  loginout(){
         DB::table('users')->where('username',Session::get('username'))
