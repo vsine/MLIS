@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request,$id)
     {
         return view('admin.index',['dd'=>['123']]);
     }
