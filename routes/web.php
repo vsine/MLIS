@@ -38,6 +38,15 @@ Route::prefix('admin')->middleware('check')->group(function (){
     Route::get('out',[\App\Http\Controllers\AdminController::class,'loginout']);
 });
 
+Route::prefix('task')->middleware('task')->group(function (){
+    Route::get('',function (){
+        return '122';
+    });
+    Route::fallback(function (){
+        return '404';
+    });
+});
+
 
 Route::fallback(function (){
     return redirect('');
