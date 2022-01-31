@@ -7,6 +7,7 @@ class TaskController extends Controller
     public function index()
     {
         //
-        return 'ok';
+        //return response('ggg')->header('Content-type','text/plain');
+        return '55';
     }
 }
