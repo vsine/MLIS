@@ -244,51 +244,53 @@
         <div id="sidebar" class="nav-collapse">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li >
-                    <a href="" class="active">
+                    <a href="/admin" class="@if('0'==$id)active
+                                @endif">
                         <i class="fa fa-dashboard">
                         </i>
                         <span>
-                  主页
+                  {{$mlist[0][0]}}
                 </span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-laptop"></i>
-                        <span>仓库</span>
-                        <span class="label label-danger span-sidebar">2</span>
-                    </a>
-                    <ul class="sub">
-                        <li>
-                            <a href="boxed_page.html">海纳百川</a>
-                        </li>
-                        <li>
-                            <a href="email_template.html" target="_blank">
-                                厚德载物
-                                <span class="label label-danger span-sidebar">2</span>
-                            </a>
 
-                        </li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-tasks">
-                        </i>
-                        <span>管理</span>
-                        <span class="label label-success span-sidebar">2</span>
-                    </a>
-                    <ul class="sub">
-                        <li>
-                            <a href="boxed_page.html">Boxed Page
-                            </a>
-                        </li>
-                        <li>
-                            <a href="email_template.html" target="_blank">Email Templates
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @foreach($marks['list'] as $key=>$value)
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="@if(in_array($id,$value))
+                            active
+                        @endif">
+                            <i class="fa {{$value[1]}}"></i>
+                            <span>{{$value[0]}}</span>
+                            @if($value[0]=='仓库')
+                                <span class="label label-danger span-sidebar">2</span>
+                            @endif
+
+                        </a>
+                        <ul class="sub">
+
+
+                                @foreach($value as $key=>$value)
+                                    @if($key>1)
+                                    <li class="@if($id==$value)
+                                        active
+@endif">
+                                    <a href="/admin/{{$value}}" target="_self" >
+                                        {{$tlist[$value]}}
+                                        @if($value==2)
+                                            <span class="label label-danger span-sidebar">0</span>
+                                        @endif
+                                    </a>
+                                    </li>
+                                    @endif
+                                @endforeach
+
+
+                        </ul>
+                    </li>
+                @endforeach
+
+
+
 
 
             </ul>
