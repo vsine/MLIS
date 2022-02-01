@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Session;
 class TaskController extends Controller
 {
     public $marks_moudel=array('title'=>'老师','list'=>[
-        ['仓库','fa-book',0,1,2],
-        ['管理','fa-tasks',3,5,4],
+        ['仓库','fa-book',1,2,3],
+        ['管理','fa-tasks',4,5,6],
         ['对外','fa-glass',7]
     ]);
     public function index()

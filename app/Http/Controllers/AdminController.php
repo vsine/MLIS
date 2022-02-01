@@ -15,7 +15,23 @@ class AdminController extends Controller
 
     public function index(Request $request,$id)
     {
-        return view('admin.index',['id'=>$id,'mlist'=>$this->mlist]);
+
+        $user_row = DB::table('users')->where('username',Session::get('username'));
+        $marks_array = json_decode($user_row->value('marks'),true);
+
+        //判断是否包含访问该页的权限，无权限则访问主页
+        $is_contain = false;
+        if ($id!='0'){
+            foreach ($marks_array['list'] as $key=>$value)
+                if ((in_array($id,$value)))
+                    $is_contain=true;
+            if (!($is_contain))
+                return redirect()->route('admin.index');
+        }
+        //end
+
+        return view('admin.index',['id'=>$id,'mlist'=>$this->mlist,'marks'=>$marks_array]);
+
     }
     public function  loginout(){
         DB::table('users')->where('username',Session::get('username'))
