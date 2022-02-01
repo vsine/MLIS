@@ -298,9 +298,9 @@
     <!-- BEGIN MAIN CONTENT -->
     <div id="main-content">
 
-        @if($id=='home')
-        @include('admin.home')
-        @endif
+
+        @include('admin.'.$mlist[0][1])
+
 
     </div>
     <!-- END MAIN CONTENT -->

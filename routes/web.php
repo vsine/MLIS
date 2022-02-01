@@ -31,7 +31,7 @@ Route::post('login/verify',[\App\Http\Controllers\LoginController::class,'login_
 
 Route::prefix('admin')->middleware('check')->group(function (){
     Route::get('',function (){
-        return redirect('/admin/home');
+        return redirect('/admin/0');
     })->name('admin.index');
     Route::get('/{id}',[\App\Http\Controllers\AdminController::class,'index']);
     Route::fallback(function (){
@@ -42,9 +42,11 @@ Route::prefix('admin')->middleware('check')->group(function (){
 
 Route::prefix('task')->middleware('task')->group(function (){
     Route::get('',[\App\Http\Controllers\TaskController::class,'index']);
+    Route::get('test',[\App\Http\Controllers\TaskController::class,'test']);
     Route::fallback(function (){
         return '404';
     });
+
 });
 
 
