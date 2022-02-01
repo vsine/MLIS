@@ -23,3 +23,8 @@
     <!-- END ROW  -->
 </section>
 <!-- END WRAPPER  -->
+@section('script')
+<script type="text/javascript">
+    //alert('0');
+</script>
+@endsection
