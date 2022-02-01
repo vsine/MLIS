@@ -267,8 +267,6 @@
 
                         </a>
                         <ul class="sub">
-
-
                                 @foreach($value as $key=>$value)
                                     @if($key>1)
                                     <li class="@if($id==$value)
@@ -288,11 +286,6 @@
                         </ul>
                     </li>
                 @endforeach
-
-
-
-
-
             </ul>
         </div>
     </aside>
