@@ -30,6 +30,7 @@ Route::post('login/verify',[\App\Http\Controllers\LoginController::class,'login_
 
 
 Route::prefix('admin')->middleware('check')->group(function (){
+    Route::get('out',[\App\Http\Controllers\AdminController::class,'loginout']);
     Route::get('',function (){
         return redirect('/admin/0');
     })->name('admin.index');
@@ -37,7 +38,7 @@ Route::prefix('admin')->middleware('check')->group(function (){
     Route::fallback(function (){
         return view('404');
     });
-    Route::get('out',[\App\Http\Controllers\AdminController::class,'loginout']);
+
 });
 
 Route::prefix('task')->middleware('task')->group(function (){
