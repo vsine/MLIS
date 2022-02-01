@@ -123,7 +123,7 @@
                         <li>
                             <a href="#">
                     <span class="photo">
-                      <img alt="avatar" src="./img/avatar-mini4.jpg">
+                      <img alt="avatar" src="/img/avatar-mini4.jpg">
                     </span>
                                 <span class="subject">
                       <span class="from">
@@ -299,7 +299,7 @@
     <div id="main-content">
 
 
-        @include('admin.'.$mlist[0][1])
+        @include('admin.'.$mlist[$id][1])
 
 
     </div>
