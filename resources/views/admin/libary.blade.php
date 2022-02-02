@@ -81,23 +81,59 @@
                     </section>
 
                     <div class="dataTables_paginate paging_bootstrap pagination">
-                        {{$libary_data->links()}}
+{{--                        {{$libary_data->links()}}--}}
                         <ul><li class="prev @if($libary_data->onFirstPage())
                                 disabled
                                 @endif
                                 ">
-                                <a href="{{$libary_data->previousPageUrl()}}">← 上一页</a>
+                                <a @if(!($libary_data->onFirstPage()))
+                                    href="{{$libary_data->previousPageUrl()}}"
+                                    @endif
+                                >← 上一页</a>
                             </li>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li><a href="#">3</a>
-                            </li>
-                            <li class="next">
-                                <a href="#">下一页 → </a>
+                            @php
+                            $prev=2;
+                            $next=2;
+                            if (($libary_data->currentPage()-2)<1){
+                                $next=$next+(1-($libary_data->currentPage()-2));
+                                $prev=$prev-(1-($libary_data->currentPage()-2));
+                            }else
+                            if (($libary_data->lastPage()-$libary_data->currentPage())<2){
+                                $prev+=2-($libary_data->lastPage()-$libary_data->currentPage());
+                                $next-=2-($libary_data->lastPage()-$libary_data->currentPage());
+                            }
+                            @endphp
+                            @for($i=0;$i<2;$i++)
+                                @for($j=0;($j<$prev)&&($i==0);$j++)
+                                        <li class="">
+                                            <a href="{{$libary_data
+                                            ->url(($libary_data->currentPage()-($prev-$j)))}}">
+                                                {{($libary_data->currentPage()-($prev-$j))}}</a>
+                                        </li>
+                                @endfor
+                                @if($i==0)
+                                        <li class="active">
+                                            <a href="#">{{($libary_data->currentPage())}}</a>
+                                        </li>
+                                    @endif
+                                @for($j=0;($j<$next)&&($i==1);$j++)
+
+                                            <li class="">
+                                                <a href="{{$libary_data
+                                            ->url(($libary_data->currentPage()+(1+$j)))}}">{{($libary_data->currentPage()+(1+$j))}}</a>
+                                            </li>
+                                    @endfor
+                            @endfor
+
+                            <li class="next
+                            @if($libary_data->onLastPage())
+                                disabled
+                                @endif
+                            ">
+                                <a
+                                    @if(!($libary_data->onLastPage()))
+                                    href="{{$libary_data->nextPageUrl()}}"
+                                    @endif>下一页 → </a>
                             </li>
                         </ul>
                     </div>
@@ -112,5 +148,6 @@
 @section('script')
     <script type="text/javascript">
         //alert('0');
+
     </script>
 @endsection
