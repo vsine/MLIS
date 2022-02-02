@@ -31,7 +31,7 @@ class AdminController extends Controller
 
         switch ($id){
             case '1':
-                $return_array['libary_data']=DB::table('depot')->paginate(5);
+                $return_array['libary_data']=DB::table('depot')->paginate(3);
                 break;
 
         }

@@ -65,7 +65,11 @@
                                      <td>{{$value->model}}</td>
                                      <td>{{$value->quantity.$value->unit}}</td>
                                      <td>
+                                            {{\Illuminate\Support\Facades\DB::table('place_a')
+                                    ->where('id','=',\Illuminate\Support\Facades\DB::table('place_b')
+                                    ->where('id','=',$value->ip)->first()->aid)->first()->place
 
+                                            }}
                                      </td>
                                  </tr>
                             @endforeach
@@ -77,8 +81,12 @@
                     </section>
 
                     <div class="dataTables_paginate paging_bootstrap pagination">
-                        <ul><li class="prev disabled">
-                                <a href="#">← 上一页</a>
+                        {{$libary_data->links()}}
+                        <ul><li class="prev @if($libary_data->onFirstPage())
+                                disabled
+                                @endif
+                                ">
+                                <a href="{{$libary_data->previousPageUrl()}}">← 上一页</a>
                             </li>
                             <li class="active">
                                 <a href="#">1</a>
