@@ -11,7 +11,12 @@
                    仓库
                   </span>
                     <span class="tools pull-right">
-                    <a href="javascript:;" class="fa fa-chevron-down">
+                        <a class="fa">搜索:</a>
+                        <label> <input type="text" class="form-control" aria-controls="example"></label>
+                     <button type="button" class="btn btn-primary">
+                    搜索
+                  </button>
+                        <a href="javascript:;" class="fa fa-chevron-down">
                     </a>
                   </span>
                 </header>
@@ -83,6 +88,25 @@
                             </tbody>
                         </table>
                     </section>
+
+                    <div class="dataTables_paginate paging_bootstrap pagination">
+                        <ul><li class="prev disabled">
+                                <a href="#">← 上一页</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li><a href="#">3</a>
+                            </li>
+                            <li class="next">
+                                <a href="#">下一页 → </a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </section>
         </div>
