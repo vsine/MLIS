@@ -37,7 +37,6 @@ class AdminController extends Controller
                 break;
         }
         return view('admin.index',$return_array);
-
     }
     public function  loginout(){
         DB::table('users')->where('username',Session::get('username'))
