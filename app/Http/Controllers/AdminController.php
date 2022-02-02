@@ -28,7 +28,6 @@ class AdminController extends Controller
                 return redirect()->route('admin.index');
         }
         //end
-
         switch ($id){
             case '1':
                 $libary_data=DB::table('depot')->paginate(3);
@@ -36,10 +35,7 @@ class AdminController extends Controller
                 if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
                     return redirect('/admin/1');
                 break;
-
         }
-
-
         return view('admin.index',$return_array);
 
     }
