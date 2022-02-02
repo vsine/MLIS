@@ -14,10 +14,9 @@ class AdminController extends Controller
                      public $tlist=array(1=>'海纳百川',2=>'厚德载物',3=>'有容乃大',4=>'仓库管理',5=>'货位管理',6=>'班级管理',7=>'账号管理',8=>'轮播',9=>'test');
 
     public function index(Request $request,$id)
-    {
-
-        $user_row = DB::table('users')->where('username',Session::get('username'));
+    {   $user_row = DB::table('users')->where('username',Session::get('username'));
         $marks_array = json_decode($user_row->value('marks'),true);
+        $return_array=['id'=>$id,'mlist'=>$this->mlist,'marks'=>$marks_array,'tlist'=>$this->tlist];
 
         //判断是否包含访问该页的权限，无权限则访问主页
         $is_contain = false;
@@ -30,7 +29,15 @@ class AdminController extends Controller
         }
         //end
 
-        return view('admin.index',['id'=>$id,'mlist'=>$this->mlist,'marks'=>$marks_array,'tlist'=>$this->tlist]);
+        switch ($id){
+            case '1':
+                $return_array['libary_data']=DB::table('depot')->paginate(5);
+                break;
+
+        }
+
+
+        return view('admin.index',$return_array);
 
     }
     public function  loginout(){

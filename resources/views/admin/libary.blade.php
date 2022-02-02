@@ -44,7 +44,7 @@
                                     数量
                                 </th>
                                 <th class="numeric hidden-phone">
-                                    货位
+                                    仓库
                                 </th>
                                 <th class="numeric hidden-phone">
                                     供应商
@@ -55,35 +55,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    AAC
-                                </td>
-                                <td>
-                                    AUSTRALIAN AGRICULTURAL COMPANY LIMITED.
-                                </td>
-                                <td class="numeric">
-                                    $1.38
-                                </td>
-                                <td class="numeric">
-                                    -0.01
-                                </td>
-                                <td class="numeric hidden-phone">
-                                    -0.36%
-                                </td>
-                                <td class="numeric hidden-phone">
-                                    $1.39
-                                </td>
-                                <td class="numeric hidden-phone">
-                                    $1.39
-                                </td>
-                                <td class="numeric hidden-phone">
-                                    $1.38
-                                </td>
-                                <td class="numeric">
-                                    9,395
-                                </td>
-                            </tr>
+
+                            @foreach($libary_data as $key=>$value)
+                                 <tr>
+                                     <td>{{$value->number}}</td>
+                                     <td>{{$value->name}}</td>
+                                     <td>{{$value->category}}</td>
+                                     <td>{{$value->brand}}</td>
+                                     <td>{{$value->model}}</td>
+                                     <td>{{$value->quantity.$value->unit}}</td>
+                                     <td>
+
+                                     </td>
+                                 </tr>
+                            @endforeach
+
+
 
                             </tbody>
                         </table>
