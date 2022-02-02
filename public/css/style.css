@@ -70,7 +70,9 @@ a (visited,hover,Activated):	#2A3542 (light Black)
 
 
 body {
-	color: #797979;
+    /*字体颜色*/
+	color: #212121;
+
 	background: #e5e6e6;
 	font-family: 'Open Sans',sans-serif;
 	padding: 0px!important;

@@ -94,6 +94,11 @@
                             @php
                             $prev=2;
                             $next=2;
+                            if ($libary_data->lastPage()<5){
+                                $prev=$libary_data->currentPage()-1;
+                                $next=$libary_data->lastPage()-$libary_data->currentPage();
+                            }
+                            else
                             if (($libary_data->currentPage()-2)<1){
                                 $next=$next+(1-($libary_data->currentPage()-2));
                                 $prev=$prev-(1-($libary_data->currentPage()-2));
