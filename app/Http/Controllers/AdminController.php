@@ -33,7 +33,7 @@ class AdminController extends Controller
             case '1':
                 $libary_data=DB::table('depot')->paginate(3);
                 $return_array['libary_data']=$libary_data;
-                if ($libary_data->currentPage()>$libary_data->lastPage())
+                if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
                     return redirect('/admin/1');
                 break;
 
