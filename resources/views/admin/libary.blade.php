@@ -25,23 +25,22 @@
                         <table class="table table-bordered table-striped table-condensed">
                             <thead>
                             <tr>
-                                <th>
+                                <th class="hidden-phone">
                                     #编号
                                 </th>
                                 <th>
-
                                     类别
                                 </th>
                                 <th class="numeric">
                                     名称
                                 </th>
-                                <th class="numeric">
+                                <th class="numeric hidden-phone">
                                     品牌
                                 </th>
-                                <th class="numeric hidden-phone">
+                                <th class="numeric">
                                     型号
                                 </th>
-                                <th class="numeric hidden-phone">
+                                <th class="numeric">
                                     数量
                                 </th>
                                 <th class="numeric hidden-phone">

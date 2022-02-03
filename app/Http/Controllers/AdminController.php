@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 
@@ -30,10 +30,19 @@ class AdminController extends Controller
         //end
         switch ($id){
             case '1':
-                $libary_data=DB::table('depot')->orderBy('category','desc')->paginate(3);
+                $libary_data=DB::table('depot');
+                if ($request->has('search')){
+                    $libary_data=$libary_data
+                        ->where('number','like','%'.$request->get('search').'%')
+                        ->orWhere('name','like','%'.$request->get('search').'%')
+                    ;
+                }
+                $libary_data=$libary_data->orderBy('category','desc')->paginate(3);
                 $return_array['libary_data']=$libary_data;
                 if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
                     return redirect('/admin/1');
+
+
                 break;
         }
         return view('admin.index',$return_array);
