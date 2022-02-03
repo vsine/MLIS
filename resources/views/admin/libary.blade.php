@@ -29,10 +29,11 @@
                                     #编号
                                 </th>
                                 <th>
-                                    名称
+
+                                    类别
                                 </th>
                                 <th class="numeric">
-                                    类别
+                                    名称
                                 </th>
                                 <th class="numeric">
                                     品牌
@@ -59,8 +60,8 @@
                             @foreach($libary_data as $key=>$value)
                                  <tr>
                                      <td>{{$value->number}}</td>
-                                     <td>{{$value->name}}</td>
                                      <td>{{$value->category}}</td>
+                                     <td>{{$value->name}}</td>
                                      <td>{{$value->brand}}</td>
                                      <td>{{$value->model}}</td>
                                      <td>{{$value->quantity.$value->unit}}</td>
@@ -71,6 +72,11 @@
 
                                             }}
                                      </td>
+                                     <td>{{$value->supplier}}</td>
+                                     <td><button class="btn btn-primary btn-xs">
+                                             <i class="fa fa-pencil">
+                                             </i>
+                                         </button></td>
                                  </tr>
                             @endforeach
 
