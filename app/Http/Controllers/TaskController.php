@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Session;
 
 class TaskController extends Controller
 {
-    public $marks_moudel=array('title'=>'老师','list'=>[
+    public $marks_moudel=array('title'=>'老师',
+        'list'=>[
         ['仓库','fa-book',1,2,3],
         ['管理','fa-tasks',4,5,6],
-        ['对外','fa-glass',7]
-    ]);
+        ['对外','fa-glass',7]],
+        'editlibary'=>true
+    );
     public function index()
     {
         if(!Session::get('task_check'))

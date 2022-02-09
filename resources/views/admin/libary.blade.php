@@ -12,10 +12,8 @@
                   </span>
                     <span class="tools pull-right">
                         <a class="fa">搜索:</a>
-                        <label> <input type="text" class="form-control" aria-controls="example"></label>
-                     <button type="button" class="btn btn-primary">
-                    搜索
-                  </button>
+                        <label> <input id="search_input" type="text" class="form-control" aria-controls="example" value="{{$search_input}}"></label>
+                        <button id="search" type="button" class="btn btn-primary">搜索</button>
                         <a href="javascript:;" class="fa fa-chevron-down">
                     </a>
                   </span>
@@ -25,10 +23,10 @@
                         <table class="table table-bordered table-striped table-condensed">
                             <thead>
                             <tr>
-                                <th class="hidden-phone">
+                                <th class="">
                                     #编号
                                 </th>
-                                <th>
+                                <th class="numeric hidden-phone">
                                     类别
                                 </th>
                                 <th class="numeric">
@@ -92,7 +90,7 @@
                                 @endif
                                 ">
                                 <a @if(!($libary_data->onFirstPage()))
-                                    href="{{$libary_data->previousPageUrl()}}"
+                                    href="{{$libary_data->withQueryString()->previousPageUrl()}}"
                                     @endif
                                 >← 上一页</a>
                             </li>
@@ -116,7 +114,7 @@
                             @for($i=0;$i<2;$i++)
                                 @for($j=0;($j<$prev)&&($i==0);$j++)
                                         <li class="">
-                                            <a href="{{$libary_data
+                                            <a href="{{$libary_data->withQueryString()
                                             ->url(($libary_data->currentPage()-($prev-$j)))}}">
                                                 {{($libary_data->currentPage()-($prev-$j))}}</a>
                                         </li>
@@ -129,7 +127,7 @@
                                 @for($j=0;($j<$next)&&($i==1);$j++)
 
                                             <li class="">
-                                                <a href="{{$libary_data
+                                                <a href="{{$libary_data->withQueryString()
                                             ->url(($libary_data->currentPage()+(1+$j)))}}">{{($libary_data->currentPage()+(1+$j))}}</a>
                                             </li>
                                     @endfor
@@ -142,7 +140,7 @@
                             ">
                                 <a
                                     @if(!($libary_data->onLastPage()))
-                                    href="{{$libary_data->nextPageUrl()}}"
+                                    href="{{$libary_data->withQueryString()->nextPageUrl()}}"
                                     @endif>下一页 → </a>
                             </li>
                         </ul>
@@ -158,6 +156,12 @@
 @section('script')
     <script type="text/javascript">
         //alert('0');
-
+        $(document).ready(function () {
+            $("#search").click(function () {
+                //console.log('&search='+$('#search_input').val())
+                window.location.href=window.location.pathname+'?search='+$('#search_input').val();
+            });
+            }
+        );
     </script>
 @endsection

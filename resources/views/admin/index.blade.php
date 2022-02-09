@@ -275,7 +275,7 @@
                                     <a href="/admin/{{$value}}" target="_self" >
                                         {{$tlist[$value]}}
                                         @if($value==2)
-                                            <span class="label label-danger span-sidebar">0</span>
+                                            <span class="label label-danger span-sidebar">2</span>
                                         @endif
                                     </a>
                                     </li>

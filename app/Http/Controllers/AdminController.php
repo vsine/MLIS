@@ -30,19 +30,25 @@ class AdminController extends Controller
         //end
         switch ($id){
             case '1':
+                $return_array['search_input']=$request->get('search','');
                 $libary_data=DB::table('depot');
                 if ($request->has('search')){
                     $libary_data=$libary_data
+                        ->join('place_b','depot.ip','=','place_b.id')
+                        ->join('place_a','place_b.aid','=','place_a.id')
                         ->where('number','like','%'.$request->get('search').'%')
                         ->orWhere('name','like','%'.$request->get('search').'%')
+                        ->orWhere('category','like','%'.$request->get('search').'%')
+                        ->orWhere('place_a.place','like','%'.$request->get('search').'%')
                     ;
                 }
-                $libary_data=$libary_data->orderBy('category','desc')->paginate(3);
+                $libary_data=$libary_data->orderBy('category','desc')->orderBy('number','asc')->paginate(3);
                 $return_array['libary_data']=$libary_data;
                 if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
-                    return redirect('/admin/1');
-
-
+                    if ($request->has('search'))
+                        return redirect('/admin/1?search='.$request->get('search',''));
+                    else
+                        return redirect('/admin/1');
                 break;
         }
         return view('admin.index',$return_array);
