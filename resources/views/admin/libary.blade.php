@@ -70,7 +70,7 @@
                                             }}
                                      </td>
                                      <td>{{$value->supplier}}</td>
-                                     <td><button class="btn btn-primary btn-xs">
+                                     <td><button class="btn btn-success btn-xs">
                                              <i class="fa fa-pencil">
                                              </i>
                                          </button></td>

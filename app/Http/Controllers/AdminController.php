@@ -40,9 +40,10 @@ class AdminController extends Controller
                         ->orWhere('name','like','%'.$request->get('search').'%')
                         ->orWhere('category','like','%'.$request->get('search').'%')
                         ->orWhere('place_a.place','like','%'.$request->get('search').'%')
+                        ->orWhere('model','like','%'.$request->get('search').'%')
                     ;
                 }
-                $libary_data=$libary_data->orderBy('category','desc')->orderBy('number','asc')->paginate(3);
+                $libary_data=$libary_data->orderBy('category','desc')->orderBy('number','asc')->paginate(10);
                 $return_array['libary_data']=$libary_data;
                 if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
                     if ($request->has('search'))
