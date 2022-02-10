@@ -70,7 +70,7 @@
                                             }}
                                      </td>
                                      <td>{{$value->supplier}}</td>
-                                     <td><button class="btn btn-success btn-xs">
+                                     <td><button id="pencil" class="btn btn-success btn-xs">
                                              <i class="fa fa-pencil">
                                              </i>
                                          </button></td>
@@ -161,6 +161,9 @@
                 //console.log('&search='+$('#search_input').val())
                 window.location.href=window.location.pathname+'?search='+$('#search_input').val();
             });
+            $('#pencil').click(function () {
+                alert('d');
+                });
             }
         );
     </script>
