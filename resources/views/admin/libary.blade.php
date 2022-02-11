@@ -284,7 +284,6 @@
                 $('#modal_title_close').attr('disabled',bol);
                 $("#modal_join").text('提交中');
             }
-
             $("#search").click(function () {
                 //console.log('&search='+$('#search_input').val())
                 window.location.href=window.location.pathname+'?search='+$('#search_input').val();
@@ -314,12 +313,15 @@
 
                 $.post('/task/cart',{
                     '_token' : '{{ csrf_token() }}',
-                    'oper':   '1',
-                    'password':   '2'
+                    'oper': '1',
+                    'number': $('#modal_number').text(),
+                    'quantity': $('#modal_in').val()
                 },function (data) {
                     disabled_modal(false);
                     $('#myModal').modal('toggle');
-                    if(data=='300'){
+                    if(data=='200'){
+
+                    }else {
                         commonUtil.message('非法操作:'+data,'danger');
                     }
 
