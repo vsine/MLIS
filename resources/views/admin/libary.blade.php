@@ -320,7 +320,7 @@
                     disabled_modal(false);
                     $('#myModal').modal('toggle');
                     if(data=='200'){
-
+                        commonUtil.message('添加成功.');
                     }else {
                         commonUtil.message('非法操作:'+data,'danger');
                     }
@@ -328,7 +328,7 @@
                 }).error(function (xhr,status,info){
                     disabled_modal(false);
                     //只有失败才执行
-                    alert('error');
+                    commonUtil.message('请求失败','danger');
                 });;
 
             });

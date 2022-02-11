@@ -37,7 +37,10 @@ class TaskController extends Controller
     public function cart(Request $request){
         $operation=$request->get('oper');
         switch ($operation){
+            case '1':
 
+                return '200';
+                break;
             default:
                 return '300';
                 break;
