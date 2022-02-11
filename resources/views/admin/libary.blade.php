@@ -296,7 +296,19 @@
                 });
 
             $('#modal_join').click(function () {
-                alert('ok');
+
+                commonUtil.message('66');
+                {{--$.post('/task/cart',{--}}
+                {{--    '_token' : '{{ csrf_token() }}',--}}
+                {{--    'oper':   '1',--}}
+                {{--    'password':   '2'--}}
+                {{--},function (data) {--}}
+                {{--    alert(data);--}}
+                {{--}).error(function (xhr,status,info){--}}
+                {{--    //只有失败才执行--}}
+                {{--    alert('error');--}}
+                {{--});;--}}
+
             });
 
             $('#modal_plus').click(function () {
@@ -321,6 +333,7 @@
                     alert('数量格式错误');
                 }
             });
+
 
 
             });

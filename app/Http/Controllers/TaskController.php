@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -33,7 +34,13 @@ class TaskController extends Controller
         ->value('cart'),true);
         return $json;
     }
-    public function cart(){
+    public function cart(Request $request){
+        $operation=$request->get('oper');
+        switch ($operation){
 
+            default:
+                return '300';
+                break;
+        }
     }
 }
