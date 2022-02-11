@@ -27,10 +27,10 @@ class TaskController extends Controller
     }
 
     public function test(){
-        $user_row=DB::table('users')->where('username',Session::get('username'));
-        $user_row->update(['marks'=>json_encode($this->marks_moudel)]);
-        $json = json_decode($user_row
-            ->value('marks'),true);
+        //$user_row=DB::table('users')->where('username',Session::get('username'));
+        //$user_row->update(['marks'=>json_encode($this->marks_moudel)]);
+        //$json = json_decode($user_row
+        //->value('marks'),true);
         return $json;
     }
 
