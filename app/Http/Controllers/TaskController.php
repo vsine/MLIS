@@ -37,11 +37,14 @@ class TaskController extends Controller
     public function cart(Request $request){
         $user_row=DB::table('users')->where('username',Session::get('username'));
         $array= json_decode($user_row->value('cart'),true);
-
         $operation=$request->get('oper');
         switch ($operation){
             case '1':
-
+                if(array_key_exists(intval($request->get('number')),$array['list']))
+                    $array['list'][$request->get('number')]+=$operation=$request->get('quantity');
+                else
+                    $array['list'][intval($request->get('number'))]=intval($operation=$request->get('quantity'));
+                $user_row->update(['cart'=>json_encode($array)]);
                 return '200';
                 break;
             default:
