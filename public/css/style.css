@@ -5878,20 +5878,27 @@ ul.p-info {
 ul.p-info li {
 	display: inline-block;
 	width: 100%;
-	margin-bottom: 10px;
+
 }
 
 ul.p-info .title {
 	width: 40%;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
 }
 
-ul.p-info .title, ul.p-info .desk {
+ul.p-info .title, ul.p-info .desk,ul.p-info .mydesk{
 	float: left;
 }
 
 ul.p-info .desk {
 	width: 60%;
 	color: #207A94;
+}
+
+ul.p-info .mydesk {
+    width: 60%;
+    color: #f44336;
 }
 
 ul.p-info .title, ul.p-info .desk {

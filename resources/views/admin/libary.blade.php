@@ -1,6 +1,89 @@
 <!-- BEGIN WRAPPER  -->
 <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
 <link href="/css/table-responsive.css" rel="stylesheet"><!-- TABLE RESPONSIVE CSS -->
+
+<!--model-->
+<div class="modal fade" id="myModal"  >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">操作</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <ul class="p-info">
+                        <li class="myli">
+                            <div class="title">
+                                #编号
+                            </div>
+                            <div class="mydesk" id="modal_number">
+                                null
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                名称
+                            </div>
+                            <div class="desk" id="modal_name">
+                                Olive Inc.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                型号
+                            </div>
+                            <div class="desk" id="modal_model">
+                                null
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                类别
+                            </div>
+                            <div class="desk" id="modal_category">
+                                null
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                数量
+                            </div>
+                            <div class="desk" id="modal_quantity">
+                                HTML, CSS, JavaScript.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title" >
+                                仓库
+                            </div>
+                            <div class="desk" id="modal_libary">
+                                HTML, CSS, JavaScript.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                供应商
+                            </div>
+                            <div class="desk" id="modal_supplier">
+                                HTML, CSS, JavaScript.
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                <button class="btn btn-success" type="button">加入选材库</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--model end-->
+
+
 <section class="wrapper">
     <!-- BEGIN ROW  -->
     <div class="row">
@@ -20,7 +103,7 @@
                 </header>
                 <div class="panel-body">
                     <section id="unseen">
-                        <table class="table table-bordered table-striped table-condensed">
+                        <table id="libary_table" class="table table-bordered table-striped table-condensed table-hover">
                             <thead>
                             <tr>
                                 <th class="">
@@ -56,24 +139,25 @@
 
                             @foreach($libary_data as $key=>$value)
                                  <tr>
-                                     <td>{{$value->number}}</td>
-                                     <td>{{$value->category}}</td>
-                                     <td>{{$value->name}}</td>
-                                     <td>{{$value->brand}}</td>
-                                     <td>{{$value->model}}</td>
-                                     <td>{{$value->quantity.$value->unit}}</td>
-                                     <td>
+                                     <td id="td_number">{{$value->number}}</td>
+                                     <td id="td_category">{{$value->category}}</td>
+                                     <td id="td_name">{{$value->name}}</td>
+                                     <td id="td_brand">{{$value->brand}}</td>
+                                     <td id="td_model">{{$value->model}}</td>
+                                     <td id="td_quantity">{{$value->quantity.$value->unit}}</td>
+                                     <td id="td_libary">
                                             {{\Illuminate\Support\Facades\DB::table('place_a')
                                     ->where('id','=',\Illuminate\Support\Facades\DB::table('place_b')
                                     ->where('id','=',$value->ip)->first()->aid)->first()->place
 
                                             }}
                                      </td>
-                                     <td>{{$value->supplier}}</td>
+                                     <td id="td_supplier">{{$value->supplier}}</td>
                                      <td><button id="pencil" class="btn btn-success btn-xs">
                                              <i class="fa fa-pencil">
                                              </i>
                                          </button></td>
+                                     <span style="display: none" id="td_unit">{{$value->unit}}</span>
                                  </tr>
                             @endforeach
 
@@ -161,10 +245,20 @@
                 //console.log('&search='+$('#search_input').val())
                 window.location.href=window.location.pathname+'?search='+$('#search_input').val();
             });
-            $('#pencil').click(function () {
-                alert('d');
+
+            $('#libary_table').find('.btn-success').click(function () {
+                //alert();
+                $('#modal_number').text($(this).parents('tr').children('#td_number').text());
+                $('#modal_category').text($(this).parents('tr').children('#td_category').text());
+                $('#modal_name').text($(this).parents('tr').children('#td_name').text());
+                $('#modal_model').text($(this).parents('tr').children('#td_model').text());
+                $('#modal_quantity').text($(this).parents('tr').children('#td_quantity').text());
+                $('#modal_libary').text($(this).parents('tr').children('#td_libary').text());
+                $('#modal_supplier').text($(this).parents('tr').children('#td_supplier').text());
+                $('#myModal').modal('toggle');
+
                 });
-            }
-        );
+
+            });
     </script>
 @endsection
