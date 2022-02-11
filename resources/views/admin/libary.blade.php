@@ -286,6 +286,10 @@
                 $('#myModal').modal('toggle');
                 });
 
+            $('#modal_join').click(function () {
+
+            });
+
             $('#modal_plus').click(function () {
                 var r=/^\d+$/;
                 var modal_in=$('#modal_in').val();
