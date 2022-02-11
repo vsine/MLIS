@@ -172,7 +172,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
                             @foreach($libary_data as $key=>$value)
                                  <tr>
                                      <td id="td_number">{{$value->number}}</td>
@@ -197,9 +196,6 @@
                                      <td style="display: none" id="td_marks">{{$value->marks}}</td>
                                  </tr>
                             @endforeach
-
-
-
                             </tbody>
                         </table>
                     </section>
