@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware('check')->group(function (){
 Route::prefix('task')->middleware('task')->group(function (){
     Route::get('',[\App\Http\Controllers\TaskController::class,'index']);
     Route::get('test',[\App\Http\Controllers\TaskController::class,'test']);
+    Route::post('cart',[\App\Http\Controllers\TaskController::class,'cart']);
     Route::fallback(function (){
         return '404';
     });
