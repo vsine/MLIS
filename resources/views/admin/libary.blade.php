@@ -75,8 +75,16 @@
 
             </div>
             <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                <button class="btn btn-success" type="button">加入选材库</button>
+                <div class="row">
+                    <div class="col-sm-4">
+
+                    </div>
+                    <div class="col-sm-8">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                        <button class="btn btn-success" type="button">加入选材库</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
