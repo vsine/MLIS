@@ -94,7 +94,7 @@
                                         </i>
                                     </button>
                                 </div>
-                                <input id="modal_in" type="text" class="spinner-input form-control" maxlength="3" value="0">
+                                <input id="modal_in" type="text" class="spinner-input form-control" maxlength="3" value="1">
                                 <span id="modal_unit" class="input-group-addon">个</span>
                                 <div class="spinner-buttons input-group-btn">
                                     <button id="modal_minus" type="button" class="btn spinner-down btn-danger">
@@ -315,6 +315,7 @@
                 var modal_in=$('#modal_in').val();
                 //console.log(r.test(modal_in));
                 if(r.test(modal_in)){
+                    if(Number(modal_in)>1)
                     $('#modal_in').val(Number(modal_in) -1);
                 }else {
                     alert('数量格式错误');
