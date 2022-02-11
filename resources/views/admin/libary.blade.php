@@ -69,6 +69,14 @@
                                 HTML, CSS, JavaScript.
                             </div>
                         </li>
+                        <li class="myli">
+                            <div class="title">
+                                备注
+                            </div>
+                            <div class="mydesk1" id="modal_marks">
+                                null
+                            </div>
+                        </li>
 
                     </ul>
                 </div>
@@ -87,6 +95,7 @@
                                     </button>
                                 </div>
                                 <input id="modal_in" type="text" class="spinner-input form-control" maxlength="3" value="0">
+                                <span id="modal_unit" class="input-group-addon">个</span>
                                 <div class="spinner-buttons input-group-btn">
                                     <button id="modal_minus" type="button" class="btn spinner-down btn-danger">
                                         <i class="fa fa-minus">
@@ -181,10 +190,11 @@
                                      </td>
                                      <td id="td_supplier">{{$value->supplier}}</td>
                                      <td><button id="pencil" class="btn btn-success btn-xs">
-                                             <i class="fa fa-pencil">
+                                             <i class="fa fa-shopping-cart">
                                              </i>
                                          </button></td>
-                                     <span style="display: none" id="td_unit">{{$value->unit}}</span>
+                                     <td style="display: none" id="td_unit">{{$value->unit}}</td>
+                                     <td style="display: none" id="td_marks">{{$value->marks}}</td>
                                  </tr>
                             @endforeach
 
@@ -282,12 +292,15 @@
                 $('#modal_quantity').text($(this).parents('tr').children('#td_quantity').text());
                 $('#modal_libary').text($(this).parents('tr').children('#td_libary').text());
                 $('#modal_supplier').text($(this).parents('tr').children('#td_supplier').text());
+
+                $('#modal_marks').text($(this).parents('tr').children('#td_marks').text());
+                $('#modal_unit').text($(this).parents('tr').children('#td_unit').text());
                 //$('#modal_in').val('0');
                 $('#myModal').modal('toggle');
                 });
 
             $('#modal_join').click(function () {
-
+                alert('ok');
             });
 
             $('#modal_plus').click(function () {

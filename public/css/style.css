@@ -3787,7 +3787,7 @@ table.sliders tr td {
 }
 
 .w-150 {
-	width: 150px;
+	width: 170px;
 }
 
 .m-l-5 {
@@ -5887,7 +5887,7 @@ ul.p-info .title {
     margin-bottom: 0%;
 }
 
-ul.p-info .title, ul.p-info .desk,ul.p-info .mydesk{
+ul.p-info .title, ul.p-info .desk,ul.p-info .mydesk,ul.p-info .mydesk1{
 	float: left;
 }
 
@@ -5899,6 +5899,10 @@ ul.p-info .desk {
 ul.p-info .mydesk {
     width: 60%;
     color: #f44336;
+}
+ul.p-info .mydesk1 {
+    width: 60%;
+    color: #212121;
 }
 
 ul.p-info .title, ul.p-info .desk {
