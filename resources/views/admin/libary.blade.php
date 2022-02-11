@@ -2,7 +2,7 @@
 <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
 <link href="/css/table-responsive.css" rel="stylesheet"><!-- TABLE RESPONSIVE CSS -->
 
-<!--model-->
+<!--modal-->
 <div class="modal fade" id="myModal"  >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -78,10 +78,29 @@
                 <div class="row">
                     <div class="col-sm-4">
 
+                        <div id="spinner4">
+                            <div class="input-group w-150" >
+                                <div class="spinner-buttons input-group-btn">
+                                    <button id="modal_plus" type="button" class="btn spinner-up btn-success">
+                                        <i class="fa fa-plus">
+                                        </i>
+                                    </button>
+                                </div>
+                                <input id="modal_in" type="text" class="spinner-input form-control" maxlength="3" value="0">
+                                <div class="spinner-buttons input-group-btn">
+                                    <button id="modal_minus" type="button" class="btn spinner-down btn-danger">
+                                        <i class="fa fa-minus">
+                                        </i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="col-sm-8">
                         <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                        <button class="btn btn-success" type="button">加入选材库</button>
+                        <button id="modal_join" class="btn btn-success" type="button">加入选材库</button>
                     </div>
                 </div>
 
@@ -263,9 +282,32 @@
                 $('#modal_quantity').text($(this).parents('tr').children('#td_quantity').text());
                 $('#modal_libary').text($(this).parents('tr').children('#td_libary').text());
                 $('#modal_supplier').text($(this).parents('tr').children('#td_supplier').text());
+                //$('#modal_in').val('0');
                 $('#myModal').modal('toggle');
-
                 });
+
+            $('#modal_plus').click(function () {
+                var r=/^\d+$/;
+                var modal_in=$('#modal_in').val();
+                //console.log(r.test(modal_in));
+                if(r.test(modal_in)){
+                    $('#modal_in').val(Number(modal_in) +1);
+                }else {
+                    alert('数量格式错误');
+                }
+            });
+
+            $('#modal_minus').click(function () {
+                var r=/^\d+$/;
+                var modal_in=$('#modal_in').val();
+                //console.log(r.test(modal_in));
+                if(r.test(modal_in)){
+                    $('#modal_in').val(Number(modal_in) -1);
+                }else {
+                    alert('数量格式错误');
+                }
+            });
+
 
             });
     </script>
