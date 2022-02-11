@@ -29,15 +29,19 @@ class TaskController extends Controller
 
     public function test(){
         $user_row=DB::table('users')->where('username',Session::get('username'));
-        $user_row->update(['cart'=>json_encode($this->cart_moudel)]);
-        $json = json_decode($user_row
+        //$user_row->update(['cart'=>json_encode($this->cart_moudel)]);
+        $array = json_decode($user_row
         ->value('cart'),true);
-        return $json;
+        return $array;
     }
     public function cart(Request $request){
+        $user_row=DB::table('users')->where('username',Session::get('username'));
+        $array= json_decode($user_row->value('cart'),true);
+
         $operation=$request->get('oper');
         switch ($operation){
             case '1':
+
                 return '200';
                 break;
             default:
