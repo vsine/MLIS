@@ -1,13 +1,13 @@
 <!-- BEGIN WRAPPER  -->
 <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
 <link href="/css/table-responsive.css" rel="stylesheet"><!-- TABLE RESPONSIVE CSS -->
-
+<script src="/js/myalert.js"></script>
 <!--modal-->
 <div class="modal fade" id="myModal"  >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">操作</h4>
             </div>
             <div class="modal-body">
@@ -108,7 +108,7 @@
 
                     </div>
                     <div class="col-sm-8">
-                        <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                        <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
                         <button id="modal_join" class="btn btn-success" type="button">加入选材库</button>
                     </div>
                 </div>
@@ -274,6 +274,17 @@
     <script type="text/javascript">
         //alert('0');
         $(document).ready(function () {
+            commonUtil.place_obj=$('.wrapper');
+            function disabled_modal(bol){
+                $("#modal_join").attr('disabled',bol);
+                $("#modal_in").attr('disabled',bol);
+                $('#modal_plus').attr('disabled',bol);
+                $('#modal_minus').attr('disabled',bol);
+                $('#modal_close').attr('disabled',bol);
+                $('#modal_title_close').attr('disabled',bol);
+                $("#modal_join").text('提交中');
+            }
+
             $("#search").click(function () {
                 //console.log('&search='+$('#search_input').val())
                 window.location.href=window.location.pathname+'?search='+$('#search_input').val();
@@ -292,22 +303,31 @@
                 $('#modal_marks').text($(this).parents('tr').children('#td_marks').text());
                 $('#modal_unit').text($(this).parents('tr').children('#td_unit').text());
                 //$('#modal_in').val('0');
+                $("#modal_join").text('添加到选材车');
                 $('#myModal').modal('toggle');
                 });
 
             $('#modal_join').click(function () {
+                //禁用控件
+                disabled_modal(true);
 
-                commonUtil.message('66');
-                {{--$.post('/task/cart',{--}}
-                {{--    '_token' : '{{ csrf_token() }}',--}}
-                {{--    'oper':   '1',--}}
-                {{--    'password':   '2'--}}
-                {{--},function (data) {--}}
-                {{--    alert(data);--}}
-                {{--}).error(function (xhr,status,info){--}}
-                {{--    //只有失败才执行--}}
-                {{--    alert('error');--}}
-                {{--});;--}}
+
+                $.post('/task/cart',{
+                    '_token' : '{{ csrf_token() }}',
+                    'oper':   '1',
+                    'password':   '2'
+                },function (data) {
+                    disabled_modal(false);
+                    $('#myModal').modal('toggle');
+                    if(data=='300'){
+                        commonUtil.message('非法操作:'+data,'danger');
+                    }
+
+                }).error(function (xhr,status,info){
+                    disabled_modal(false);
+                    //只有失败才执行
+                    alert('error');
+                });;
 
             });
 

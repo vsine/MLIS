@@ -1,4 +1,6 @@
 var commonUtil = {
+
+    place_obj:null,
     /**
      * 弹出消息框
      * @param msg 消息内容
@@ -9,7 +11,7 @@ var commonUtil = {
             type = "success";
         }
         // 创建bootstrap的alert元素
-        var divElement = $("<div></div>").addClass('alert').addClass('alert-'+type).addClass('alert-dismissible').addClass('col-lg-4').addClass('col-lg-offset-4');
+        var divElement = $("<div></div>").addClass('alert').addClass('alert-'+type).addClass('alert-dismissible').addClass('col-sm-4').addClass('col-sm-offset-2');
         divElement.css({ // 消息框的定位样式
             "position": "absolute",
             "top": "80px"
@@ -19,7 +21,7 @@ var commonUtil = {
         var closeBtn = $('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
         $(divElement).append(closeBtn);
         // 消息框放入到页面中
-        $('#myModal').append(divElement);
+        this.place_obj.append(divElement);
         return divElement;
     },
 

@@ -336,7 +336,7 @@
 <script src="/js/calendar/moment-2.2.1.js"></script><!-- CALENDER MOMENT JS -->
 <script src="/js/underscore-min.js"></script><!-- UNDERSCORE JS -->
 <script src="/assets/jquery-knob/js/jquery.knob.js" ></script><!-- JQUERY KNOB JS -->
-<script src="/js/myjs.js"></script>
+
 <script type="text/javascript">
     //knob
     $(".knob").knob();
