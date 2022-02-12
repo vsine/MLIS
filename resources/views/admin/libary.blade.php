@@ -129,73 +129,7 @@
             </div>
             <div class="modal-body">
                 <div class="panel-body">
-                    <ul class="p-info">
-                        <li class="myli">
-                            <div class="title">
-                                #编号
-                            </div>
-                            <div class="mydesk" id="modal_number">
-                                null
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                名称
-                            </div>
-                            <div class="desk" id="modal_name">
-                                Olive Inc.
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                型号
-                            </div>
-                            <div class="desk" id="modal_model">
-                                null
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                类别
-                            </div>
-                            <div class="desk" id="modal_category">
-                                null
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                数量
-                            </div>
-                            <div class="desk" id="modal_quantity">
-                                HTML, CSS, JavaScript.
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title" >
-                                仓库
-                            </div>
-                            <div class="desk" id="modal_libary">
-                                HTML, CSS, JavaScript.
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                供应商
-                            </div>
-                            <div class="desk" id="modal_supplier">
-                                HTML, CSS, JavaScript.
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                备注
-                            </div>
-                            <div class="mydesk1" id="modal_marks">
-                                null
-                            </div>
-                        </li>
 
-                    </ul>
                 </div>
 
             </div>
@@ -242,23 +176,19 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-
-
                     <div class="row">
                         <div class="col-sm-4">
                             <span class="label label-primary">仓库</span>
                             &nbsp;&nbsp;
-
                             @if(array_key_exists('editlibary',$marks))
                                 @if($marks['editlibary'])
-                                    <button type="button" class="btn btn-sm  btn-danger">
+                                    <button id="panel_add" type="button" class="btn btn-sm  btn-danger">
                                         <i class="fa fa-plus">
                                         </i>
                                         添加物料
                                     </button>
                                 @endif
                             @endif
-
                         </div>
                         <div class="col-sm-8">
                             <span class="tools pull-right">
@@ -269,8 +199,6 @@
                             </span>
                         </div>
                     </div>
-
-
                 </header>
                 <div class="panel-body">
                     <section id="unseen">
@@ -455,8 +383,6 @@
             $('#modal_join').click(function () {
                 //禁用控件
                 disabled_modal(true);
-
-
                 $.post('/task/cart',{
                     '_token' : '{{ csrf_token() }}',
                     'oper': '1',
@@ -502,7 +428,13 @@
                 }
             });
 
-
+            @if(array_key_exists('editlibary',$marks))
+            @if($marks['editlibary'])
+            $('#libary_table').find('.btn-danger').click(function () {
+                $('#myModal1').modal('toggle');
+            });
+            @endif
+            @endif
 
             });
     </script>
