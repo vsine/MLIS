@@ -42,6 +42,7 @@ class TaskController extends Controller
         $array= json_decode($user_row->value('cart'),true);
         $operation=$request->get('oper');
         switch ($operation){
+            //加入购物车
             case '1':
                 if(array_key_exists(intval($request->get('number')),$array['list']))
                     $array['list'][$request->get('number')]+=$operation=$request->get('quantity');
@@ -49,6 +50,10 @@ class TaskController extends Controller
                     $array['list'][intval($request->get('number'))]=intval($operation=$request->get('quantity'));
                 $user_row->update(['cart'=>json_encode($array)]);
                 return '200';
+                break;
+            //修改数量
+            case '2':
+
                 break;
             default:
                 return '300';
