@@ -35,6 +35,9 @@ class TaskController extends Controller
         return $array;
     }
     public function cart(Request $request){
+        if(!Session::get('task_check'))
+            return 'login_fail';
+
         $user_row=DB::table('users')->where('username',Session::get('username'));
         $array= json_decode($user_row->value('cart'),true);
         $operation=$request->get('oper');
