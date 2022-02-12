@@ -63,6 +63,8 @@ class TaskController extends Controller
     }
 
     public  function libary(){
-
+        if(!Session::get('task_check'))
+            return 'login_fail';
+        $user_row=DB::table('users')->where('username',Session::get('username'));
     }
 }
