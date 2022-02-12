@@ -2,7 +2,7 @@
 <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
 <link href="/css/table-responsive.css" rel="stylesheet"><!-- TABLE RESPONSIVE CSS -->
 <script src="/js/myalert.js"></script>
-<!--modal-->
+<!--加入购物车modal-->
 <div class="modal fade" id="myModal"  >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -119,6 +119,122 @@
 </div>
 <!--model end-->
 
+<!--加入购物车modal-->
+<div class="modal fade" id="myModal1"  >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">编辑</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <ul class="p-info">
+                        <li class="myli">
+                            <div class="title">
+                                #编号
+                            </div>
+                            <div class="mydesk" id="modal_number">
+                                null
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                名称
+                            </div>
+                            <div class="desk" id="modal_name">
+                                Olive Inc.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                型号
+                            </div>
+                            <div class="desk" id="modal_model">
+                                null
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                类别
+                            </div>
+                            <div class="desk" id="modal_category">
+                                null
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                数量
+                            </div>
+                            <div class="desk" id="modal_quantity">
+                                HTML, CSS, JavaScript.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title" >
+                                仓库
+                            </div>
+                            <div class="desk" id="modal_libary">
+                                HTML, CSS, JavaScript.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                供应商
+                            </div>
+                            <div class="desk" id="modal_supplier">
+                                HTML, CSS, JavaScript.
+                            </div>
+                        </li>
+                        <li class="myli">
+                            <div class="title">
+                                备注
+                            </div>
+                            <div class="mydesk1" id="modal_marks">
+                                null
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <div id="spinner4">
+                            <div class="input-group w-150" >
+                                <div class="spinner-buttons input-group-btn">
+                                    <button id="modal_plus" type="button" class="btn spinner-up btn-success">
+                                        <i class="fa fa-plus">
+                                        </i>
+                                    </button>
+                                </div>
+                                <input id="modal_in" type="text" class="spinner-input form-control" maxlength="3" value="1">
+                                <span id="modal_unit" class="input-group-addon">个</span>
+                                <div class="spinner-buttons input-group-btn">
+                                    <button id="modal_minus" type="button" class="btn spinner-down btn-danger">
+                                        <i class="fa fa-minus">
+                                        </i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-8">
+                        <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                        <button id="modal_join" class="btn btn-success" type="button">加入选材库</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--model end-->
 
 <section class="wrapper">
     <!-- BEGIN ROW  -->
@@ -126,16 +242,35 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                  <span class="label label-primary">
-                   仓库
-                  </span>
-                    <span class="tools pull-right">
-                        <a class="fa">搜索:</a>
-                        <label> <input id="search_input" type="text" class="form-control" aria-controls="example" value="{{$search_input}}"></label>
-                        <button id="search" type="button" class="btn btn-primary">搜索</button>
-                        <a href="javascript:;" class="fa fa-chevron-down">
-                    </a>
-                  </span>
+
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <span class="label label-primary">仓库</span>
+                            &nbsp;&nbsp;
+
+                            @if(array_key_exists('editlibary',$marks))
+                                @if($marks['editlibary'])
+                                    <button type="button" class="btn btn-sm  btn-danger">
+                                        <i class="fa fa-plus">
+                                        </i>
+                                        添加物料
+                                    </button>
+                                @endif
+                            @endif
+
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="tools pull-right">
+                                <a class="fa">搜索:</a>
+                                <label> <input id="search_input" type="text" class="form-control" aria-controls="example" value="{{$search_input}}"></label>
+                                <button id="search" type="button" class="btn btn-primary">搜索</button>
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            </span>
+                        </div>
+                    </div>
+
+
                 </header>
                 <div class="panel-body">
                     <section id="unseen">
@@ -188,10 +323,21 @@
                                             }}
                                      </td>
                                      <td id="td_supplier">{{$value->supplier}}</td>
-                                     <td><button id="pencil" class="btn btn-success btn-xs">
+                                     <td>
+                                         <button id="pencil" class="btn btn-success btn-xs">
                                              <i class="fa fa-shopping-cart">
                                              </i>
-                                         </button></td>
+                                         </button>
+                                         @if(array_key_exists('editlibary',$marks))
+                                             @if($marks['editlibary'])
+                                                 <button id="list_edit" type="button" class="btn btn-xs  btn-danger">
+                                                     <i class="fa fa-pencil-square">
+                                                     </i>
+                                                 </button>
+                                             @endif
+                                         @endif
+
+                                     </td>
                                      <td style="display: none" id="td_unit">{{$value->unit}}</td>
                                      <td style="display: none" id="td_marks">{{$value->marks}}</td>
                                  </tr>
