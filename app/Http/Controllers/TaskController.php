@@ -62,5 +62,7 @@ class TaskController extends Controller
         return 'exit';
     }
 
+    public  function libary(){
 
+    }
 }
