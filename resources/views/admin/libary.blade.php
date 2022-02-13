@@ -129,6 +129,10 @@
             </div>
             <div class="modal-body">
                 <div class="panel-body">
+                    <div class="row">
+
+                    </div>
+
 
                 </div>
 
