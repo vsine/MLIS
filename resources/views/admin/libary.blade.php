@@ -129,9 +129,59 @@
             </div>
             <div class="modal-body">
                 <div class="panel-body">
-                    <div class="row">
+                    <form class="form-horizontal tasi-form" method="get">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 col-sm-2 control-label">编号</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_number" type="text" class="form-control" placeholder="">
+                                </div>
+                                <label class="col-sm-2 col-sm-2 control-label">名称</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_name" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 col-sm-2 control-label">类别</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_category" type="text" class="form-control" placeholder="">
+                                </div>
+                                <label class="col-sm-2 col-sm-2 control-label">型号</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_model" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 col-sm-2 control-label">品牌</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_brand" type="text" class="form-control" placeholder="">
+                                </div>
+                                <label class="col-sm-2 col-sm-2 control-label">供应商</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_supplier" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 col-sm-2 control-label">数量</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_quantity" type="text" class="form-control" placeholder="">
+                                </div>
+                                <label class="col-sm-2 col-sm-2 control-label">单位</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_unit" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 col-sm-2 control-label">货位</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_ip" type="text" class="form-control" placeholder="">
+                                </div>
+                                <label class="col-sm-2 col-sm-2 control-label">备注</label>
+                                <div class="col-sm-4">
+                                    <input id="modal1_marks" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
 
-                    </div>
+                    </form>
 
 
                 </div>
@@ -419,6 +469,7 @@
             @if(array_key_exists('editlibary',$marks))
             @if($marks['editlibary'])
             $('#libary_table').find('.btn-danger').click(function () {
+                $('#modal1_number').val($(this).parents('tr').children('#td_number').text());
                 $('#myModal1').modal('toggle');
             });
             @endif
