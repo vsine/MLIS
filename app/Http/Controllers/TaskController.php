@@ -28,11 +28,14 @@ class TaskController extends Controller
     }
 
     public function test(){
-        $user_row=DB::table('users')->where('username',Session::get('username'));
-        //$user_row->update(['cart'=>json_encode($this->cart_moudel)]);
-        $array = json_decode($user_row
-        ->value('cart'),true);
-        return $array;
+//        $user_row=DB::table('users')->where('username',Session::get('username'));
+//        //$user_row->update(['cart'=>json_encode($this->cart_moudel)]);
+//        $array = json_decode($user_row
+//        ->value('cart'),true);
+        return DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
+            ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
+            ->select('place_a.place as place_a','place_b.place as place_b')
+            ->get();
     }
     public function cart(Request $request){
         if(!Session::get('task_check'))

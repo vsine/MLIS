@@ -119,101 +119,117 @@
 </div>
 <!--model end-->
 
-<!--加入购物车modal-->
-<div class="modal fade" id="myModal1"  >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">编辑</h4>
-            </div>
-            <div class="modal-body">
-                <div class="panel-body">
-                    <form class="form-horizontal tasi-form" method="get">
-                            <div class="form-group has-feedback">
-                                <label class="col-sm-2 col-sm-2 control-label">编号</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_number" type="text" class="form-control" placeholder="">
+@if(array_key_exists('editlibary',$marks))
+    @if($marks['editlibary'])
+        <!--编辑modal-->
+        <div class="modal fade" id="myModal1"  >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">编辑</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <form class="form-horizontal tasi-form" method="get">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">编号</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_number" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">名称</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_name" type="text" class="form-control" placeholder="">
+                                    </div>
                                 </div>
-                                <label class="col-sm-2 col-sm-2 control-label">名称</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_name" type="text" class="form-control" placeholder="">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">类别</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_category" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">型号</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_model" type="text" class="form-control" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label class="col-sm-2 col-sm-2 control-label">类别</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_category" type="text" class="form-control" placeholder="">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">品牌</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_brand" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">供应商</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_supplier" type="text" class="form-control" placeholder="">
+                                    </div>
                                 </div>
-                                <label class="col-sm-2 col-sm-2 control-label">型号</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_model" type="text" class="form-control" placeholder="">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">数量</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_quantity" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">单位</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal1_unit" type="text" class="form-control" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label class="col-sm-2 col-sm-2 control-label">品牌</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_brand" type="text" class="form-control" placeholder="">
-                                </div>
-                                <label class="col-sm-2 col-sm-2 control-label">供应商</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_supplier" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label class="col-sm-2 col-sm-2 control-label">数量</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_quantity" type="text" class="form-control" placeholder="">
-                                </div>
-                                <label class="col-sm-2 col-sm-2 control-label">单位</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_unit" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label class="col-sm-2 col-sm-2 control-label">货位</label>
-                                <div class="col-sm-4">
-{{--                                    <input id="modal1_ip" type="text" class="form-control" placeholder="">--}}
-                                    <select id="modal1_ip" class="form-control">
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4</option>
-                                        <option value="">5</option>
-                                    </select>
-                                </div>
-                                <label class="col-sm-2 col-sm-2 control-label">备注</label>
-                                <div class="col-sm-4">
-                                    <input id="modal1_marks" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
 
-                    </form>
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">货位</label>
+                                    <div class="col-sm-10">
 
 
-                </div>
+                                        <select id="modal1_ip" class="form-control">
+                                            <option value="0">未选择</option>
+                                            @foreach(DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
+                                                ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
+                                                ->select('place_a.place as place_a','place_b.place as place_b','place_b.id as id')
+                                                ->get() as $key=>$value)
+                                                <option value="{{$value->id}}">
+                                                    {{$value->place_a}}的{{$value->place_b}}货位</option>
+                                            @endforeach
 
-            </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <div class="col-sm-4">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group has-feedback">
+
+                                    <label class="col-sm-2 col-sm-2 control-label">备注</label>
+                                    <div class="col-sm-10">
+                                        <input id="modal1_marks" type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+                            </form>
 
 
-
+                        </div>
 
                     </div>
-                    <div class="col-sm-8">
-                        <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                        <button id="modal1_update" class="btn btn-danger" type="button">删除</button>
-                        <button id="modal1_remove" class="btn btn-warning" type="button">修改</button>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+
+
+
+
+                            </div>
+                            <div class="col-sm-8">
+                                <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                                <button id="modal1_update" class="btn btn-danger" type="button">删除</button>
+                                <button id="modal1_remove" class="btn btn-warning" type="button">修改</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
-</div>
-<!--model end-->
+        <!--model end-->
+    @endif
+@endif
+
 
 <section class="wrapper">
     <!-- BEGIN ROW  -->
@@ -313,6 +329,7 @@
                                      </td>
                                      <td style="display: none" id="td_unit">{{$value->unit}}</td>
                                      <td style="display: none" id="td_marks">{{$value->marks}}</td>
+                                     <td style="display: none" id="td_ip">{{$value->ip}}</td>
                                      <td style="display: none" id="td_quantity1">{{$value->quantity}}</td>
                                  </tr>
                             @endforeach
@@ -486,6 +503,7 @@
                 $('#modal1_quantity').val($(this).parents('tr').children('#td_quantity1').text());
                 $('#modal1_supplier').val($(this).parents('tr').children('#td_supplier').text());
                 $('#modal1_marks').val($(this).parents('tr').children('#td_marks').text());
+                $('#modal1_ip').val($(this).parents('tr').children('#td_ip').text())
                 $('#myModal1').modal('toggle');
             });
             @endif
