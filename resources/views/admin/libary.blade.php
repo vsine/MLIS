@@ -173,7 +173,14 @@
                             <div class="form-group has-feedback">
                                 <label class="col-sm-2 col-sm-2 control-label">货位</label>
                                 <div class="col-sm-4">
-                                    <input id="modal1_ip" type="text" class="form-control" placeholder="">
+{{--                                    <input id="modal1_ip" type="text" class="form-control" placeholder="">--}}
+                                    <select id="modal1_ip" class="form-control">
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                    </select>
                                 </div>
                                 <label class="col-sm-2 col-sm-2 control-label">备注</label>
                                 <div class="col-sm-4">
@@ -306,6 +313,7 @@
                                      </td>
                                      <td style="display: none" id="td_unit">{{$value->unit}}</td>
                                      <td style="display: none" id="td_marks">{{$value->marks}}</td>
+                                     <td style="display: none" id="td_quantity1">{{$value->quantity}}</td>
                                  </tr>
                             @endforeach
                             </tbody>
@@ -470,6 +478,14 @@
             @if($marks['editlibary'])
             $('#libary_table').find('.btn-danger').click(function () {
                 $('#modal1_number').val($(this).parents('tr').children('#td_number').text());
+                $('#modal1_name').val($(this).parents('tr').children('#td_name').text());
+                $('#modal1_category').val($(this).parents('tr').children('#td_category').text());
+                $('#modal1_model').val($(this).parents('tr').children('#td_model').text());
+                $('#modal1_brand').val($(this).parents('tr').children('#td_brand').text());
+                $('#modal1_unit').val($(this).parents('tr').children('#td_unit').text());
+                $('#modal1_quantity').val($(this).parents('tr').children('#td_quantity1').text());
+                $('#modal1_supplier').val($(this).parents('tr').children('#td_supplier').text());
+                $('#modal1_marks').val($(this).parents('tr').children('#td_marks').text());
                 $('#myModal1').modal('toggle');
             });
             @endif
