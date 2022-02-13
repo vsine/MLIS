@@ -137,30 +137,14 @@
                 <div class="row">
                     <div class="col-sm-4">
 
-                        <div id="spinner4">
-                            <div class="input-group w-150" >
-                                <div class="spinner-buttons input-group-btn">
-                                    <button id="modal_plus" type="button" class="btn spinner-up btn-success">
-                                        <i class="fa fa-plus">
-                                        </i>
-                                    </button>
-                                </div>
-                                <input id="modal_in" type="text" class="spinner-input form-control" maxlength="3" value="1">
-                                <span id="modal_unit" class="input-group-addon">个</span>
-                                <div class="spinner-buttons input-group-btn">
-                                    <button id="modal_minus" type="button" class="btn spinner-down btn-danger">
-                                        <i class="fa fa-minus">
-                                        </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+
 
 
                     </div>
                     <div class="col-sm-8">
                         <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                        <button id="modal_join" class="btn btn-success" type="button">加入选材库</button>
+                        <button id="modal1_update" class="btn btn-danger" type="button">删除</button>
+                        <button id="modal1_remove" class="btn btn-warning" type="button">修改</button>
                     </div>
                 </div>
 
