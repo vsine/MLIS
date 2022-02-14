@@ -77,7 +77,8 @@ class TaskController extends Controller
                         'number'=>$request->input('number'),
                         'category'=>$request->input('category'),
                         'brand'=>$request->input('brand'),
-
+                        'model'=>$request->input('model'),
+                        'quantity'=>$request->input('quantity'),
                     ]
                 );
                 break;
