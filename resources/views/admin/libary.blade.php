@@ -177,7 +177,6 @@
                                     <label class="col-sm-2 col-sm-2 control-label">货位</label>
                                     <div class="col-sm-10">
                                         <select id="modal1_ip" class="form-control">
-                                            <option value="0">未选择</option>
                                             @foreach(DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
                                                 ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
                                                 ->select('place_a.place as place_a','place_b.place as place_b','place_b.id as id')
@@ -303,11 +302,14 @@
                                      <td id="td_model">{{$value->model}}</td>
                                      <td id="td_quantity">{{$value->quantity.$value->unit}}</td>
                                      <td id="td_libary">
-                                            {{\Illuminate\Support\Facades\DB::table('place_a')
-                                    ->where('id','=',\Illuminate\Support\Facades\DB::table('place_b')
-                                    ->where('id','=',$value->ip)->first()->aid)->first()->place
 
-                                            }}
+                                             {{DB::table('place_a')
+                                                ->where('id','=',DB::table('place_b')
+                                                ->where('id','=',$value->ip)->first()->aid)->first()->place
+
+                                                }}
+
+
                                      </td>
                                      <td id="td_supplier">{{$value->supplier}}</td>
                                      <td>
