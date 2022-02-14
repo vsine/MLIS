@@ -41,13 +41,14 @@ class AdminController extends Controller
                     $search_array=explode(' ',$request->get('search'));
                     foreach ($search_array as $key=>$value)
                     $libary_data=$libary_data//join如果查不到关联的那么整行不输出
-                        ->where('number','like','%'.$value.'%')
-                        ->orWhere('name','like','%'.$value.'%')
-                        ->orWhere('category','like','%'.$value.'%')
-                        ->orWhere('place_a.place','like','%'.$value.'%')
-                        ->orWhere('model','like','%'.$value.'%')
-                        ->orWhere('marks','like','%'.$value.'%')
-                    ;
+                        $query->where(function ($query){
+                        $query->orWhere('number','like','%'.$value.'%');
+                        $query->orWhere('name','like','%'.$value.'%');
+                        $query->orWhere('category','like','%'.$value.'%');
+                        $query->orWhere('place_a.place','like','%'.$value.'%');
+                        $query->orWhere('model','like','%'.$value.'%');
+                        $query->orWhere('marks','like','%'.$value.'%');
+                    });
                 }
                 $libary_data=$libary_data->orderBy('category','desc')
                     ->orderBy('number','asc')->orderBy('model','asc')
