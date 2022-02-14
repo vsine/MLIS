@@ -68,6 +68,7 @@ class TaskController extends Controller
             return 'login_fail';
         $user_row=DB::table('users')->where('username',Session::get('username'));
 
+        $request->get('');
 
 
 
