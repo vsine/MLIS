@@ -44,7 +44,9 @@ class AdminController extends Controller
                         ->orWhere('marks','like','%'.$request->get('search').'%')
                     ;
                 }
-                $libary_data=$libary_data->orderBy('category','desc')->orderBy('number','asc')->paginate(10);
+                $libary_data=$libary_data->orderBy('category','desc')
+                    ->orderBy('number','asc')->orderBy('model','asc')
+                    ->paginate(10);
                 $return_array['libary_data']=$libary_data;
                 if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
                     if ($request->has('search'))

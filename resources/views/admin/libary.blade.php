@@ -325,8 +325,8 @@
                             </div>
                             <div class="col-sm-8">
                                 <button id="modal2_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                                <button id="modal2_remove" class="btn btn-danger" type="button">删除</button>
-                                <button id="modal2_update" class="btn btn-warning" type="button">修改</button>
+                                <button id="modal2_add" class="btn btn-danger" type="button">添加</button>
+
                             </div>
                         </div>
 
@@ -668,6 +668,10 @@
                     location.reload();
                 });;
 
+            });
+
+            $('#panel_add').click(function () {
+                $('#myModal2').modal('toggle');
             });
             @endif
             @endif
