@@ -119,6 +119,8 @@
 </div>
 <!--model end-->
 
+
+<!--编辑-->
 @if(array_key_exists('editlibary',$marks))
     @if($marks['editlibary'])
         <!--编辑modal-->
@@ -216,6 +218,115 @@
                                 <button id="modal1_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
                                 <button id="modal1_remove" class="btn btn-danger" type="button">删除</button>
                                 <button id="modal1_update" class="btn btn-warning" type="button">修改</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--model end-->
+    @endif
+@endif
+
+<!--添加-->
+@if(array_key_exists('editlibary',$marks))
+    @if($marks['editlibary'])
+        <!--编辑modal-->
+        <div class="modal fade" id="myModal2"  >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="modal2_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <form class="form-horizontal tasi-form" method="get">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">编号</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_number" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">名称</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_name" type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">类别</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_category" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">型号</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_model" type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">品牌</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_brand" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">供应商</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_supplier" type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">数量</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_quantity" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">单位</label>
+                                    <div class="col-sm-4">
+                                        <input id="modal2_unit" type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 col-sm-2 control-label">货位</label>
+                                    <div class="col-sm-10">
+                                        <select id="modal2_ip" class="form-control">
+                                            @foreach(DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
+                                                ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
+                                                ->select('place_a.place as place_a','place_b.place as place_b','place_b.id as id')
+                                                ->get() as $key=>$value)
+                                                <option value="{{$value->id}}">
+                                                    {{$value->place_a}}的{{$value->place_b}}货位</option>
+                                            @endforeach
+
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group has-feedback">
+
+                                    <label class="col-sm-2 col-sm-2 control-label">备注</label>
+                                    <div class="col-sm-10">
+                                        <input id="modal2_marks" type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+
+
+
+
+                            </div>
+                            <div class="col-sm-8">
+                                <button id="modal2_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                                <button id="modal2_remove" class="btn btn-danger" type="button">删除</button>
+                                <button id="modal2_update" class="btn btn-warning" type="button">修改</button>
                             </div>
                         </div>
 
