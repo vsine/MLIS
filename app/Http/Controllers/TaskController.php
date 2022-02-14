@@ -68,7 +68,20 @@ class TaskController extends Controller
             return 'login_fail';
         $user_row=DB::table('users')->where('username',Session::get('username'));
 
-        $request->get('');
+        $operation = $request->input('oper');
+        switch ($operation){
+            case '1':
+                $user_row->update(
+                    [
+                        'name'=>$request->input('name'),
+                        'number'=>$request->input('number'),
+                        'category'=>$request->input('category'),
+
+                    ]
+                );
+                break;
+        }
+
 
 
 
