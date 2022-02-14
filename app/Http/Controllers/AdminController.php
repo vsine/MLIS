@@ -41,6 +41,7 @@ class AdminController extends Controller
                         ->orWhere('category','like','%'.$request->get('search').'%')
                         ->orWhere('place_a.place','like','%'.$request->get('search').'%')
                         ->orWhere('model','like','%'.$request->get('search').'%')
+                        ->orWhere('marks','like','%'.$request->get('search').'%')
                     ;
                 }
                 $libary_data=$libary_data->orderBy('category','desc')->orderBy('number','asc')->paginate(10);

@@ -541,16 +541,18 @@
                     'supplier':$('#modal1_supplier').val(),
 
                 },function (data) {
-                    disabled_modal1(false);
-                    $('#myModal1').modal('toggle');
+                    //disabled_modal1(false);
+                    //$('#myModal1').modal('toggle');
                     if(data=='200'){
-                        alert('修改成功');
+                        //alert('修改成功');
                     }else {
-                        alert('非法操作:'+data);
+                        //alert('非法操作:'+data);
                     }
+                    location.reload();
                 }).error(function (xhr,status,info){
                     //只有失败才执行
-                    alert('请求失败');
+                    //alert('请求失败');
+                    location.reload();
                 });;
 
             });
