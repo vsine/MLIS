@@ -126,7 +126,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button id="modal1_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">编辑</h4>
                     </div>
                     <div class="modal-body">
@@ -435,6 +435,7 @@
                 $("#modal1_model").attr('disabled',bol);
                 $("#modal1_marks").attr('disabled',bol);
                 $("#modal1_close").attr('disabled',bol);
+                $('#modal1_title_close').attr('disabled',bol);
             }
 
             $("#search").click(function () {
@@ -475,7 +476,6 @@
                     }else {
                         commonUtil.message('非法操作:'+data,'danger');
                     }
-
                 }).error(function (xhr,status,info){
                     disabled_modal(false);
                     //只有失败才执行
@@ -525,7 +525,26 @@
 
             $('#modal1_update').click(function () {
                 disabled_model1(true);
-                alert('test');
+                $.post('/task/libary',{
+                    '_token' : '{{ csrf_token() }}',
+                    'oper': '1',
+                    'name': $('#modal1_name').val(),
+                    'number': $('#modal1_number').val(),
+
+                },function (data) {
+                    disabled_modal(false);
+                    $('#myModal').modal('toggle');
+                    if(data=='200'){
+                        commonUtil.message('添加成功.');
+                    }else {
+                        commonUtil.message('非法操作:'+data,'danger');
+                    }
+                }).error(function (xhr,status,info){
+                    disabled_modal(false);
+                    //只有失败才执行
+                    commonUtil.message('请求失败','danger');
+                });;
+
             });
             @endif
             @endif
