@@ -71,7 +71,7 @@ class TaskController extends Controller
         $operation = $request->input('oper');
         switch ($operation){
             case '1':
-                $user_row->update(
+                $user_row->where('','','')->update(
                     [
                         'name'=>$request->input('name'),
                         'number'=>$request->input('number'),
