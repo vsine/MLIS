@@ -421,7 +421,7 @@
                 $("#modal_join").text('提交中');
             }
 
-            function disabled_model1(bol) {
+            function disabled_modal1(bol) {
                 $("#modal1_update").attr('disabled',bol);
                 $("#modal1_remove").attr('disabled',bol);
                 $("#modal1_name").attr('disabled',bol);
@@ -478,6 +478,7 @@
                     }
                 }).error(function (xhr,status,info){
                     disabled_modal(false);
+                    $('#myModal').modal('toggle');
                     //只有失败才执行
                     commonUtil.message('请求失败','danger');
                 });;
@@ -524,23 +525,28 @@
             });
 
             $('#modal1_update').click(function () {
-                disabled_model1(true);
+                disabled_modal1(true);
                 $.post('/task/libary',{
                     '_token' : '{{ csrf_token() }}',
                     'oper': '1',
                     'name': $('#modal1_name').val(),
                     'number': $('#modal1_number').val(),
+                    'ip':$('#modal1_ip').val(),
+                    'marks':$('#modal1_marks').val(),
+                    'category':$('#modal1_category').val(),
+                    'quantity':$('#modal1_quantity').val(),
 
                 },function (data) {
-                    disabled_modal(false);
-                    $('#myModal').modal('toggle');
+                    disabled_modal1(false);
+                    $('#myModal1').modal('toggle');
                     if(data=='200'){
                         commonUtil.message('添加成功.');
                     }else {
                         commonUtil.message('非法操作:'+data,'danger');
                     }
                 }).error(function (xhr,status,info){
-                    disabled_modal(false);
+                    $('#myModal1').modal('toggle');
+                    disabled_modal1(false);
                     //只有失败才执行
                     commonUtil.message('请求失败','danger');
                 });;

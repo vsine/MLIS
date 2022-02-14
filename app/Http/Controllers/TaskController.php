@@ -66,12 +66,12 @@ class TaskController extends Controller
     public  function libary(Request $request){
         if(!Session::get('task_check'))
             return 'login_fail';
-        $user_row=DB::table('users')->where('username',Session::get('username'));
 
         $operation = $request->input('oper');
         switch ($operation){
             case '1':
-                $user_row->where('number','=',$request->input('number'))->update(
+                $user_row=DB::table('depot')->where('number',$request->input('number'));
+                $user_row->update(
                     [
                         'name'=>$request->input('name'),
                         'number'=>$request->input('number'),
@@ -85,6 +85,7 @@ class TaskController extends Controller
                         'marks'=>$request->input('marks'),
                     ]
                 );
+                return 'ok';
                 break;
         }
 
