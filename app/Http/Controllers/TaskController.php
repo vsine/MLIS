@@ -40,7 +40,6 @@ class TaskController extends Controller
     public function cart(Request $request){
         if(!Session::get('task_check'))
             return 'login_fail';
-
         $user_row=DB::table('users')->where('username',Session::get('username'));
         $array= json_decode($user_row->value('cart'),true);
         $operation=$request->get('oper');
@@ -56,7 +55,6 @@ class TaskController extends Controller
                 break;
             //修改数量
             case '2':
-
                 break;
             default:
                 return '300';
@@ -65,9 +63,13 @@ class TaskController extends Controller
         return 'exit';
     }
 
-    public  function libary(){
+    public  function libary(Request $request){
         if(!Session::get('task_check'))
             return 'login_fail';
         $user_row=DB::table('users')->where('username',Session::get('username'));
+
+
+
+
     }
 }
