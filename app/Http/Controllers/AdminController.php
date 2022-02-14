@@ -41,7 +41,7 @@ class AdminController extends Controller
                     $search_array=explode(' ',$request->get('search'));
                     foreach ($search_array as $key=>$value)
                     $libary_data=$libary_data//join如果查不到关联的那么整行不输出
-                        $query->where(function ($query){
+                        ->where(function ($query){
                         $query->orWhere('number','like','%'.$value.'%');
                         $query->orWhere('name','like','%'.$value.'%');
                         $query->orWhere('category','like','%'.$value.'%');
