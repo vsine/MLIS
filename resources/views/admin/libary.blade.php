@@ -176,8 +176,6 @@
                                 <div class="form-group has-feedback">
                                     <label class="col-sm-2 col-sm-2 control-label">货位</label>
                                     <div class="col-sm-10">
-
-
                                         <select id="modal1_ip" class="form-control">
                                             <option value="0">未选择</option>
                                             @foreach(DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
@@ -216,9 +214,9 @@
 
                             </div>
                             <div class="col-sm-8">
-                                <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                                <button id="modal1_update" class="btn btn-danger" type="button">删除</button>
-                                <button id="modal1_remove" class="btn btn-warning" type="button">修改</button>
+                                <button id="modal1_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                                <button id="modal1_remove" class="btn btn-danger" type="button">删除</button>
+                                <button id="modal1_update" class="btn btn-warning" type="button">修改</button>
                             </div>
                         </div>
 
@@ -412,6 +410,7 @@
         //alert('0');
         $(document).ready(function () {
             commonUtil.place_obj=$('.wrapper');
+
             function disabled_modal(bol){
                 $("#modal_join").attr('disabled',bol);
                 $("#modal_in").attr('disabled',bol);
@@ -421,6 +420,23 @@
                 $('#modal_title_close').attr('disabled',bol);
                 $("#modal_join").text('提交中');
             }
+
+            function disabled_model1(bol) {
+                $("#modal1_update").attr('disabled',bol);
+                $("#modal1_remove").attr('disabled',bol);
+                $("#modal1_name").attr('disabled',bol);
+                $("#modal1_number").attr('disabled',bol);
+                $("#modal1_category").attr('disabled',bol);
+                $("#modal1_brand").attr('disabled',bol);
+                $("#modal1_quantity").attr('disabled',bol);
+                $("#modal1_unit").attr('disabled',bol);
+                $("#modal1_ip").attr('disabled',bol);
+                $("#modal1_supplier").attr('disabled',bol);
+                $("#modal1_model").attr('disabled',bol);
+                $("#modal1_marks").attr('disabled',bol);
+                $("#modal1_close").attr('disabled',bol);
+            }
+
             $("#search").click(function () {
                 //console.log('&search='+$('#search_input').val())
                 window.location.href=window.location.pathname+'?search='+$('#search_input').val();
@@ -505,6 +521,11 @@
                 $('#modal1_marks').val($(this).parents('tr').children('#td_marks').text());
                 $('#modal1_ip').val($(this).parents('tr').children('#td_ip').text())
                 $('#myModal1').modal('toggle');
+            });
+
+            $('#modal1_update').click(function () {
+                disabled_model1(true);
+                alert('test');
             });
             @endif
             @endif
