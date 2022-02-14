@@ -535,20 +535,22 @@
                     'marks':$('#modal1_marks').val(),
                     'category':$('#modal1_category').val(),
                     'quantity':$('#modal1_quantity').val(),
+                    'brand':$('#modal1_brand').val(),
+                    'unit':$('#modal1_unit').val(),
+                    'model':$('#modal1_model').val(),
+                    'supplier':$('#modal1_supplier').val(),
 
                 },function (data) {
                     disabled_modal1(false);
                     $('#myModal1').modal('toggle');
                     if(data=='200'){
-                        commonUtil.message('添加成功.');
+                        alert('修改成功');
                     }else {
-                        commonUtil.message('非法操作:'+data,'danger');
+                        alert('非法操作:'+data);
                     }
                 }).error(function (xhr,status,info){
-                    $('#myModal1').modal('toggle');
-                    disabled_modal1(false);
                     //只有失败才执行
-                    commonUtil.message('请求失败','danger');
+                    alert('请求失败');
                 });;
 
             });
