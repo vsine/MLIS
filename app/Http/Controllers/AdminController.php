@@ -31,21 +31,27 @@ class AdminController extends Controller
         switch ($id){
             case '1':
                 $return_array['search_input']=$request->get('search','');
-                $libary_data=DB::table('depot');
+
+                $libary_data=DB::table('depot')
+                    ->join('place_b','depot.ip','=','place_b.id')
+                    ->join('place_a','place_b.aid','=','place_a.id');
+
                 if ($request->has('search')){
+
+                    $search_array=explode(' ',$request->get('search'));
+                    foreach ($search_array as $key=>$value)
                     $libary_data=$libary_data//join如果查不到关联的那么整行不输出
-                        ->join('place_b','depot.ip','=','place_b.id')
-                        ->join('place_a','place_b.aid','=','place_a.id')
-                        ->where('number','like','%'.$request->get('search').'%')
-                        ->orWhere('name','like','%'.$request->get('search').'%')
-                        ->orWhere('category','like','%'.$request->get('search').'%')
-                        ->orWhere('place_a.place','like','%'.$request->get('search').'%')
-                        ->orWhere('model','like','%'.$request->get('search').'%')
-                        ->orWhere('marks','like','%'.$request->get('search').'%')
+                        ->where('number','like','%'.$value.'%')
+                        ->orWhere('name','like','%'.$value.'%')
+                        ->orWhere('category','like','%'.$value.'%')
+                        ->orWhere('place_a.place','like','%'.$value.'%')
+                        ->orWhere('model','like','%'.$value.'%')
+                        ->orWhere('marks','like','%'.$value.'%')
                     ;
                 }
                 $libary_data=$libary_data->orderBy('category','desc')
                     ->orderBy('number','asc')->orderBy('model','asc')
+                    ->orderBy('place_a.place','asc')
                     ->paginate(10);
                 $return_array['libary_data']=$libary_data;
                 if ($libary_data->currentPage()>$libary_data->lastPage()||$libary_data->currentPage()<1)
