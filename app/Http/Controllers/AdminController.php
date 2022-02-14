@@ -33,7 +33,7 @@ class AdminController extends Controller
                 $return_array['search_input']=$request->get('search','');
                 $libary_data=DB::table('depot');
                 if ($request->has('search')){
-                    $libary_data=$libary_data
+                    $libary_data=$libary_data//join如果查不到关联的那么整行不输出
                         ->join('place_b','depot.ip','=','place_b.id')
                         ->join('place_a','place_b.aid','=','place_a.id')
                         ->where('number','like','%'.$request->get('search').'%')
