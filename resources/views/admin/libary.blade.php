@@ -418,7 +418,7 @@
                             <tbody>
                             @foreach($libary_data as $key=>$value)
                                  <tr>
-                                     <td id="td_number">{{$value->number}}</td>
+                                     <td id="td_number"><kbd>{{$value->number}}</kbd></td>
                                      <td id="td_category">{{$value->category}}</td>
                                      <td id="td_name">{{$value->name}}</td>
                                      <td id="td_brand">{{$value->brand}}</td>
