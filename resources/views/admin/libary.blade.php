@@ -183,8 +183,13 @@
                                                 ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
                                                 ->select('place_a.place as place_a','place_b.place as place_b','place_b.id as id')
                                                 ->get() as $key=>$value)
-                                                <option value="{{$value->id}}">
-                                                    {{$value->place_a}}的{{$value->place_b}}货位</option>
+                                                @if($key==0)
+                                                    <option value="0">未选择</option>
+                                                @endif
+                                                @if($value->id!='0')
+                                                    <option value="{{$value->id}}">
+                                                        {{$value->place_a}}的{{$value->place_b}}货位</option>
+                                                @endif
                                             @endforeach
 
 
@@ -288,12 +293,19 @@
                                     <label class="col-sm-2 col-sm-2 control-label">货位</label>
                                     <div class="col-sm-10">
                                         <select id="modal2_ip" class="form-control">
+
                                             @foreach(DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
                                                 ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
                                                 ->select('place_a.place as place_a','place_b.place as place_b','place_b.id as id')
                                                 ->get() as $key=>$value)
-                                                <option value="{{$value->id}}">
-                                                    {{$value->place_a}}的{{$value->place_b}}货位</option>
+                                                @if($key==0)
+                                                    <option selected="selected" value="0">未选择</option>
+                                                @endif
+                                                @if($value->id!='0')
+                                                        <option value="{{$value->id}}">
+                                                            {{$value->place_a}}的{{$value->place_b}}货位</option>
+                                                @endif
+
                                             @endforeach
 
 

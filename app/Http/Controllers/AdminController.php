@@ -37,7 +37,6 @@ class AdminController extends Controller
                     ->join('place_a','place_b.aid','=','place_a.id');
 
                 if ($request->has('search')){
-
                     $search_array=explode(' ',$request->get('search'));
                     foreach ($search_array as $key=>$value)
                     $libary_data=$libary_data//join如果查不到关联的那么整行不输出
