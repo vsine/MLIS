@@ -72,9 +72,7 @@ class TaskController extends Controller
             case '1':
                 //修改
                 $user_row=DB::table('depot')->where('number',$request->input('number'));
-                if (DB::table('place_b')
-                    ->join('place_a','place_a.id','=','place_b.aid')
-                    ->where('place_b.id',$request->input('ip'))->exists())
+
                 $user_row->update(
                     [
                         'name'=>$request->input('name'),
