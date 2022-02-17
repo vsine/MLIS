@@ -33,8 +33,8 @@ class AdminController extends Controller
                 $return_array['search_input']=$request->get('search','');
 
                 $libary_data=DB::table('depot')
-                    ->join('place_b','depot.ip','=','place_b.id')
-                    ->join('place_a','place_b.aid','=','place_a.id');
+                    ->leftJoin('place_b','depot.ip','=','place_b.id')
+                    ->leftJoin('place_a','place_b.aid','=','place_a.id');
 
                 if ($request->has('search')){
                     $search_array=explode(' ',$request->get('search'));
