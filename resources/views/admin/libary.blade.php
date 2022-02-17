@@ -425,12 +425,12 @@
                                      <td id="td_model">{{$value->model}}</td>
                                      <td id="td_quantity">{{$value->quantity.$value->unit}}</td>
                                      <td id="td_libary">
+                                            @if($value->place=='')
+                                                未选择
+                                         @else
+                                                {{$value->place}}
+                                         @endif
 
-                                             {{DB::table('place_a')
-                                                ->where('id','=',DB::table('place_b')
-                                                ->where('id','=',$value->ip)->first()->aid)->first()->place
-
-                                                }}
 
 
                                      </td>
