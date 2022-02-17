@@ -546,23 +546,6 @@
                 $("#modal_join").text('提交中');
             }
 
-            function disabled_modal1(bol) {
-                $("#modal1_update").attr('disabled',bol);
-                $("#modal1_remove").attr('disabled',bol);
-                $("#modal1_name").attr('disabled',bol);
-                $("#modal1_number").attr('disabled',bol);
-                $("#modal1_category").attr('disabled',bol);
-                $("#modal1_brand").attr('disabled',bol);
-                $("#modal1_quantity").attr('disabled',bol);
-                $("#modal1_unit").attr('disabled',bol);
-                $("#modal1_ip").attr('disabled',bol);
-                $("#modal1_supplier").attr('disabled',bol);
-                $("#modal1_model").attr('disabled',bol);
-                $("#modal1_marks").attr('disabled',bol);
-                $("#modal1_close").attr('disabled',bol);
-                $('#modal1_title_close').attr('disabled',bol);
-            }
-
             $("#search").click(function () {
                 //console.log('&search='+$('#search_input').val())
                 window.location.href=window.location.pathname+'?search='+$('#search_input').val();
@@ -635,6 +618,40 @@
 
             @if(array_key_exists('editlibary',$marks))
             @if($marks['editlibary'])
+
+            function disabled_modal1(bol) {
+                $("#modal1_update").attr('disabled',bol);
+                $("#modal1_remove").attr('disabled',bol);
+                $("#modal1_name").attr('disabled',bol);
+                $("#modal1_number").attr('disabled',bol);
+                $("#modal1_category").attr('disabled',bol);
+                $("#modal1_brand").attr('disabled',bol);
+                $("#modal1_quantity").attr('disabled',bol);
+                $("#modal1_unit").attr('disabled',bol);
+                $("#modal1_ip").attr('disabled',bol);
+                $("#modal1_supplier").attr('disabled',bol);
+                $("#modal1_model").attr('disabled',bol);
+                $("#modal1_marks").attr('disabled',bol);
+                $("#modal1_close").attr('disabled',bol);
+                $('#modal1_title_close').attr('disabled',bol);
+            }
+
+            function disabled_modal2(bol) {
+                $("#modal2_add").attr('disabled',bol);
+                $("#modal2_name").attr('disabled',bol);
+                $("#modal2_number").attr('disabled',bol);
+                $("#modal2_category").attr('disabled',bol);
+                $("#modal2_brand").attr('disabled',bol);
+                $("#modal2_quantity").attr('disabled',bol);
+                $("#modal2_unit").attr('disabled',bol);
+                $("#modal2_ip").attr('disabled',bol);
+                $("#modal2_supplier").attr('disabled',bol);
+                $("#modal2_model").attr('disabled',bol);
+                $("#modal2_marks").attr('disabled',bol);
+                $("#modal2_close").attr('disabled',bol);
+                $('#modal2_title_close').attr('disabled',bol);
+            }
+
             $('#libary_table').find('.btn-danger').click(function () {
                 $('#modal1_number').val($(this).parents('tr').children('#td_number').text());
                 $('#modal1_name').val($(this).parents('tr').children('#td_name').text());
@@ -682,11 +699,49 @@
 
             });
 
-            $('#panel_add').click(function () {
-                $('#myModal2').modal('toggle');
+            $('#modal2_add').click(function () {
+                disabled_modal2(true);
+                $.post('/task/libary', {
+                    '_token': '{{ csrf_token() }}',
+                    'oper': '2',
+                    'name': $('#modal2_name').val(),
+                    'number': $('#modal2_number').val(),
+                    'ip': $('#modal2_ip').val(),
+                    'marks': $('#modal2_marks').val(),
+                    'category': $('#modal2_category').val(),
+                    'quantity': $('#modal2_quantity').val(),
+                    'brand': $('#modal2_brand').val(),
+                    'unit': $('#modal2_unit').val(),
+                    'model': $('#modal2_model').val(),
+                    'supplier': $('#modal2_supplier').val(),
+
+                }, function (data) {
+                    //disabled_modal1(false);
+                    //$('#myModal1').modal('toggle');
+                    if (data == '200') {
+                        location.reload();
+                        //alert('修改成功');
+                    } else if(data == 'fail'){
+                        alert('编号已存在:'+data);
+                    }else
+                    {
+                        alert('非法操作:'+data);
+                    }
+
+                }).error(function (xhr,status,info){
+                    //只有失败才执行
+                    //alert('请求失败');
+                    alert('未知错误'+info);
+                    location.reload();
+                });
+
             });
-            @endif
-            @endif
+
+                $('#panel_add').click(function () {
+                    $('#myModal2').modal('toggle');
+                });
+                @endif
+                @endif
 
             });
     </script>

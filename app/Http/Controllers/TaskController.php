@@ -70,8 +70,8 @@ class TaskController extends Controller
         $operation = $request->input('oper');
         switch ($operation){
             case '1':
+                //修改
                 $user_row=DB::table('depot')->where('number',$request->input('number'));
-
                 if (DB::table('place_b')
                     ->join('place_a','place_a.id','=','place_b.aid')
                     ->where('place_b.id',$request->input('ip'))->exists())
@@ -91,6 +91,29 @@ class TaskController extends Controller
                 );
                 return 'ok';
                 break;
+            case '2':
+                if(DB::table('depot')->where('number',$request->input('number'))->exists())
+                    return 'fail';
+                DB::table('depot')->insert([
+                        'name'=>$request->input('name'),
+                        'number'=>$request->input('number'),
+                        'category'=>$request->input('category'),
+                        'brand'=>$request->input('brand'),
+                        'model'=>$request->input('model'),
+                        'quantity'=>$request->input('quantity'),
+                        'unit'=>$request->input('unit'),
+                        'ip'=>$request->input('ip'),
+                        'supplier'=>$request->input('supplier'),
+                        'marks'=>$request->input('marks'),
+                        'info'=>'null',
+                ]);
+                return '200';
+                break;
+            default:
+                return 'error';
+                break;
+
+
         }
 
 
