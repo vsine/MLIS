@@ -701,6 +701,28 @@
 
             });
 
+            $('#modal1_remove').click(function () {
+                disabled_modal1(true);
+                $.post('/task/libary',{
+                    '_token' : '{{ csrf_token() }}',
+                    'oper': '3',
+                    'number': $('#modal1_number').val(),
+                },function (data) {
+                    //disabled_modal1(false);
+                    //$('#myModal1').modal('toggle');
+                    if(data=='200'){
+                        //alert('修改成功');
+                    }else {
+                        //alert('非法操作:'+data);
+                    }
+                    location.reload();
+                }).error(function (xhr,status,info){
+                    //只有失败才执行
+                    //alert('请求失败');
+                    location.reload();
+                });;
+            });
+
             $('#modal2_add').click(function () {
                 disabled_modal2(true);
                 $.post('/task/libary', {
