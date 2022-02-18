@@ -107,6 +107,13 @@ class TaskController extends Controller
                 ]);
                 return '200';
                 break;
+
+            case '3':
+                DB::table('depot')->where('number',$request->input('number'))->delete();
+                return '200';
+                break;
+
+
             default:
                 return 'error';
                 break;
