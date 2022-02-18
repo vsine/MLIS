@@ -425,10 +425,12 @@
                                      <td id="td_model">{{$value->model}}</td>
                                      <td id="td_quantity">{{$value->quantity.$value->unit}}</td>
                                      <td id="td_libary">
-                                            @if($value->place=='')
-                                                未选择
+                                         @if($value->place=='')
+                                               已失效#{{$value->ip}}
+                                         @elseif($value->place=='0')
+                                               未选择
                                          @else
-                                                {{$value->place}}
+                                             {{$value->place}}
                                          @endif
 
 
@@ -731,7 +733,7 @@
                 }).error(function (xhr,status,info){
                     //只有失败才执行
                     //alert('请求失败');
-                    alert('未知错误'+info);
+                    //alert('添加失败,参数不能为空');
                     location.reload();
                 });
 

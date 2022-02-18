@@ -102,7 +102,7 @@ class TaskController extends Controller
                         'unit'=>$request->input('unit'),
                         'ip'=>$request->input('ip'),
                         'supplier'=>$request->input('supplier'),
-                        'marks'=>$request->input('marks'),
+                        'marks'=>$request->input('marks',''),
                         'info'=>'null',
                 ]);
                 return '200';
