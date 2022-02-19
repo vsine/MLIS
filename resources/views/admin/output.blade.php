@@ -160,7 +160,7 @@
                                     ->leftJoin('place_a','place_b.aid','=','place_a.id')
                                     ->orderBy('create_time')
                                     ->select('cart_master.number as cart_number','name','category','model'
-                                    ,'place_a.place as a_place','cart_master.quantity as cart_quantity','depot.marks as mark')
+                                    ,'place_a.place as a_place','cart_master.quantity as cart_quantity','depot.marks as mark','unit')
                                     ->get();
                                 @endphp
                                 @foreach($cart_sql as $key=>$value)
@@ -188,7 +188,7 @@
 
                                             </td>
                                             <td id="table_quantity" class="numeric hidden-phone">
-                                                {{$value->cart_quantity}}
+                                                {{$value->cart_quantity}}{{$value->unit}}
                                             </td>
                                             <td class="numeric hidden-phone">
                                                 <button type="button" class="btn btn-xs btn-warning">
@@ -205,6 +205,7 @@
                                             </td>
                                             <td style="display: none" id="table_ip_bool"></td>
                                             <td style="display: none" id="table_marks">{{$value->mark}}</td>
+                                            <td style="display: none" id="table_unit">{{$value->unit}}</td>
                                         </tr>
                                     @else
                                         <tr>
@@ -348,6 +349,7 @@
                 $('#modal_libary').text($(this).parents('tr').children('#table_place').text());
                 $('#modal_category').text($(this).parents('tr').children('#table_category').text());
                 $('#modal_marks').text($(this).parents('tr').children('#table_marks').text());
+                $('#modal_unit').text($(this).parents('tr').children('#table_unit').text());
                 console.log($(this).parents('tr').children('#table_quantity').text());
                 modify=$(this).parents('tr').children('#table_quantity');
                 $('#modal_update').text('修改');
@@ -376,10 +378,11 @@
                        //只有失败才执行
                        commonUtil.message('请求失败','danger');
                    });
-           }
+           });
 
+           $('#modal_remove').click(function () {
 
-            );
+           });
 
 
         });
