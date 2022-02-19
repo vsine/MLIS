@@ -93,8 +93,8 @@
                     </div>
                     <div class="col-sm-8">
                         <button id="modal_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                        <button id="modal_join" class="btn btn-danger" type="button">删除</button>
-                        <button id="modal_join" class="btn btn-warning" type="button">修改</button>
+                        <button id="modal_remove" class="btn btn-danger" type="button">删除</button>
+                        <button id="modal_update" class="btn btn-warning" type="button">修改</button>
                     </div>
                 </div>
 
@@ -274,7 +274,21 @@
     @section('script')
         <script type="text/javascript">
         $(document).ready(function () {
+
+
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
+
+            function disabled_modal(bol){
+                $("#modal_update").attr('disabled',bol);
+                $("#modal_remove").attr('disabled',bol);
+                $("#modal_in").attr('disabled',bol);
+                $('#modal_plus').attr('disabled',bol);
+                $('#modal_minus').attr('disabled',bol);
+                $('#modal_close').attr('disabled',bol);
+                $('#modal_title_close').attr('disabled',bol);
+                $("#modal_update").text('提交中');
+            }
+
            $('#main-table').find("input:checkbox").each(function () {
                 if (flag!=$(this).is(':checked')){
                     flag=false;
@@ -302,7 +316,7 @@
 
             });
 
-            $('#modal_plus').click(function () {
+           $('#modal_plus').click(function () {
                 var r=/^\d+$/;
                 var modal_in=$('#modal_in').val();
                 //console.log(r.test(modal_in));
@@ -313,7 +327,7 @@
                 }
             });
 
-            $('#modal_minus').click(function () {
+           $('#modal_minus').click(function () {
                 var r=/^\d+$/;
                 var modal_in=$('#modal_in').val();
                 //console.log(r.test(modal_in));
@@ -325,7 +339,7 @@
                 }
             });
 
-            $('#main-table').find(".btn-warning").click(function () {
+           $('#main-table').find(".btn-warning").click(function () {
                 $('#modal_number').text($(this).parents('tr').children('#table_number').text());
                 $('#modal_name').text($(this).parents('tr').children('#table_name').text());
                 $('#modal_model').text($(this).parents('tr').children('#table_model').text());
@@ -336,6 +350,13 @@
                 console.log($(this).parents('tr').children('#table_quantity').text());
                 $('#myModal').modal('toggle');
             });
+
+           $('#modal_update').click(function () {
+
+           }
+            );
+
+
         });
 
 
