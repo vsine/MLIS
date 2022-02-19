@@ -40,13 +40,12 @@ class TaskController extends Controller
     public function cart(Request $request){
         if(!Session::get('task_check'))
             return 'login_fail';
-        $user_row=DB::table('users')->where('username',Session::get('username'));
-        $array= json_decode($user_row->value('cart'),true);
+
         $operation=$request->get('oper');
         switch ($operation){
             //加入购物车
             case '1':
-                $cart_row=DB::table('cart_master')->where('username',Session::get('username'));
+                $cart_row=DB::table('cart_master')->where('user',Session::get('username'));
                 if($cart_row->where('number',$request->get('number'))->exists())
                     $cart_row->where('number',$request->get('number'))->update(
                         [
@@ -55,6 +54,7 @@ class TaskController extends Controller
                     );
                 else
                     $cart_row->insert([
+
                         'user'=>Session::get('username'),
                         'number'=>$request->get('number'),
                         'quantity'=>$request->get('quantity'),

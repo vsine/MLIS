@@ -61,7 +61,7 @@
                                 <tbody>
 
                                 @php
-                                    $cart_array= json_decode(DB::table('users')->where('username',Session::get('username'))->value('cart'),true) ;
+                                    $cart_sql= DB::table('cart_master')
 
                                 @endphp
                                 @foreach($cart_array['list'] as $key=>$value)
