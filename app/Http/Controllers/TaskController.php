@@ -64,6 +64,11 @@ class TaskController extends Controller
                 break;
             //修改数量
             case '2':
+                $cart_row=DB::table('cart_master')->where('user',Session::get('username'));
+                $cart_row->where('number',$request->get('number'))->update([
+                    'quantity'=>$request->get('quantity')
+                ]);
+                return '200';
                 break;
             case '3':
                 break;

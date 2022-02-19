@@ -227,14 +227,15 @@
                                                 NULL
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                <button type="button" class="btn btn-xs btn-danger">
-                                                    <i class="fa fa-trash-o">
+                                                <button type="button" class="btn btn-xs btn-warning">
+                                                    <i class="fa fa-pencil">
                                                     </i>
                                                 </button>
                                             </td>
                                             <td class="numeric hidden-phone">
                                                 NULL
                                             </td>
+                                            <td style="display: none" id="table_marks">NULL</td>
                                         </tr>
                                     @endif
 
@@ -277,7 +278,7 @@
             commonUtil.place_obj=$('.wrapper');
 
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
-
+            var modify;
             function disabled_modal(bol){
                 $("#modal_update").attr('disabled',bol);
                 $("#modal_remove").attr('disabled',bol);
@@ -348,6 +349,8 @@
                 $('#modal_category').text($(this).parents('tr').children('#table_category').text());
                 $('#modal_marks').text($(this).parents('tr').children('#table_marks').text());
                 console.log($(this).parents('tr').children('#table_quantity').text());
+                modify=$(this).parents('tr').children('#table_quantity');
+                $('#modal_update').text('修改');
                 $('#myModal').modal('toggle');
             });
 
@@ -355,7 +358,7 @@
              disabled_modal(true);
                    $.post('/task/cart',{
                        '_token' : '{{ csrf_token() }}',
-                       'oper': '3',
+                       'oper': '2',
                        'number': $('#modal_number').text(),
                        'quantity': $('#modal_in').val()
                    },function (data) {
@@ -363,7 +366,7 @@
                        $('#myModal').modal('toggle');
                        if(data=='200'){
                            commonUtil.message('添加成功.');
-                           $('#table_number').val($('#modal_number').text())
+                           modify.text($('#modal_in').val())
                        }else {
                            commonUtil.message('非法操作:'+data,'danger');
                        }
