@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div id="home" class="tab-pane active">
-                            <table class="table table-bordered table-striped table-condensed">
+                            <table class="table table-bordered table-striped table-condensed table-hover">
                                 <thead>
                                 <tr>
                                     <th>
@@ -48,13 +48,13 @@
                                         仓库
                                     </th>
                                     <th class="numeric hidden-phone">
-                                        申请数量
-                                    </th>
-                                    <th class="numeric hidden-phone">
-                                        选择
+                                        选材数量
                                     </th>
                                     <th class="numeric hidden-phone">
                                         操作
+                                    </th>
+                                    <th class="numeric hidden-phone">
+                                        选择
                                     </th>
                                 </tr>
                                 </thead>
@@ -77,22 +77,60 @@
                                                 {{$depot->value('name')}}
                                             </td>
                                             <td class="numeric">
-                                                $1.38
+                                                {{$depot->value('model')}}
                                             </td>
                                             <td class="numeric">
-                                                -0.01
+                                                {{$depot->value('category')}}
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                -0.36%
+
+                                                @if(DB::table('place_b')->where('id',$depot->value('ip'))->exists())
+                                                    @if(DB::table('place_a')->where('id',DB::table('place_b')->where('id',$depot->value('ip'))->value('aid'))->exists())
+                                                        {{DB::table('place_a')->where('id',DB::table('place_b')->where('id',$depot->value('ip'))->value('aid'))->value('place')}}
+                                                    @else
+                                                        仓库已失效
+                                                    @endif
+                                                @else
+                                                    货位已失效
+                                                @endif
+                                            </td>
+                                            <td class="numeric hidden-phone">
+                                                {{$value}}{{$depot->value('unit')}}
                                             </td>
                                             <td class="numeric hidden-phone">
                                                 $1.39
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                $1.39
+                                                <input type="checkbox" value="">
+                                            </td>
+
+                                            <td style="display: none" id="table_ip_bool"></td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td>
+                                                {{$key}}
+                                            </td>
+                                            <td>
+                                                编号已失效
+                                            </td>
+                                            <td class="numeric">
+                                                NULL
+                                            </td>
+                                            <td class="numeric">
+                                                NULL
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                $1.38
+                                                NULL
+                                            </td>
+                                            <td class="numeric hidden-phone">
+                                                NULL
+                                            </td>
+                                            <td class="numeric hidden-phone">
+                                                NULL
+                                            </td>
+                                            <td class="numeric hidden-phone">
+                                                NULL
                                             </td>
                                         </tr>
                                     @endif
