@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div id="home" class="tab-pane active">
-                            <table class="table table-bordered table-striped table-condensed table-hover">
+                            <table class="table table-bordered table-striped table-condensed table-hover" id="main-table">
                                 <thead>
                                 <tr>
                                     <th>
@@ -151,7 +151,7 @@
                             <div class="col-sm-10"></div>
                             <div class="col-sm-2">
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" > 全选
+                                    <input type="checkbox" id="submit_checkbox"> 全选
                                 </label>
                                 &nbsp;
                                 <button type="button" class="btn btn-round btn-primary">
@@ -174,7 +174,15 @@
     @section('script')
         <script type="text/javascript">
         $(document).ready(function () {
-           // alert('hh');
+           $('#submit_checkbox').change(function () {
+               $('#main-table').find("input:checkbox").attr('checked',$('#submit_checkbox').is(':checked'));
+               console.log($('#submit_checkbox').is(':checked'));
+           });
+
+            $('#main-table').find("input:checkbox").change(function () {
+                
+            });
+           
         });
         </script>
     @endsection
