@@ -274,7 +274,7 @@
     @section('script')
         <script type="text/javascript">
         $(document).ready(function () {
-
+            commonUtil.place_obj=$('.wrapper');
 
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
 
@@ -352,7 +352,26 @@
             });
 
            $('#modal_update').click(function () {
-
+             disabled_modal(true);
+                   $.post('/task/cart',{
+                       '_token' : '{{ csrf_token() }}',
+                       'oper': '1',
+                       'number': $('#modal_number').text(),
+                       'quantity': $('#modal_in').val()
+                   },function (data) {
+                       disabled_modal(false);
+                       $('#myModal').modal('toggle');
+                       if(data=='200'){
+                           commonUtil.message('添加成功.');
+                       }else {
+                           commonUtil.message('非法操作:'+data,'danger');
+                       }
+                   }).error(function (xhr,status,info){
+                       disabled_modal(false);
+                       $('#myModal').modal('toggle');
+                       //只有失败才执行
+                       commonUtil.message('请求失败','danger');
+                   });;
            }
             );
 
