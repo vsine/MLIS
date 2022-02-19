@@ -182,19 +182,19 @@
 
                                     @if($value->name!='')
                                         <tr>
-                                            <td>
-                                                <kbd>{{$value->cart_number}}</kbd>
+                                            <td id="table_number">
+                                                <kbd >{{$value->cart_number}}</kbd>
                                             </td>
-                                            <td>
+                                            <td id="table_name">
                                                 {{$value->name}}
                                             </td>
-                                            <td class="numeric">
+                                            <td id="table_model" class="numeric">
                                                 {{$value->model}}
                                             </td>
-                                            <td class="numeric">
+                                            <td id="table_category" class="numeric">
                                                 {{$value->category}}
                                             </td>
-                                            <td class="numeric hidden-phone">
+                                            <td id="table_place" class="numeric hidden-phone">
                                                 @if($value->a_place!='')
                                                     {{$value->a_place}}
                                                 @else
@@ -202,7 +202,7 @@
                                                 @endif
 
                                             </td>
-                                            <td class="numeric hidden-phone">
+                                            <td id="table_quantity" class="numeric hidden-phone">
                                                 {{$value->cart_quantity}}
                                             </td>
                                             <td class="numeric hidden-phone">
@@ -256,13 +256,17 @@
                                 </tbody>
                             </table>
                             <div class="row">
-                                <div class="col-sm-10"></div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-9"></div>
+                                <div class="col-sm-3">
                                     <label class="checkbox-inline">
                                         <input type="checkbox" id="submit_checkbox"> 全选
                                     </label>
                                     &nbsp;
-                                    <button type="button" class="btn btn-round btn-primary">
+                                    <button type="button" class="btn  btn-danger">
+                                        删除
+                                    </button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-primary">
                                         提交
                                     </button>
                                 </div>
@@ -311,6 +315,9 @@
             });
 
             $('#main-table').find("button").click(function () {
+                $('#modal_number').text($(this).parents('tr').children('#table_number').text());
+                $('#modal_name').text($(this).parents('tr').children('#table_number').text());
+                console.log($(this).parents('tr').children('#table_number').text());
                 $('#myModal').modal('toggle');
             });
         });
