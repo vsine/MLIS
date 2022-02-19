@@ -61,10 +61,11 @@
                                 <tbody>
 
                                 @php
-                                    $cart_sql= DB::table('cart_master')
-
+                                    $cart_sql= DB::table('cart_master')->where('user',Session::get('username'))
+                                    ->rightJoin('depot','depot.number','=','cart_master.number')
+                                    ->orderBy('create_time')->get();
                                 @endphp
-                                @foreach($cart_array['list'] as $key=>$value)
+                                @foreach($cart_sql as $key=>$value)
                                     @php
                                         $depot=DB::table('depot')->where('number',$key);
                                     @endphp
