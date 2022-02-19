@@ -188,7 +188,7 @@
                console.log($('#submit_checkbox').is(':checked'));
            });
 
-            $('#main-table').find("input:checkbox").change(function () {
+           $('#main-table').find("input:checkbox").change(function () {
                  flag=$('#main-table').find("input:checkbox").first().is(":checked");
                 $('#main-table').find("input:checkbox").each(function () {
                     if (flag!=$(this).is(':checked')){
