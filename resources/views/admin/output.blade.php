@@ -174,15 +174,33 @@
     @section('script')
         <script type="text/javascript">
         $(document).ready(function () {
+            var flag;
+           $('#main-table').find("input:checkbox").each(function () {
+                if (flag!=$(this).is(':checked')){
+                    flag=false;
+                    $('#submit_checkbox').attr('checked',flag);
+                    return true;
+                }
+            });
+
            $('#submit_checkbox').change(function () {
                $('#main-table').find("input:checkbox").attr('checked',$('#submit_checkbox').is(':checked'));
                console.log($('#submit_checkbox').is(':checked'));
            });
 
             $('#main-table').find("input:checkbox").change(function () {
-                
+                 flag=$('#main-table').find("input:checkbox").first().is(":checked");
+                $('#main-table').find("input:checkbox").each(function () {
+                    if (flag!=$(this).is(':checked')){
+                        flag=false;
+                        $('#submit_checkbox').attr('checked',flag);
+                        return true;
+                    }
+                });
+                $('#submit_checkbox').attr('checked',flag);
+
             });
-           
+
         });
         </script>
     @endsection
