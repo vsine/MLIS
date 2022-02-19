@@ -66,7 +66,7 @@
                                     ->leftJoin('place_b','depot.ip','=','place_b.id')
                                     ->leftJoin('place_a','place_b.aid','=','place_a.id')
                                     ->orderBy('create_time')
-                                    ->select()
+                                    ->select('cart_master.number as cart_number','name','category','model','place_a.place as a_place','cart_master.quantity as cart_quantity')
                                     ->get();
                                 @endphp
                                 @foreach($cart_sql as $key=>$value)
@@ -74,29 +74,40 @@
                                     @if($value->name!='')
                                         <tr>
                                             <td>
-                                                {{$value->number}}
+                                                {{$value->cart_number}}
                                             </td>
                                             <td>
-
+                                                {{$value->name}}
                                             </td>
                                             <td class="numeric">
-
+                                                {{$value->model}}
                                             </td>
                                             <td class="numeric">
+                                                {{$value->category}}
+                                            </td>
+                                            <td class="numeric hidden-phone">
+                                                @if($value->a_place!='')
+                                                    {{$value->a_place}}
+                                                @else
+                                                    已失效
+                                                @endif
 
                                             </td>
                                             <td class="numeric hidden-phone">
-
-
+                                                {{$value->cart_quantity}}
                                             </td>
                                             <td class="numeric hidden-phone">
-
+                                                <button type="button" class="btn btn-xs btn-info">
+                                                    <i class="fa fa-pencil">
+                                                    </i>
+                                                </button>
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                $1.39
-                                            </td>
-                                            <td class="numeric hidden-phone">
-                                                <input type="checkbox" value="">
+                                                @if($value->a_place!='')
+                                                    <input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="">
+                                                @else
+                                                    已失效
+                                                @endif
                                             </td>
 
                                             <td style="display: none" id="table_ip_bool"></td>
@@ -104,7 +115,7 @@
                                     @else
                                         <tr>
                                             <td>
-                                                {{$value->number}}
+                                                {{$value->cart_number}}
                                             </td>
                                             <td>
                                                 编号已失效
@@ -136,6 +147,19 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-10"></div>
+                            <div class="col-sm-2">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" > 全选
+                                </label>
+                                &nbsp;
+                                <button type="button" class="btn btn-round btn-primary">
+                                    提交
+                                </button>
+                            </div>
+                        </div>
+
                         <div id="about" class="tab-pane">About</div>
 
                     </div>
