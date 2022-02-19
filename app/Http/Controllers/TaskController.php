@@ -46,11 +46,20 @@ class TaskController extends Controller
         switch ($operation){
             //加入购物车
             case '1':
-                if(array_key_exists(intval($request->get('number')),$array['list']))
-                    $array['list'][$request->get('number')]+=$operation=$request->get('quantity');
+                $cart_row=DB::table('cart_master')->where('username',Session::get('username'));
+                if($cart_row->where('number',$request->get('number'))->exists())
+                    $cart_row->where('number',$request->get('number'))->update(
+                        [
+                            'quantity'=>$cart_row->where('number',$request->get('number'))->value('quantity')+$request->get('quantity')
+                        ]
+                    );
                 else
-                    $array['list'][intval($request->get('number'))]=intval($operation=$request->get('quantity'));
-                $user_row->update(['cart'=>json_encode($array)]);
+                    $cart_row->insert([
+                        'user'=>Session::get('username'),
+                        'number'=>$request->get('number'),
+                        'quantity'=>$request->get('quantity'),
+                    ]);
+
                 return '200';
                 break;
             //修改数量
