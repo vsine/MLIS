@@ -235,7 +235,7 @@
                                             <td class="numeric hidden-phone">
                                                 NULL
                                             </td>
-                                            <td style="display: none" id="table_marks">NULL</td>
+
                                         </tr>
                                     @endif
 
@@ -365,7 +365,7 @@
                        disabled_modal(false);
                        $('#myModal').modal('toggle');
                        if(data=='200'){
-                           commonUtil.message('添加成功.');
+                           commonUtil.message('请求成功.');
                            modify.text($('#modal_in').val())
                        }else {
                            commonUtil.message('非法操作:'+data,'danger');
