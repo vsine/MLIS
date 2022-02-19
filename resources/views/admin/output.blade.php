@@ -62,41 +62,35 @@
 
                                 @php
                                     $cart_sql= DB::table('cart_master')->where('user',Session::get('username'))
-                                    ->rightJoin('depot','depot.number','=','cart_master.number')
-                                    ->orderBy('create_time')->get();
+                                    ->leftJoin('depot','depot.number','=','cart_master.number')
+                                    ->leftJoin('place_b','depot.ip','=','place_b.id')
+                                    ->leftJoin('place_a','place_b.aid','=','place_a.id')
+                                    ->orderBy('create_time')
+                                    ->select()
+                                    ->get();
                                 @endphp
                                 @foreach($cart_sql as $key=>$value)
-                                    @php
-                                        $depot=DB::table('depot')->where('number',$key);
-                                    @endphp
-                                    @if($depot->exists())
+
+                                    @if($value->name!='')
                                         <tr>
                                             <td>
-                                                {{$key}}
+                                                {{$value->number}}
                                             </td>
                                             <td>
-                                                {{$depot->value('name')}}
+
                                             </td>
                                             <td class="numeric">
-                                                {{$depot->value('model')}}
+
                                             </td>
                                             <td class="numeric">
-                                                {{$depot->value('category')}}
+
                                             </td>
                                             <td class="numeric hidden-phone">
 
-                                                @if(DB::table('place_b')->where('id',$depot->value('ip'))->exists())
-                                                    @if(DB::table('place_a')->where('id',DB::table('place_b')->where('id',$depot->value('ip'))->value('aid'))->exists())
-                                                        {{DB::table('place_a')->where('id',DB::table('place_b')->where('id',$depot->value('ip'))->value('aid'))->value('place')}}
-                                                    @else
-                                                        仓库已失效
-                                                    @endif
-                                                @else
-                                                    货位已失效
-                                                @endif
+
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                {{$value}}{{$depot->value('unit')}}
+
                                             </td>
                                             <td class="numeric hidden-phone">
                                                 $1.39
@@ -110,7 +104,7 @@
                                     @else
                                         <tr>
                                             <td>
-                                                {{$key}}
+                                                {{$value->number}}
                                             </td>
                                             <td>
                                                 编号已失效
