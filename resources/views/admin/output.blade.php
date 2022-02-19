@@ -46,26 +46,10 @@
                             </div>
                         </li>
                         <li class="myli">
-                            <div class="title">
-                                数量
-                            </div>
-                            <div class="desk" id="modal_quantity">
-                                HTML, CSS, JavaScript.
-                            </div>
-                        </li>
-                        <li class="myli">
                             <div class="title" >
                                 仓库
                             </div>
                             <div class="desk" id="modal_libary">
-                                HTML, CSS, JavaScript.
-                            </div>
-                        </li>
-                        <li class="myli">
-                            <div class="title">
-                                供应商
-                            </div>
-                            <div class="desk" id="modal_supplier">
                                 HTML, CSS, JavaScript.
                             </div>
                         </li>
@@ -175,7 +159,8 @@
                                     ->leftJoin('place_b','depot.ip','=','place_b.id')
                                     ->leftJoin('place_a','place_b.aid','=','place_a.id')
                                     ->orderBy('create_time')
-                                    ->select('cart_master.number as cart_number','name','category','model','place_a.place as a_place','cart_master.quantity as cart_quantity')
+                                    ->select('cart_master.number as cart_number','name','category','model'
+                                    ,'place_a.place as a_place','cart_master.quantity as cart_quantity','depot.marks as mark')
                                     ->get();
                                 @endphp
                                 @foreach($cart_sql as $key=>$value)
@@ -218,8 +203,8 @@
                                                     已失效
                                                 @endif
                                             </td>
-
                                             <td style="display: none" id="table_ip_bool"></td>
+                                            <td style="display: none" id="table_marks">{{$value->mark}}</td>
                                         </tr>
                                     @else
                                         <tr>
@@ -242,7 +227,10 @@
                                                 NULL
                                             </td>
                                             <td class="numeric hidden-phone">
-                                                NULL
+                                                <button type="button" class="btn btn-xs btn-danger">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </button>
                                             </td>
                                             <td class="numeric hidden-phone">
                                                 NULL
@@ -314,10 +302,38 @@
 
             });
 
-            $('#main-table').find("button").click(function () {
+            $('#modal_plus').click(function () {
+                var r=/^\d+$/;
+                var modal_in=$('#modal_in').val();
+                //console.log(r.test(modal_in));
+                if(r.test(modal_in)){
+                    $('#modal_in').val(Number(modal_in) +1);
+                }else {
+                    alert('数量格式错误');
+                }
+            });
+
+            $('#modal_minus').click(function () {
+                var r=/^\d+$/;
+                var modal_in=$('#modal_in').val();
+                //console.log(r.test(modal_in));
+                if(r.test(modal_in)){
+                    if(Number(modal_in)>1)
+                        $('#modal_in').val(Number(modal_in) -1);
+                }else {
+                    alert('数量格式错误');
+                }
+            });
+
+            $('#main-table').find(".btn-warning").click(function () {
                 $('#modal_number').text($(this).parents('tr').children('#table_number').text());
-                $('#modal_name').text($(this).parents('tr').children('#table_number').text());
-                console.log($(this).parents('tr').children('#table_number').text());
+                $('#modal_name').text($(this).parents('tr').children('#table_name').text());
+                $('#modal_model').text($(this).parents('tr').children('#table_model').text());
+                $('#modal_in').val(parseInt($(this).parents('tr').children('#table_quantity').text()));
+                $('#modal_libary').text($(this).parents('tr').children('#table_place').text());
+                $('#modal_category').text($(this).parents('tr').children('#table_category').text());
+                $('#modal_marks').text($(this).parents('tr').children('#table_marks').text());
+                console.log($(this).parents('tr').children('#table_quantity').text());
                 $('#myModal').modal('toggle');
             });
         });
