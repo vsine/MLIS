@@ -65,6 +65,8 @@ class TaskController extends Controller
             //修改数量
             case '2':
                 break;
+            case '3':
+                break;
             default:
                 return '300';
                 break;

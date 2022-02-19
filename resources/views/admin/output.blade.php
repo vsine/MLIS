@@ -355,7 +355,7 @@
              disabled_modal(true);
                    $.post('/task/cart',{
                        '_token' : '{{ csrf_token() }}',
-                       'oper': '1',
+                       'oper': '3',
                        'number': $('#modal_number').text(),
                        'quantity': $('#modal_in').val()
                    },function (data) {
@@ -363,6 +363,7 @@
                        $('#myModal').modal('toggle');
                        if(data=='200'){
                            commonUtil.message('添加成功.');
+                           $('#table_number').val($('#modal_number').text())
                        }else {
                            commonUtil.message('非法操作:'+data,'danger');
                        }
@@ -371,8 +372,10 @@
                        $('#myModal').modal('toggle');
                        //只有失败才执行
                        commonUtil.message('请求失败','danger');
-                   });;
+                   });
            }
+
+
             );
 
 
