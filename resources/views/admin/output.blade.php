@@ -168,7 +168,7 @@
                                     @if($value->name!='')
                                         <tr>
                                             <td id="table_number">
-                                                <kbd >{{$value->cart_number}}</kbd>
+                                                <kbd style="background-color: #4cae4c">{{$value->cart_number}}</kbd>
                                             </td>
                                             <td id="table_name">
                                                 {{$value->name}}
@@ -210,7 +210,7 @@
                                     @else
                                         <tr>
                                             <td id="table_number">
-                                                <kbd>{{$value->cart_number}}</kbd>
+                                                <kbd style="background-color: #deb547">{{$value->cart_number}}</kbd>
                                             </td>
                                             <td>
                                                 编号已失效
@@ -412,13 +412,35 @@
            $('#home_delete').click(function () {
             disabled_home(true);
             $(this).text('删除中');
-            $('#main-table').find("input:checkbox:checked").each(function () {
-                alert('hh');
+            var len=$('#main-table').find("input:checkbox:checked").length;
+            console.log(len);
+
+            $('#main-table').find("input:checkbox:checked").each(function (i,dom) {
+                var num= $(this).parents('tr').children('#table_number').text();
+                modify=$(this).parents('tr');
+                console.log(num);
+                $.ajaxSettings.async = false;
+                $.post('/task/cart',{
+                    '_token' : '{{ csrf_token() }}',
+                    'oper': '3',
+                    'number': num,
+                },function (data) {
+                    if(data=='200'){
+                        modify.remove();
+                    }else {
+                    }
+                }).error(function (xhr,status,info){
+                });
+                $.ajaxSettings.async = true;
             });
-            disabled_home(true);
+            disabled_home(false);
+            $(this).text('删除');
 
            });
 
+           $('#home_sumbit').click(function () {
+               
+           });
 
         });
 

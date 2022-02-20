@@ -418,7 +418,17 @@
                             <tbody>
                             @foreach($libary_data as $key=>$value)
                                  <tr>
-                                     <td id="td_number"><kbd>{{$value->number}}</kbd></td>
+                                     <td id="td_number"><kbd style="
+                                         @if($value->place=='')
+                                             background-color: #deb547
+                                         @elseif($value->place=='0')
+                                             background-color: #deb547
+                                         @else
+                                         @if(DB::table('cart_master')->where('user',Session::get('username'))->where('number',$value->number)->exists())
+                                             background-color: #4cae4c;
+                                         @endif
+                                         @endif
+                                      ">{{$value->number}}</kbd></td>
                                      <td id="td_category">{{$value->category}}</td>
                                      <td id="td_name">{{$value->name}}</td>
                                      <td id="td_brand">{{$value->brand}}</td>
@@ -537,7 +547,7 @@
         //alert('0');
         $(document).ready(function () {
             commonUtil.place_obj=$('.wrapper');
-
+            var modify;
             function disabled_modal(bol){
                 $("#modal_join").attr('disabled',bol);
                 $("#modal_in").attr('disabled',bol);
@@ -568,6 +578,7 @@
                 //$('#modal_in').val('0');
                 $("#modal_join").text('添加到选材车');
                 $('#myModal').modal('toggle');
+                modify=$(this).parents('tr');
                 });
 
             $('#modal_join').click(function () {
@@ -583,6 +594,7 @@
                     $('#myModal').modal('toggle');
                     if(data=='200'){
                         commonUtil.message('添加成功.');
+                        modify.find('kbd').css('background-color','#4cae4c');
                     }else {
                         commonUtil.message('非法操作:'+data,'danger');
                     }
