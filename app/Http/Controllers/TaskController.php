@@ -54,7 +54,6 @@ class TaskController extends Controller
                     );
                 else
                     $cart_row->insert([
-
                         'user'=>Session::get('username'),
                         'number'=>$request->get('number'),
                         'quantity'=>$request->get('quantity'),

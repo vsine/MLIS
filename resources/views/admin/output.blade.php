@@ -291,10 +291,11 @@
                 $("#modal_update").text('提交中');
             }
             function disabled_home(bol) {
-                $('#home_delete').attr('disabled',true);
-                $('#home_sumbit').attr('disabled',true);
-                $('#main-table').find("input:checkbox").attr('disabled',true);
-                $('#submit_checkbox').attr('disabled',true);
+                $('#home_delete').attr('disabled',bol);
+                $('#home_sumbit').attr('disabled',bol);
+                $('#main-table').find("input:checkbox").attr('disabled',bol);
+                $('#main-table').find(".btn-warning").attr('disabled',bol);
+                $('#submit_checkbox').attr('disabled',bol);
             }
            $('#main-table').find("input:checkbox").each(function () {
                 if (flag!=$(this).is(':checked')){
@@ -409,7 +410,11 @@
            });
 
            $('#home_delete').click(function () {
+            disabled_home(true);
+            $(this).text('删除中');
+               $('#main-table').find("input:checkbox:checked").each(function () {
 
+               });
 
            });
 

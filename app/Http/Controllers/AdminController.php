@@ -35,7 +35,6 @@ class AdminController extends Controller
                 $libary_data=DB::table('depot')
                     ->leftJoin('place_b','depot.ip','=','place_b.id')
                     ->leftJoin('place_a','place_b.aid','=','place_a.id');
-
                 if ($request->has('search')){
                     $search_array=explode(' ',$request->get('search'));
                     foreach ($search_array as $key=>$value)
