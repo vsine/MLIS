@@ -439,7 +439,7 @@
            });
 
            $('#home_sumbit').click(function () {
-               
+               alert('test');
            });
 
         });
