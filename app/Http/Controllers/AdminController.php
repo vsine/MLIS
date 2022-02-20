@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
    public $mlist=array(0=>['主页','home'],1=>['物品库存','libary'],2=>['出库单','output'],3=>['入库单','input'],4=>['仓库管理','depot'],5=>['货位管理','place'],6=>['班级管理','class'],7=>['账号管理','user'],8=>['test','test'],9=>['test','test']);
-                     public $tlist=array(1=>'海纳百川',2=>'厚德载物',3=>'有容乃大',4=>'仓库管理',5=>'货位管理',6=>'班级管理',7=>'账号管理',8=>'轮播',9=>'test');
+                     public $tlist=array(1=>'海纳百川',2=>'厚德载物',3=>'申请',4=>'仓库管理',5=>'货位管理',6=>'班级管理',7=>'账号管理',8=>'轮播',9=>'test');
 
     public function index(Request $request,$id)
     {   $user_row = DB::table('users')->where('username',Session::get('username'));

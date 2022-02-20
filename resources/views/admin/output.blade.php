@@ -103,6 +103,34 @@
     </div>
 </div>
 
+
+
+<div class="modal fade" id="myModal1"  >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">申请</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-8">
+                        <button id="modal1_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                        <button id="modal1_submit" class="btn btn-warning" type="button">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <section class="wrapper">
     <!-- BEGIN ROW  -->
     <div class="row">
@@ -111,17 +139,19 @@
                 <header class="panel-heading tab-bg-dark-navy-blue ">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a data-toggle="tab" href="#home">材料车</a>
+                            <a data-toggle="tab" href="#home">出库</a>
                         </li>
                         <li class="">
-                            <a data-toggle="tab" href="#about">物品单&nbsp;<span class="badge bg-important">2</span></a>
-
+                            <a data-toggle="tab" href="#about">入库&nbsp;<span class="badge bg-important">2</span></a>
                         </li>
                     </ul>
                 </header>
                 <div class="panel-body">
                     <div class="tab-content">
-                        <div id="home" class="tab-pane active">
+
+                        <div id="home" class="tab-pane active">About</div>
+
+                        <div id="about" class="tab-pane">
                             <table class="table table-bordered table-striped table-condensed table-hover" id="main-table">
                                 <thead>
                                 <tr>
@@ -246,7 +276,11 @@
                                 </tbody>
                             </table>
                             <div class="row">
-                                <div class="col-sm-9"></div>
+                                <div class="col-sm-9">
+                                    <button id="home_save" type="button" class="btn  btn-info" disabled="disabled">
+                                        存为模板
+                                    </button>
+                                </div>
                                 <div class="col-sm-3">
                                     <label class="checkbox-inline">
                                         <input type="checkbox" id="submit_checkbox"> 全选
@@ -262,8 +296,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div id="about" class="tab-pane">About</div>
                     </div>
                 </div>
             </section>
@@ -273,8 +305,13 @@
     </div>
 
     <!-- END ROW  -->
-    @section('script')
-        <script type="text/javascript">
+
+</section>
+
+
+
+@section('script')
+    <script type="text/javascript">
         $(document).ready(function () {
             commonUtil.place_obj=$('.wrapper');
 
@@ -297,22 +334,22 @@
                 $('#main-table').find(".btn-warning").attr('disabled',bol);
                 $('#submit_checkbox').attr('disabled',bol);
             }
-           $('#main-table').find("input:checkbox").each(function () {
+            $('#main-table').find("input:checkbox").each(function () {
                 if (flag!=$(this).is(':checked')){
                     flag=false;
                     $('#submit_checkbox').attr('checked',flag);
                     return true;
                 }
-               $('#submit_checkbox').attr('checked',flag);
+                $('#submit_checkbox').attr('checked',flag);
             });
 
-           $('#submit_checkbox').change(function () {
-               $('#main-table').find("input:checkbox").attr('checked',$('#submit_checkbox').is(':checked'));
-               console.log($('#submit_checkbox').is(':checked'));
-           });
+            $('#submit_checkbox').change(function () {
+                $('#main-table').find("input:checkbox").attr('checked',$('#submit_checkbox').is(':checked'));
+                console.log($('#submit_checkbox').is(':checked'));
+            });
 
-           $('#main-table').find("input:checkbox").change(function () {
-                 flag=$('#main-table').find("input:checkbox").first().is(":checked");
+            $('#main-table').find("input:checkbox").change(function () {
+                flag=$('#main-table').find("input:checkbox").first().is(":checked");
                 $('#main-table').find("input:checkbox").each(function () {
                     if (flag!=$(this).is(':checked')){
                         flag=false;
@@ -324,7 +361,7 @@
 
             });
 
-           $('#modal_plus').click(function () {
+            $('#modal_plus').click(function () {
                 var r=/^\d+$/;
                 var modal_in=$('#modal_in').val();
                 //console.log(r.test(modal_in));
@@ -335,7 +372,7 @@
                 }
             });
 
-           $('#modal_minus').click(function () {
+            $('#modal_minus').click(function () {
                 var r=/^\d+$/;
                 var modal_in=$('#modal_in').val();
                 //console.log(r.test(modal_in));
@@ -347,7 +384,7 @@
                 }
             });
 
-           $('#main-table').find(".btn-warning").click(function () {
+            $('#main-table').find(".btn-warning").click(function () {
                 $('#modal_number').text($(this).parents('tr').children('#table_number').text());
                 $('#modal_name').text($(this).parents('tr').children('#table_name').text());
                 $('#modal_model').text($(this).parents('tr').children('#table_model').text());
@@ -362,89 +399,89 @@
                 $('#myModal').modal('toggle');
             });
 
-           $('#modal_update').click(function () {
-             disabled_modal(true);
-                   $.post('/task/cart',{
-                       '_token' : '{{ csrf_token() }}',
-                       'oper': '2',
-                       'number': $('#modal_number').text(),
-                       'quantity': $('#modal_in').val()
-                   },function (data) {
-                       disabled_modal(false);
-                       $('#myModal').modal('toggle');
-                       if(data=='200'){
-                           commonUtil.message('请求成功.');
-                           modify.children('#table_quantity').text($('#modal_in').val()+$('#modal_unit').text());
-                       }else {
-                           commonUtil.message('非法操作:'+data,'danger');
-                       }
-                   }).error(function (xhr,status,info){
-                       disabled_modal(false);
-                       $('#myModal').modal('toggle');
-                       //只有失败才执行
-                       commonUtil.message('请求失败','danger');
-                   });
-           });
+            $('#modal_update').click(function () {
+                disabled_modal(true);
+                $.post('/task/cart',{
+                    '_token' : '{{ csrf_token() }}',
+                    'oper': '2',
+                    'number': $('#modal_number').text(),
+                    'quantity': $('#modal_in').val()
+                },function (data) {
+                    disabled_modal(false);
+                    $('#myModal').modal('toggle');
+                    if(data=='200'){
+                        commonUtil.message('请求成功.');
+                        modify.children('#table_quantity').text($('#modal_in').val()+$('#modal_unit').text());
+                    }else {
+                        commonUtil.message('非法操作:'+data,'danger');
+                    }
+                }).error(function (xhr,status,info){
+                    disabled_modal(false);
+                    $('#myModal').modal('toggle');
+                    //只有失败才执行
+                    commonUtil.message('请求失败','danger');
+                });
+            });
 
-           $('#modal_remove').click(function () {
-               disabled_modal(true);
-               $.post('/task/cart',{
-                   '_token' : '{{ csrf_token() }}',
-                   'oper': '3',
-                   'number': $('#modal_number').text(),
-               },function (data) {
-                   disabled_modal(false);
-                   $('#myModal').modal('toggle');
-                   if(data=='200'){
-                       commonUtil.message('请求成功.');
-                       modify.remove();
-                   }else {
-                       commonUtil.message('非法操作:'+data,'danger');
-                   }
-               }).error(function (xhr,status,info){
-                   disabled_modal(false);
-                   $('#myModal').modal('toggle');
-                   //只有失败才执行
-                   commonUtil.message('请求失败','danger');
-               });
-           });
-
-           $('#home_delete').click(function () {
-            disabled_home(true);
-            $(this).text('删除中');
-            var len=$('#main-table').find("input:checkbox:checked").length;
-            console.log(len);
-
-            $('#main-table').find("input:checkbox:checked").each(function (i,dom) {
-                var num= $(this).parents('tr').children('#table_number').text();
-                modify=$(this).parents('tr');
-                console.log(num);
-                $.ajaxSettings.async = false;
+            $('#modal_remove').click(function () {
+                disabled_modal(true);
                 $.post('/task/cart',{
                     '_token' : '{{ csrf_token() }}',
                     'oper': '3',
-                    'number': num,
+                    'number': $('#modal_number').text(),
                 },function (data) {
+                    disabled_modal(false);
+                    $('#myModal').modal('toggle');
                     if(data=='200'){
+                        commonUtil.message('请求成功.');
                         modify.remove();
                     }else {
+                        commonUtil.message('非法操作:'+data,'danger');
                     }
                 }).error(function (xhr,status,info){
+                    disabled_modal(false);
+                    $('#myModal').modal('toggle');
+                    //只有失败才执行
+                    commonUtil.message('请求失败','danger');
                 });
-                $.ajaxSettings.async = true;
             });
-            disabled_home(false);
-            $(this).text('删除');
 
-           });
+            $('#home_delete').click(function () {
+                disabled_home(true);
+                $(this).text('删除中');
+                var len=$('#main-table').find("input:checkbox:checked").length;
+                console.log(len);
 
-           $('#home_sumbit').click(function () {
-               alert('test');
-           });
+                $('#main-table').find("input:checkbox:checked").each(function (i,dom) {
+                    var num= $(this).parents('tr').children('#table_number').text();
+                    modify=$(this).parents('tr');
+                    console.log(num);
+                    $.ajaxSettings.async = false;
+                    $.post('/task/cart',{
+                        '_token' : '{{ csrf_token() }}',
+                        'oper': '3',
+                        'number': num,
+                    },function (data) {
+                        if(data=='200'){
+                            modify.remove();
+                        }else {
+                        }
+                    }).error(function (xhr,status,info){
+                    });
+                    $.ajaxSettings.async = true;
+                });
+                disabled_home(false);
+                $(this).text('删除');
+
+            });
+
+            $('#home_sumbit').click(function () {
+                $("#myModal1").modal('toggle');
+
+            });
 
         });
 
 
-        </script>
-    @endsection
-</section>
+    </script>
+@endsection
