@@ -412,9 +412,10 @@
            $('#home_delete').click(function () {
             disabled_home(true);
             $(this).text('删除中');
-               $('#main-table').find("input:checkbox:checked").each(function () {
-
-               });
+            $('#main-table').find("input:checkbox:checked").each(function () {
+                alert('hh');
+            });
+            disabled_home(true);
 
            });
 
