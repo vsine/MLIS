@@ -209,7 +209,7 @@
                                         </tr>
                                     @else
                                         <tr>
-                                            <td>
+                                            <td id="table_number">
                                                 <kbd>{{$value->cart_number}}</kbd>
                                             </td>
                                             <td>
@@ -252,11 +252,11 @@
                                         <input type="checkbox" id="submit_checkbox"> 全选
                                     </label>
                                     &nbsp;
-                                    <button type="button" class="btn  btn-danger">
+                                    <button id="home_delete" type="button" class="btn  btn-danger">
                                         删除
                                     </button>
                                     &nbsp;
-                                    <button type="button" class="btn btn-primary">
+                                    <button id="home_sumbit" type="button" class="btn btn-success">
                                         提交
                                     </button>
                                 </div>
@@ -290,7 +290,12 @@
                 $('#modal_title_close').attr('disabled',bol);
                 $("#modal_update").text('提交中');
             }
-
+            function disabled_home(bol) {
+                $('#home_delete').attr('disabled',true);
+                $('#home_sumbit').attr('disabled',true);
+                $('#main-table').find("input:checkbox").attr('disabled',true);
+                $('#submit_checkbox').attr('disabled',true);
+            }
            $('#main-table').find("input:checkbox").each(function () {
                 if (flag!=$(this).is(':checked')){
                     flag=false;
@@ -351,7 +356,7 @@
                 $('#modal_marks').text($(this).parents('tr').children('#table_marks').text());
                 $('#modal_unit').text($(this).parents('tr').children('#table_unit').text());
                 console.log($(this).parents('tr').children('#table_quantity').text());
-                modify=$(this).parents('tr').children('#table_quantity');
+                modify=$(this).parents('tr');
                 $('#modal_update').text('修改');
                 $('#myModal').modal('toggle');
             });
@@ -368,7 +373,7 @@
                        $('#myModal').modal('toggle');
                        if(data=='200'){
                            commonUtil.message('请求成功.');
-                           modify.text($('#modal_in').val())
+                           modify.children('#table_quantity').text($('#modal_in').val()+$('#modal_unit').text());
                        }else {
                            commonUtil.message('非法操作:'+data,'danger');
                        }
@@ -381,6 +386,30 @@
            });
 
            $('#modal_remove').click(function () {
+               disabled_modal(true);
+               $.post('/task/cart',{
+                   '_token' : '{{ csrf_token() }}',
+                   'oper': '3',
+                   'number': $('#modal_number').text(),
+               },function (data) {
+                   disabled_modal(false);
+                   $('#myModal').modal('toggle');
+                   if(data=='200'){
+                       commonUtil.message('请求成功.');
+                       modify.remove();
+                   }else {
+                       commonUtil.message('非法操作:'+data,'danger');
+                   }
+               }).error(function (xhr,status,info){
+                   disabled_modal(false);
+                   $('#myModal').modal('toggle');
+                   //只有失败才执行
+                   commonUtil.message('请求失败','danger');
+               });
+           });
+
+           $('#home_delete').click(function () {
+
 
            });
 

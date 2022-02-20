@@ -73,6 +73,7 @@ class TaskController extends Controller
             case '3':
                 $cart_row=DB::table('cart_master')->where('user',Session::get('username'));
                 $cart_row->where('number',$request->get('number'))->delete();
+                return '200';
                 break;
             default:
                 return '300';
