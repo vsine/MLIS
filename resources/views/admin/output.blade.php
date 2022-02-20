@@ -107,12 +107,61 @@
 
 <div class="modal fade" id="myModal1"  >
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="modal-header">
                 <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">申请</h4>
             </div>
             <div class="modal-body">
+
+            <div class="row" >
+                <h2 class ="text-center">电子信息学院实验实训耗材领用单</h2>
+            </div>
+
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8" >
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td>申请日期:</td>
+                                <td>2022-2-20 15:28</td>
+                                <td>单号:</td>
+                                <td>20220220001</td>
+                            </tr>
+
+                            <tr>
+                                <td>申请人:</td>
+                                <td>毛小文(202030000146)</td>
+                                <td>联系方式:</td>
+                                <td><input type="text"  id="exampleInputEmail1" placeholder="请输入"></td>
+
+                            </tr>
+                            <tr>
+                                <td>专业:</td>
+                                <td>电子信息工程技术</td>
+                                <td>班级</td>
+                                <td>20智能终端产品开发班</td>
+                            </tr>
+                            <tr>
+                                <td>使用时间</td>
+                                <td><input   size="20" type="text" id="modal_time" value=""></td>
+                                <td>使用场地</td>
+                                <td ><input type="text"  id="exampleInputEmail1" placeholder="请输入"></td>
+                            </tr>
+                            <tr>
+                                <td>实训人数</td>
+                                <td>43</td>
+                                <td>备注</td>
+                                <td><input type="text"  id="exampleInputEmail1" placeholder=""></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-sm-2"></div>
+                </div>
 
             </div>
             <div class="modal-footer">
@@ -142,16 +191,14 @@
                             <a data-toggle="tab" href="#home">出库</a>
                         </li>
                         <li class="">
-                            <a data-toggle="tab" href="#about">入库&nbsp;<span class="badge bg-important">2</span></a>
+                            <a data-toggle="tab" href="#about">入库</a>
                         </li>
                     </ul>
                 </header>
                 <div class="panel-body">
                     <div class="tab-content">
 
-                        <div id="home" class="tab-pane active">About</div>
-
-                        <div id="about" class="tab-pane">
+                        <div id="home" class="tab-pane active">
                             <table class="table table-bordered table-striped table-condensed table-hover" id="main-table">
                                 <thead>
                                 <tr>
@@ -296,6 +343,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="about" class="tab-pane ">About</div>
+
+
                     </div>
                 </div>
             </section>
@@ -311,12 +361,25 @@
 
 
 @section('script')
+
     <script type="text/javascript">
         $(document).ready(function () {
             commonUtil.place_obj=$('.wrapper');
 
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
             var modify;
+
+
+
+                $('#modal_time').datetimepicker({
+                    container: "#myModal1",
+                    altField: "#alternate",
+                    format: 'yyyy-mm-dd hh:ii',
+                    language:'zh-CN'
+                });
+
+
+
             function disabled_modal(bol){
                 $("#modal_update").attr('disabled',bol);
                 $("#modal_remove").attr('disabled',bol);

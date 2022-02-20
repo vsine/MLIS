@@ -21,6 +21,12 @@
     <link href="/css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
     <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
     <link href="/assets/morris.js-0.4.3/morris.css" rel="stylesheet"><!-- MORRIS CHART CSS -->
+
+
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datetimepicker/css/datetimepicker.css"><!-- DATETIMEPICKER PLUGIN CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datetimepicker/cn.css"><!-- DATETIMEPICKER PLUGIN CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datepicker/css/datepicker.css"><!-- BOOTSTRAP DATEPICKER PLUGIN CSS -->
+
     <!--dashboard calendar-->
     <link href="/css/clndr.css" rel="stylesheet"><!-- CALENDER CSS -->
     <!--[if lt IE 9]>
@@ -274,7 +280,7 @@
 @endif">
                                     <a href="/admin/{{$value}}" target="_self" >
                                         {{$tlist[$value]}}
-                                        @if($value==2)
+                                        @if($value==3)
                                             <span class="label label-danger span-sidebar">2</span>
                                         @endif
                                     </a>
@@ -326,6 +332,12 @@
 <script src="/js/sparkline-chart.js"></script><!-- SPARKLINE CHART JS -->
 <script src="/js/common-scripts.js"></script><!-- BASIC COMMON JS -->
 <script src="/js/count.js"></script><!-- COUNT JS -->
+
+
+
+<script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script><!-- BOOTSTRAP DATETIMEPICKER JS  -->
+
 <!--Morris-->
 {{--<script src="/assets/morris.js-0.4.3/morris.min.js" ></script><!-- MORRIS JS -->--}}
 {{--<script src="/assets/morris.js-0.4.3/raphael-min.js" ></script><!-- MORRIS  JS -->--}}
