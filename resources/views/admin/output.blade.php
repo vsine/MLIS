@@ -141,7 +141,11 @@
                                 <td>专业:</td>
                                 <td>电子信息工程技术</td>
                                 <td>班级</td>
-                                <td>20智能终端产品开发班</td>
+                                <td><select style="width: 95%">
+                                        <option>未选择</option>
+                                        <option>20智能终端产品开发班</option>
+                                        <option>Option 3</option>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>使用时间</td>
@@ -151,7 +155,7 @@
                             </tr>
                             <tr>
                                 <td>实训人数</td>
-                                <td>43</td>
+                                <td><input type="number"  id="exampleInputEmail1" placeholder="请输入"></td>
                                 <td>备注</td>
                                 <td><input type="text"  id="exampleInputEmail1" placeholder=""></td>
                             </tr>

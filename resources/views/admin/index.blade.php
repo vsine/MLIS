@@ -24,7 +24,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datetimepicker/css/datetimepicker.css"><!-- DATETIMEPICKER PLUGIN CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datetimepicker/cn.css"><!-- DATETIMEPICKER PLUGIN CSS -->
+
     <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datepicker/css/datepicker.css"><!-- BOOTSTRAP DATEPICKER PLUGIN CSS -->
 
     <!--dashboard calendar-->
@@ -337,7 +337,7 @@
 
 <script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script><!-- BOOTSTRAP DATETIMEPICKER JS  -->
-
+<script src="/assets/bootstrap-datetimepicker/js/cn.js"></script><!-- BOOTSTRAP DATETIMEPICKER JS  -->
 <!--Morris-->
 {{--<script src="/assets/morris.js-0.4.3/morris.min.js" ></script><!-- MORRIS JS -->--}}
 {{--<script src="/assets/morris.js-0.4.3/raphael-min.js" ></script><!-- MORRIS  JS -->--}}
