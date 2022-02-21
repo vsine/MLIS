@@ -496,27 +496,26 @@
                                 $next-=2-($libary_data->lastPage()-$libary_data->currentPage());
                             }
                             @endphp
-                            @for($i=0;$i<2;$i++)
-                                @for($j=0;($j<$prev)&&($i==0);$j++)
+                                @for($j=0;($j<$prev);$j++)
                                         <li class="">
                                             <a href="{{$libary_data->withQueryString()
                                             ->url(($libary_data->currentPage()-($prev-$j)))}}">
                                                 {{($libary_data->currentPage()-($prev-$j))}}</a>
                                         </li>
                                 @endfor
-                                @if($i==0)
+                                @if(true)
                                         <li class="active">
                                             <a href="#">{{($libary_data->currentPage())}}</a>
                                         </li>
                                     @endif
-                                @for($j=0;($j<$next)&&($i==1);$j++)
+                                @for($j=0;($j<$next);$j++)
 
                                             <li class="">
                                                 <a href="{{$libary_data->withQueryString()
                                             ->url(($libary_data->currentPage()+(1+$j)))}}">{{($libary_data->currentPage()+(1+$j))}}</a>
                                             </li>
                                     @endfor
-                            @endfor
+
 
                             <li class="next
                             @if($libary_data->onLastPage())
