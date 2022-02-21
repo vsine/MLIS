@@ -170,8 +170,8 @@
                                 <th>类别</th>
                                 <th>名称</th>
                                 <th>规格型号</th>
-                                <th>单位</th>
                                 <th>数量</th>
+                                <th>单位</th>
                                 <th>仓库</th>
                                 <th>品牌</th>
                                 <th>备注</th>
@@ -311,6 +311,7 @@
                                             <td style="display: none" id="table_marks">{{$value->mark}}</td>
                                             <td style="display: none" id="table_unit">{{$value->unit}}</td>
                                             <td style="display: none" id="table_brand">{{$value->brand}}</td>
+                                            <td style="display: none" id="table_numquantity">{{$value->cart_quantity}}</td>
                                         </tr>
                                     @else
                                         <tr>
@@ -576,8 +577,8 @@
                         '<td>'+$(this).parents('tr').children('#table_category').text()+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_name').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_model').text()+'</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_numquantity').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_unit').text()+'</td>'+
-                        '<td>'+$(this).parents('tr').children('#table_quantity').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_place').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_brand').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_marks').text()+'</td>'+
