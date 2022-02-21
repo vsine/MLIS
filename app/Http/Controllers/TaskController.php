@@ -84,7 +84,6 @@ class TaskController extends Controller
     public  function libary(Request $request){
         if(!Session::get('task_check'))
             return 'login_fail';
-
         $operation = $request->input('oper');
         switch ($operation){
             case '1':
@@ -125,13 +124,10 @@ class TaskController extends Controller
                 ]);
                 return '200';
                 break;
-
             case '3':
                 DB::table('depot')->where('number',$request->input('number'))->delete();
                 return '200';
                 break;
-
-
             default:
                 return 'error';
                 break;
