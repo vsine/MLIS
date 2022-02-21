@@ -178,9 +178,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
-
-
                             </tbody>
                         </table>
 
@@ -585,9 +582,13 @@
                         '</tr>');
                     i++;
                 });
-
                 $("#myModal1").modal('toggle');
 
+            });
+
+            $('#modal1_submit').click(function () {
+                var table = $('#request_table').tableToJSON();
+                console.log(table);
             });
 
         });
