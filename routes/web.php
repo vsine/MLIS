@@ -38,7 +38,6 @@ Route::prefix('admin')->middleware('check')->group(function (){
     Route::fallback(function (){
         return view('404');
     });
-
 });
 
 Route::prefix('task')->middleware('task')->group(function (){
@@ -50,7 +49,6 @@ Route::prefix('task')->middleware('task')->group(function (){
     Route::fallback(function (){
         return '404';
     });
-
 });
 
 
