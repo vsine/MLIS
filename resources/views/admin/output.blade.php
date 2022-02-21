@@ -177,7 +177,11 @@
                                 <th>备注</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+
+
+
+                            </tbody>
                         </table>
 
                     </div>
@@ -395,16 +399,12 @@
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
             var modify;
 
-
-
-                $('#modal_time').datetimepicker({
+            $('#modal_time').datetimepicker({
                     container: "#myModal1",
                     altField: "#alternate",
                     format: 'yyyy-mm-dd hh:ii',
                     language:'zh-CN'
                 });
-
-
 
             function disabled_modal(bol){
                 $("#modal_update").attr('disabled',bol);
@@ -565,6 +565,17 @@
             });
 
             $('#home_sumbit').click(function () {
+                var i=1;
+                $('#main-table').find("input:checkbox:checked").each(function () {
+
+                    $('#request_table').children('tbody').append('<tr>'+'<td>'+i+ '</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_category').text()+ '</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_name').text()+'</td>'+
+
+                        '</tr>');
+                    i++;
+                });
+
                 $("#myModal1").modal('toggle');
 
             });
