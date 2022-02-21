@@ -263,7 +263,8 @@
                                     ->leftJoin('place_a','place_b.aid','=','place_a.id')
                                     ->orderBy('create_time')
                                     ->select('cart_master.number as cart_number','name','category','model'
-                                    ,'place_a.place as a_place','cart_master.quantity as cart_quantity','depot.marks as mark','unit')
+                                    ,'place_a.place as a_place','cart_master.quantity as cart_quantity'
+                                    ,'depot.marks as mark','unit','brand')
                                     ->get();
                                 @endphp
                                 @foreach($cart_sql as $key=>$value)
@@ -309,6 +310,7 @@
                                             <td style="display: none" id="table_ip_bool"></td>
                                             <td style="display: none" id="table_marks">{{$value->mark}}</td>
                                             <td style="display: none" id="table_unit">{{$value->unit}}</td>
+                                            <td style="display: none" id="table_brand">{{$value->brand}}</td>
                                         </tr>
                                     @else
                                         <tr>
@@ -571,7 +573,12 @@
                     $('#request_table').children('tbody').append('<tr>'+'<td>'+i+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_category').text()+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_name').text()+'</td>'+
-
+                        '<td>'+$(this).parents('tr').children('#table_model').text()+'</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_unit').text()+'</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_quantity').text()+'</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_place').text()+'</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_brand').text()+'</td>'+
+                        '<td>'+$(this).parents('tr').children('#table_marks').text()+'</td>'+
                         '</tr>');
                     i++;
                 });
