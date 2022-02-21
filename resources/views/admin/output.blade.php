@@ -166,7 +166,7 @@
                         <table id="request_table" class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>序号</th>
+                                <th data-override="serial">序号</th>
                                 <th>类别</th>
                                 <th>名称</th>
                                 <th>规格型号</th>
@@ -175,6 +175,7 @@
                                 <th>仓库</th>
                                 <th>品牌</th>
                                 <th>备注</th>
+                                <th style="display: none">编号</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -579,6 +580,7 @@
                         '<td>'+$(this).parents('tr').children('#table_place').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_brand').text()+'</td>'+
                         '<td>'+$(this).parents('tr').children('#table_marks').text()+'</td>'+
+                        '<td id="request_number" style="display: none">'+$(this).parents('tr').children('#table_number').text()+'</td>'+
                         '</tr>');
                     i++;
                 });
@@ -587,8 +589,11 @@
             });
 
             $('#modal1_submit').click(function () {
-                var table = $('#request_table').tableToJSON();
-                console.log(table);
+                $('#request_table').children('tbody').find('tr').each(function () {
+                   console.log($(this).children('#request_number').text());
+
+                });
+
             });
 
         });
