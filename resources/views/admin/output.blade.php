@@ -119,8 +119,8 @@
             </div>
 
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8" >
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10" >
                         <table class="table table-bordered">
                             <tbody>
                             <tr>
@@ -134,7 +134,7 @@
                                 <td>申请人:</td>
                                 <td>毛小文(202030000146)</td>
                                 <td>联系方式:</td>
-                                <td><input type="text"  id="exampleInputEmail1" placeholder="请输入"></td>
+                                <td><input type="text" style="width: 95%" id="exampleInputEmail1" placeholder="请输入"></td>
 
                             </tr>
                             <tr>
@@ -149,22 +149,40 @@
                             </tr>
                             <tr>
                                 <td>使用时间</td>
-                                <td><input   size="20" type="text" id="modal_time" value=""></td>
+                                <td><input  style="width: 95%" size="20" type="text" id="modal_time" value=""></td>
                                 <td>使用场地</td>
-                                <td ><input type="text"  id="exampleInputEmail1" placeholder="请输入"></td>
+                                <td ><input type="text" style="width: 95%"  id="exampleInputEmail1" placeholder="请输入"></td>
                             </tr>
                             <tr>
                                 <td>实训人数</td>
-                                <td><input type="number"  id="exampleInputEmail1" placeholder="请输入"></td>
+                                <td><input type="number" style="width: 95%"  id="exampleInputEmail1" placeholder="请输入"></td>
                                 <td>备注</td>
-                                <td><input type="text"  id="exampleInputEmail1" placeholder=""></td>
+                                <td><input type="text" style="width: 95%"  id="exampleInputEmail1" placeholder=""></td>
                             </tr>
-
                             </tbody>
                         </table>
+                        <br/>
+
+                        <table id="request_table" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>类别</th>
+                                <th>名称</th>
+                                <th>规格型号</th>
+                                <th>单位</th>
+                                <th>数量</th>
+                                <th>仓库</th>
+                                <th>品牌</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
                     </div>
 
-                    <div class="col-sm-2"></div>
+                    <div class="col-sm-1"></div>
                 </div>
 
             </div>
@@ -330,6 +348,10 @@
                                 <div class="col-sm-9">
                                     <button id="home_save" type="button" class="btn  btn-info" disabled="disabled">
                                         存为模板
+                                    </button>
+                                    &nbsp;
+                                    <button id="home_save" type="button" class="btn  btn-info" disabled="disabled">
+                                        导入模板
                                     </button>
                                 </div>
                                 <div class="col-sm-3">
