@@ -125,9 +125,9 @@
                             <tbody>
                             <tr>
                                 <td>申请日期:</td>
-                                <td id="request_time">自动生成</td>
+                                <td id="request_time">提交自动生成</td>
                                 <td>单号:</td>
-                                <td>自动生成</td>
+                                <td>提交自动生成</td>
                             </tr>
 
                             <tr>
@@ -568,9 +568,10 @@
 
             $('#home_sumbit').click(function () {
                 var i=1;
-                $('#main-table').find("input:checkbox:checked").each(function () {
-                    $('#request_phone').val({{DB::table('users')->where('username',
+                $('#request_phone').val({{DB::table('users')->where('username',
                     Session::get('username'))->value('phone')}});
+                $('#request_table').children('tbody').children('tr').remove();
+                $('#main-table').find("input:checkbox:checked").each(function () {
                     $('#request_table').children('tbody').append('<tr>'+'<td>'+i+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_category').text()+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_name').text()+'</td>'+
