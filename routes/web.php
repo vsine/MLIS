@@ -46,6 +46,7 @@ Route::prefix('task')->middleware('task')->group(function (){
     Route::get('test',[\App\Http\Controllers\TaskController::class,'test']);
     Route::post('cart',[\App\Http\Controllers\TaskController::class,'cart']);
     Route::post('libary',[\App\Http\Controllers\TaskController::class,'libary']);
+    Route::post('order',[\App\Http\Controllers\TaskController::class,'order']);
     Route::fallback(function (){
         return '404';
     });
