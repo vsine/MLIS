@@ -442,15 +442,11 @@
                                          @else
                                              {{$value->place}}
                                          @endif
-
-
-
                                      </td>
                                      <td id="td_supplier">{{$value->supplier}}</td>
                                      <td>
                                          <button id="pencil" class="btn btn-success btn-xs">
-                                             <i class="fa fa-shopping-cart">
-                                             </i>
+                                             <i class="fa fa-shopping-cart"></i>
                                          </button>
                                          @if(array_key_exists('editlibary',$marks))
                                              @if($marks['editlibary'])
