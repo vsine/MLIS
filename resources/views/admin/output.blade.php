@@ -134,7 +134,7 @@
                                 <td>申请人:</td>
                                 <td>毛小文(202030000146)</td>
                                 <td>联系方式:</td>
-                                <td><input type="text" style="width: 95%" id="exampleInputEmail1" placeholder="请输入"></td>
+                                <td><input type="text" style="width: 95%" id="request_phone" placeholder="请输入"></td>
 
                             </tr>
                             <tr>
@@ -569,7 +569,7 @@
             $('#home_sumbit').click(function () {
                 var i=1;
                 $('#main-table').find("input:checkbox:checked").each(function () {
-
+                    $('#request_phone').val({{DB::table('users')->where('username',Session::get('username'))->value('phone')}});
                     $('#request_table').children('tbody').append('<tr>'+'<td>'+i+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_category').text()+ '</td>'+
                         '<td>'+$(this).parents('tr').children('#table_name').text()+'</td>'+
