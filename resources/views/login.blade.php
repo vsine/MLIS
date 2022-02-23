@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- END SHORTCUT ICON -->
     <title>
-        {{env('web_title')}}
+        {{$title}}
     </title>
     <!-- BEGIN STYLESHEET-->
     <link href="css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
