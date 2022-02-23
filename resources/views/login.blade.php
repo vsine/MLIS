@@ -99,7 +99,7 @@
 <div class="container">
     <form class="form-signin" id="loginform" action="api/login">
         <h2 class="form-signin-heading">
-            {{env('web_title')}}
+            {{$title}}
         </h2>
         <!-- LOGIN WRAPPER  -->
         <div class="login-wrap">
