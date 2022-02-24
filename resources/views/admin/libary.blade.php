@@ -214,10 +214,6 @@
                     <div class="modal-footer">
                         <div class="row">
                             <div class="col-sm-4">
-
-
-
-
                             </div>
                             <div class="col-sm-8">
                                 <button id="modal1_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
