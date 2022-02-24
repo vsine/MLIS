@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         view()->share('title','实训基地管理系统');
+
     }
 }

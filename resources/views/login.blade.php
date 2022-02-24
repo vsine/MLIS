@@ -12,25 +12,25 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- END SHORTCUT ICON -->
     <title>
-        {{$title}}
+        {{env('WEB_TITLE')}}
     </title>
     <!-- BEGIN STYLESHEET-->
-    <link href="css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
-    <link href="css/bootstrap-reset.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON CSS -->
-    <link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
-    <link href="css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
+    <link href="/css/bootstrap-reset.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
+    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON CSS -->
+    <link href="/css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
+    <link href="/css/style-responsive.css" rel="stylesheet"><!-- THEME RESPONSIVE CSS -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js">
+    <script src="/js/html5shiv.js">
     </script>
-    <script src="js/respond.min.js">
+    <script src="/js/respond.min.js">
     </script>
     <![endif]-->
 
     <!-- END STYLESHEET-->
-    <script type="text/javascript" src="js/jsencrypt.js">
+    <script type="text/javascript" src="/js/jsencrypt.js">
     </script>
-    <script type="text/javascript" src="js/ende.js">
+    <script type="text/javascript" src="/js/ende.js">
     </script>
 </head>
 <body class="login-screen">
@@ -99,7 +99,7 @@
 <div class="container">
     <form class="form-signin" id="loginform" action="api/login">
         <h2 class="form-signin-heading">
-            {{$title}}
+            {{env('WEB_TITLE')}}
         </h2>
         <!-- LOGIN WRAPPER  -->
         <div class="login-wrap">
