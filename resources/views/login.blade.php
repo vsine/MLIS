@@ -175,7 +175,7 @@
                 $("#submit").attr('disabled',false);
             }).error(function (xhr,status,info){
                 //只有失败才执行
-                $('#myc').text('可能未知错误请刷新浏览器再尝试登录'+info)
+                $('#myc').text('未知错误，请刷新浏览器再尝试登:'+info)
                 $('#myModal1').modal('show');
                 $("#submit").attr('disabled',false);
             });;
