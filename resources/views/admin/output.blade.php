@@ -132,7 +132,7 @@
 
                             <tr>
                                 <td>申请人:</td>
-                                <td>毛小文(202030000146)</td>
+                                <td>{{DB::table('users')->where('username',Session::get('username'))->value('name')}}({{DB::table('users')->where('username',Session::get('username'))->value('number')}})</td>
                                 <td>联系方式:</td>
                                 <td><input type="text" style="width: 95%" id="request_phone" placeholder="请输入"></td>
 
@@ -269,9 +269,7 @@
 
                                     @if($value->name!='')
                                         <tr>
-                                            <td id="table_number">
-                                                <kbd style="background-color: #4cae4c">{{$value->cart_number}}</kbd>
-                                            </td>
+                                            <td id="table_number"><kbd style="background-color: #4cae4c">{{$value->cart_number}}</kbd></td>
                                             <td id="table_name">
                                                 {{$value->name}}
                                             </td>
@@ -589,10 +587,29 @@
             });
 
             $('#modal1_submit').click(function () {
-                $('#request_table').children('tbody').find('tr').each(function () {
-                   console.log($(this).children('#request_number').text());
+                var arr= [];
 
+                $('#request_table').children('tbody').find('tr').children('#request_number').each(function () {
+                   arr.push($(this).text().replace(/[\r\n]/g,"").replace(/[ ]/g,""));
                 });
+
+                var json={'list':arr};
+                console.log(json);
+
+                $.ajaxSettings.async = false;
+                $.post('/task/oeder',{
+                    '_token' : '{{ csrf_token() }}',
+                    'oper': '3',
+                    'list':arr,
+                },function (data) {
+                    if(data=='200'){
+
+                    }else {
+                    }
+                }).error(function (xhr,status,info){
+                });
+                $.ajaxSettings.async = true;
+
 
             });
 
