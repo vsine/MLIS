@@ -14,6 +14,9 @@ class TaskController extends Controller
         ['仓库','fa-book',1,2,3],
         ['管理','fa-tasks',4,5,6],
         ['对外','fa-glass',7]],
+        'judge'=>[
+            'libary'=>[['8A208仓库',0],['8A206仓库',1]],
+        ],
         'editlibary'=>true
     );
     public $cart_moudel=array(
@@ -28,14 +31,17 @@ class TaskController extends Controller
     }
 
     public function test(){
-//        $user_row=DB::table('users')->where('username',Session::get('username'));
+        $user_row=DB::table('users')->where('username',Session::get('username'));
 //        //$user_row->update(['cart'=>json_encode($this->cart_moudel)]);
 //        $array = json_decode($user_row
 //        ->value('cart'),true);
-        return DB::table('place_b')->join('place_a','place_a.id','=','place_b.aid')
-            ->orderBy('place_a.place','asc')->orderBy('place_b.place','asc')
-            ->select('place_a.place as place_a','place_b.place as place_b')
-            ->get();
+        $user_row->update(
+            [
+                'marks'=>json_encode($this->marks_moudel),
+            ]
+        );
+
+        return 'ok';
     }
     public function cart(Request $request){
         if(!Session::get('task_check'))
