@@ -599,6 +599,8 @@
                     '_token' : '{{ csrf_token() }}',
                     'oper': '3',
                     'list':arr,
+                    'phone':$('#request_phone'),
+
                 },function (data) {
                     if(data=='200'){
 
