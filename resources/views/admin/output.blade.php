@@ -591,22 +591,22 @@
                    arr.push($(this).text().replace(/[\r\n]/g,"").replace(/[ ]/g,""));
                 });
 
-                var json={'list':arr};
-                console.log(json);
-
-                $.ajaxSettings.async = false;
-                $.post('/task/oeder',{
+                var json={
                     '_token' : '{{ csrf_token() }}',
                     'oper': '3',
                     'list':arr,
-                    'phone':$('#request_phone'),
-                    'class':$('#request_class'),
-                    'place':$('#request_phone'),
-                    'marks':$('#request_use_marks'),
-                    'time':$('#request_use_time'),
-                    'people':$('#request_use_people'),
+                    'phone':$('#request_phone').val(),
+                    'class':$('#request_class').val(),
+                    'place':$('#request_phone').val(),
+                    'marks':$('#request_use_marks').val(),
+                    'time':$('#request_use_time').val(),
+                    'people':$('#request_use_people').val(),
 
-                },function (data) {
+                };
+                console.log(json);
+
+                $.ajaxSettings.async = false;
+                $.post('/task/oeder',json,function (data) {
                     if(data=='200'){
 
                     }else {
