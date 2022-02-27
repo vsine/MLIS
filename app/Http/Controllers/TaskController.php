@@ -40,7 +40,6 @@ class TaskController extends Controller
                 'marks'=>json_encode($this->marks_moudel),
             ]
         );
-
         return 'ok';
     }
     public function cart(Request $request){
