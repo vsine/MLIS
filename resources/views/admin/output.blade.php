@@ -133,7 +133,6 @@
                                 <td>{{DB::table('users')->where('username',Session::get('username'))->value('name')}}({{DB::table('users')->where('username',Session::get('username'))->value('number')}})</td>
                                 <td>联系方式:</td>
                                 <td><input id="request_phone" type="text" style="width: 95%" id="request_phone" placeholder="请输入"></td>
-
                             </tr>
                             <tr>
                                 <td>专业:</td>
