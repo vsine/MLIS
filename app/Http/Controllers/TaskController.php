@@ -43,6 +43,7 @@ class TaskController extends Controller
         );
         return 'ok';
     }
+
     public function cart(Request $request){
         if(!Session::get('task_check'))
             return 'login_fail';
