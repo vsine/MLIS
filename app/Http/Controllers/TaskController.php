@@ -22,6 +22,7 @@ class TaskController extends Controller
     public $cart_moudel=array(
         'list'=>[]
     );
+
     public function index()
     {
         if(!Session::get('task_check'))
