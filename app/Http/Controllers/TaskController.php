@@ -148,6 +148,8 @@ class TaskController extends Controller
 
 
     public  function order(Request $request){
+        if(!Session::get('task_check'))
+            return 'login_fail';
 
     }
 }
