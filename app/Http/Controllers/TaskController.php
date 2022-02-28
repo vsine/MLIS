@@ -19,6 +19,7 @@ class TaskController extends Controller
         ],
         'editlibary'=>true
     );
+
     public $cart_moudel=array(
         'list'=>[]
     );
@@ -147,7 +148,6 @@ class TaskController extends Controller
 
 
     }
-
 
     public  function order(Request $request){
         if(!Session::get('task_check'))
