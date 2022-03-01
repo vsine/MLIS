@@ -145,7 +145,6 @@
                                             <option value="{{$value->id}}" data-location="{{$value->prf}}">{{$value->name}}</option>
                                         @endforeach
 
-
                                     </select></td>
                             </tr>
                             <tr>
@@ -399,7 +398,7 @@
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
             var modify;
 
-            $('#modal_time').datetimepicker({
+            $('#request_use_time').datetimepicker({
                     container: "#myModal1",
                     altField: "#alternate",
                     format: 'yyyy-mm-dd hh:ii',
@@ -594,6 +593,9 @@
                 $('#request_table').children('tbody').find('tr').children('#request_number').each(function () {
                    arr.push($(this).text().replace(/[\r\n]/g,"").replace(/[ ]/g,""));
                 });
+
+
+
 
                 var json={
                     '_token' : '{{ csrf_token() }}',
