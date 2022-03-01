@@ -155,12 +155,12 @@ class TaskController extends Controller
 
         switch ($request->input('oper')){
             case '1':
-
+                $array= $request->input('list');
                 break;
 
         }
 
-       $array= $request->input('list');
+
         return '4' ;
     }
 }
