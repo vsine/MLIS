@@ -609,6 +609,7 @@
                     if(data=='200'){
 
                     }else {
+                        alert(data);
                     }
                 }).error(function (xhr,status,info){
                 });
