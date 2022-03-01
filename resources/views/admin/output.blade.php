@@ -592,7 +592,7 @@
 
                 var json={
                     '_token' : '{{ csrf_token() }}',
-                    'oper': '3',
+                    'oper': '1',
                     'list':arr,
                     'phone':$('#request_phone').val(),
                     'class':$('#request_class').val(),

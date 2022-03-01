@@ -153,7 +153,14 @@ class TaskController extends Controller
         if(!Session::get('task_check'))
             return 'login_fail';
 
+        switch ($request->input('oper')){
+            case '1':
 
-        return '201';
+                break;
+
+        }
+
+       $array= $request->input('list');
+        return '4' ;
     }
 }
