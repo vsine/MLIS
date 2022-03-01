@@ -595,6 +595,10 @@
                 });
 
                 //前置条件判断
+                if ($('#request_class').val()==0){
+                    alert('班级选择,不能为空');
+                    return;
+                }
 
                 var json={
                     '_token' : '{{ csrf_token() }}',
