@@ -202,6 +202,32 @@
 </div>
 
 
+<div class="modal fade" id="myModal2"  >
+    <div class="modal-dialog">
+        <div class="modal-content" style="border:2px solid #4cae4c">
+            <div class="modal-header" style="background-color: #4cae4c">
+                <button id="modal_title_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                        <h2 id="tip_text"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-8">
+                        <button id="modal_close" data-dismiss="modal" class="btn btn-primary" type="button">确定</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <section class="wrapper">
@@ -596,7 +622,12 @@
 
                 //前置条件判断
                 if ($('#request_class').val()==0){
-                    alert('班级选择,不能为空');
+                    $('#tip_text').text('班级选择,不能为空');
+                    $('#myModal2').modal('toggle');
+                    return;
+                }
+                if ($('#request_use_time').val()==''){
+                    alert('使用时间,不能为空');
                     return;
                 }
 
