@@ -132,7 +132,7 @@
                                 <td>申请人:</td>
                                 <td>{{DB::table('users')->where('username',Session::get('username'))->value('name')}}({{DB::table('users')->where('username',Session::get('username'))->value('number')}})</td>
                                 <td>联系方式:</td>
-                                <td><input id="request_phone" type="text" style="width: 95%" id="request_phone" placeholder="请输入"></td>
+                                <td><input id="request_phone" type="text" style="width: 95%"  placeholder="请输入"></td>
                             </tr>
                             <tr>
                                 <td>专业:</td>
@@ -149,15 +149,15 @@
                             </tr>
                             <tr>
                                 <td>使用时间</td>
-                                <td><input id="request_use_time"  style="width: 95%" size="20" type="text" id="modal_time" value=""></td>
+                                <td><input id="request_use_time"  style="width: 95%" size="20" type="text"  value=""></td>
                                 <td>使用场地</td>
-                                <td ><input id="request_use_place" type="text" style="width: 95%"  id="exampleInputEmail1" placeholder="请输入"></td>
+                                <td ><input id="request_use_place" type="text" style="width: 95%"  placeholder="请输入"></td>
                             </tr>
                             <tr>
                                 <td>实训人数</td>
-                                <td><input id="request_use_people" type="number" style="width: 95%"  id="exampleInputEmail1" placeholder="请输入"></td>
+                                <td><input id="request_use_people" type="number" style="width: 95%"   placeholder="请输入"></td>
                                 <td>备注</td>
-                                <td><input id="request_use_marks" type="text" style="width: 95%"  id="exampleInputEmail1" placeholder=""></td>
+                                <td><input id="request_use_marks" type="text" style="width: 95%"   placeholder=""></td>
                             </tr>
                             </tbody>
                         </table>
