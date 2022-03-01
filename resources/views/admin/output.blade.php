@@ -136,12 +136,16 @@
                             </tr>
                             <tr>
                                 <td>专业:</td>
-                                <td>电子信息工程技术</td>
+                                <td id="request_prf">未选择</td>
                                 <td>班级</td>
                                 <td><select id="request_class" style="width: 95%">
-                                        <option value="0">未选择</option>
-                                        <option>20智能终端产品开发班</option>
-                                        <option>Option 3</option>
+                                        <option value="0" data-location="未选择">未选择</option>
+
+                                        @foreach(DB::table('class')->get() as $key=>$value)
+                                            <option value="{{$value->id}}" data-location="{{$value->prf}}">{{$value->name}}</option>
+                                        @endforeach
+
+
                                     </select></td>
                             </tr>
                             <tr>
@@ -579,6 +583,7 @@
                         '</tr>');
                     i++;
                 });
+                $('#request_class').val('0');
                 $("#myModal1").modal('toggle');
 
             });
@@ -615,6 +620,12 @@
                 });
                 $.ajaxSettings.async = true;
 
+
+            });
+
+            $('#request_class').change(function () {
+
+                $('#request_prf').text($(this).find("option:selected").data('location'));
 
             });
 
