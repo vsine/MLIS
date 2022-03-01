@@ -594,8 +594,7 @@
                    arr.push($(this).text().replace(/[\r\n]/g,"").replace(/[ ]/g,""));
                 });
 
-
-
+                //前置条件判断
 
                 var json={
                     '_token' : '{{ csrf_token() }}',
@@ -610,7 +609,6 @@
 
                 };
                 console.log(json);
-
                 $.ajaxSettings.async = false;
                 $.post('/task/order',json,function (data) {
                     if(data=='200'){
