@@ -139,7 +139,7 @@
                                 <td>电子信息工程技术</td>
                                 <td>班级</td>
                                 <td><select id="request_class" style="width: 95%">
-                                        <option>未选择</option>
+                                        <option value="0">未选择</option>
                                         <option>20智能终端产品开发班</option>
                                         <option>Option 3</option>
                                     </select></td>
@@ -605,7 +605,7 @@
                 console.log(json);
 
                 $.ajaxSettings.async = false;
-                $.post('/task/oeder',json,function (data) {
+                $.post('/task/order',json,function (data) {
                     if(data=='200'){
 
                     }else {
