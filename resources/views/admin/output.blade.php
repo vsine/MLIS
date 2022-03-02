@@ -637,7 +637,7 @@
                     'list':arr,
                     'phone':$('#request_phone').val(),
                     'class':$('#request_class').val(),
-                    'place':$('#request_phone').val(),
+                    'place':$('#request_use_place').val(),
                     'marks':$('#request_use_marks').val(),
                     'time':$('#request_use_time').val(),
                     'people':$('#request_use_people').val(),
