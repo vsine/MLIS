@@ -1,4 +1,5 @@
 <?php
+
 function getSS(){
-    return "dd";
+    return URL::full();
 }
