@@ -190,7 +190,9 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <h5 id="request_error" style="color: red;text-align: left">&nbsp;</h5>
+                    </div>
                     <div class="col-sm-8">
                         <button id="modal1_close" data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
                         <button id="modal1_submit" class="btn btn-warning" type="button">提交</button>
@@ -400,154 +402,7 @@
                         @endif
 
                         @if($requ->input('sel','out')=='in')
-                            <table class="table table-bordered table-striped table-condensed table-hover" id="main-table">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            编号
-                                        </th>
-                                        <th>
-                                            名称
-                                        </th>
-                                        <th class="numeric">
-                                            型号
-                                        </th>
-                                        <th class="numeric">
-                                            分类
-                                        </th>
-                                        <th class="numeric hidden-phone">
-                                            仓库
-                                        </th>
-                                        <th class="numeric hidden-phone">
-                                            选材数量
-                                        </th>
-                                        <th class="numeric hidden-phone">
-                                            操作
-                                        </th>
-                                        <th class="numeric hidden-phone">
-                                            选择
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    @php
-                                        $cart_sql= DB::table('cart_master')->where('user',Session::get('username'))
-                                        ->leftJoin('depot','depot.number','=','cart_master.number')
-                                        ->leftJoin('place_b','depot.ip','=','place_b.id')
-                                        ->leftJoin('place_a','place_b.aid','=','place_a.id')
-                                        ->orderBy('create_time')
-                                        ->select('cart_master.number as cart_number','name','category','model'
-                                        ,'place_a.place as a_place','cart_master.quantity as cart_quantity'
-                                        ,'depot.marks as mark','unit','brand')
-                                        ->get();
-                                    @endphp
-                                    @foreach($cart_sql as $key=>$value)
-
-                                        @if($value->name!='')
-                                            <tr>
-                                                <td id="table_number"><kbd style="background-color: #4cae4c">{{$value->cart_number}}</kbd></td>
-                                                <td id="table_name">
-                                                    {{$value->name}}
-                                                </td>
-                                                <td id="table_model" class="numeric">
-                                                    {{$value->model}}
-                                                </td>
-                                                <td id="table_category" class="numeric">
-                                                    {{$value->category}}
-                                                </td>
-                                                <td id="table_place" class="numeric hidden-phone">
-                                                    @if($value->a_place!='')
-                                                        {{$value->a_place}}
-                                                    @else
-                                                        已失效
-                                                    @endif
-
-                                                </td>
-                                                <td id="table_quantity" class="numeric hidden-phone">
-                                                    {{$value->cart_quantity}}{{$value->unit}}
-                                                </td>
-                                                <td class="numeric hidden-phone">
-                                                    <button type="button" class="btn btn-xs btn-warning">
-                                                        <i class="fa fa-pencil">
-                                                        </i>
-                                                    </button>
-                                                </td>
-                                                <td class="numeric hidden-phone">
-                                                    @if($value->a_place!='')
-                                                        <input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="">
-                                                    @else
-                                                        已失效
-                                                    @endif
-                                                </td>
-                                                <td style="display: none" id="table_ip_bool"></td>
-                                                <td style="display: none" id="table_marks">{{$value->mark}}</td>
-                                                <td style="display: none" id="table_unit">{{$value->unit}}</td>
-                                                <td style="display: none" id="table_brand">{{$value->brand}}</td>
-                                                <td style="display: none" id="table_numquantity">{{$value->cart_quantity}}</td>
-                                            </tr>
-                                        @else
-                                            <tr>
-                                                <td id="table_number">
-                                                    <kbd style="background-color: #deb547">{{$value->cart_number}}</kbd>
-                                                </td>
-                                                <td>
-                                                    编号已失效
-                                                </td>
-                                                <td class="numeric">
-                                                    NULL
-                                                </td>
-                                                <td class="numeric">
-                                                    NULL
-                                                </td>
-                                                <td class="numeric hidden-phone">
-                                                    NULL
-                                                </td>
-                                                <td class="numeric hidden-phone">
-                                                    NULL
-                                                </td>
-                                                <td class="numeric hidden-phone">
-                                                    <button type="button" class="btn btn-xs btn-warning">
-                                                        <i class="fa fa-pencil">
-                                                        </i>
-                                                    </button>
-                                                </td>
-                                                <td class="numeric hidden-phone">
-                                                    NULL
-                                                </td>
-
-                                            </tr>
-                                        @endif
-
-                                    @endforeach
-
-
-                                    </tbody>
-                                </table>
-                            <div class="row">
-                                    <div class="col-sm-9">
-                                        <button id="home_save" type="button" class="btn  btn-info" disabled="disabled">
-                                            存为模板
-                                        </button>
-                                        &nbsp;
-                                        <button id="home_save" type="button" class="btn  btn-info" disabled="disabled">
-                                            导入模板
-                                        </button>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox" id="submit_checkbox"> 全选
-                                        </label>
-                                        &nbsp;
-                                        <button id="home_delete" type="button" class="btn  btn-danger">
-                                            删除
-                                        </button>
-                                        &nbsp;
-                                        <button id="home_sumbit" type="button" class="btn btn-success">
-                                            提交
-                                        </button>
-                                    </div>
-                                </div>
                         @endif
 
 
@@ -765,6 +620,7 @@
                     i++;
                 });
                 $('#request_class').val('0');
+                $('#request_error').text('\xa0');
                 $("#myModal1").modal('toggle');
 
             });
@@ -778,24 +634,22 @@
 
                 //前置条件判断
                 if ($('#request_class').val()==0){
-                    $('#tip_text').text('班级选择,不能为空');
-                    $('#myModal2').modal('toggle');
+                    $('#request_error').text('班级选择,不能为空');
+
                     return;
                 }
                 if ($('#request_use_time').val()==''){
-                    $('#tip_text').text('时间选择,不能为空');
-                    $('#myModal2').modal('toggle');
+                    $('#request_error').text('时间选择,不能为空');
                     return;
                 }
                 if ($('#request_use_place').val()==''){
-                    $('#tip_text').text('使用场地,不能为空');
-                    $('#myModal2').modal('toggle');
+                    $('#request_error').text('使用场地,不能为空');
                     return;
                 }
 
                 if (isNaN($('#request_use_people').val())||Number($('#request_use_people').val())<1){
-                    $('#tip_text').text('使用人数,不规范');
-                    $('#myModal2').modal('toggle');
+                    $('#request_error').text('使用人数,不规范');
+
                     return;
                 }
                 var json={
