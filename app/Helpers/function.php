@@ -10,12 +10,12 @@ function setParams($key,$value){
     $last_point=0;
     if (strpos($url,'?')){
         do{
-        if (strrpos($url,$key,$last_point)&&strlen($key)==(strrpos($url,'=',strpos($url,$key,$last_point))-strrpos($url,$key,$last_point)))
-           return $url = substr($url,0,strrpos($url,$key,$last_point)+strlen($key)+1). $value
-                   .(strrpos($url,'&',strrpos($url,$key,$last_point)+strlen(strrpos($url,$key,$last_point)))?
-                   substr($url,strrpos($url,'&',strrpos($url,$key,$last_point)
-                   +strlen(strrpos($url,$key,$last_point))),strlen($url)) :'');
-        }while($last_point=strrpos($url,$key,$last_point+strlen($key)));
+        if (strpos($url,$key,$last_point)&&strlen($key)==(strpos($url,'=',strpos($url,$key,$last_point))-strpos($url,$key,$last_point)))
+           return $url = substr($url,0,strpos($url,$key,$last_point)+strlen($key)+1). $value
+                   .(strpos($url,'&',strpos($url,$key,$last_point)+strlen(strpos($url,$key,$last_point)))?
+                   substr($url,strpos($url,'&',strpos($url,$key,$last_point)
+                   +strlen(strpos($url,$key,$last_point))),strlen($url)) :'');
+        }while($last_point=strpos($url,$key,$last_point+strlen($key)));
        return $url=$url.'&'.$key.'='.$value;
     }
     else
