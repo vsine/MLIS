@@ -45,7 +45,7 @@ class TaskController extends Controller
 //        );
 
 
-        return getSS();
+        return setParams('dd','22');
     }
 
     public function cart(Request $request){
