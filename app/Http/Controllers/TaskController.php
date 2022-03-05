@@ -45,7 +45,7 @@ class TaskController extends Controller
 //        );
 
 
-        return URL::full();
+        return getSS();
     }
 
     public function cart(Request $request){
