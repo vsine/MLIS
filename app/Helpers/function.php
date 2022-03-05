@@ -16,9 +16,8 @@ function setParams($key,$value){
                    substr($url,strrpos($url,'&',strrpos($url,$key,$last_point)
                    +strlen(strrpos($url,$key,$last_point))),strlen($url)) :'');
         }while($last_point=strrpos($url,$key,$last_point+strlen($key)));
-        $url=$url.'&'.$key.'='.$value;
+       return $url=$url.'&'.$key.'='.$value;
     }
     else
-        $url=$url.'?'.$key.'='.$value;
-    return $url;
+       return $url=$url.'?'.$key.'='.$value;
 }
