@@ -7,14 +7,17 @@
  */
 function setParams($key,$value){
     $url=URL::full();
-    if (strpos($url,'?'))
-        if (strpos($url,$key)&&strlen($key)==(strrpos($url,'=',strpos($url,$key))-strpos($url,$key)))
-            $url = substr($url,0,strrpos($url,$key)+strlen($key)+1). $value
-                   .(strrpos($url,'&',strrpos($url,$key)+strlen(strrpos($url,$key)))?
-                   substr($url,strrpos($url,'&',strrpos($url,$key)
-                   +strlen(strrpos($url,$key))),strlen($url)) :'');
-        else
-            $url=$url.'&'.$key.'='.$value;
+    $last_point=0;
+    if (strpos($url,'?')){
+        do{
+        if (strrpos($url,$key,$last_point)&&strlen($key)==(strrpos($url,'=',strpos($url,$key,$last_point))-strrpos($url,$key,$last_point)))
+           return $url = substr($url,0,strrpos($url,$key,$last_point)+strlen($key)+1). $value
+                   .(strrpos($url,'&',strrpos($url,$key,$last_point)+strlen(strrpos($url,$key,$last_point)))?
+                   substr($url,strrpos($url,'&',strrpos($url,$key,$last_point)
+                   +strlen(strrpos($url,$key,$last_point))),strlen($url)) :'');
+        }while($last_point=strrpos($url,$key,$last_point+strlen($key)));
+        $url=$url.'&'.$key.'='.$value;
+    }
     else
         $url=$url.'?'.$key.'='.$value;
     return $url;
