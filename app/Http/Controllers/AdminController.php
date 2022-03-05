@@ -46,6 +46,8 @@ class AdminController extends Controller
                         $query->orWhere('place_a.place','like','%'.$value.'%');
                         $query->orWhere('model','like','%'.$value.'%');
                         $query->orWhere('marks','like','%'.$value.'%');
+                        $query->orWhere('brand','like','%'.$value.'%');
+                        $query->orWhere('supplier','like','%'.$value.'%');
                     });
                 }
                 $libary_data=$libary_data->orderBy('category','desc')
