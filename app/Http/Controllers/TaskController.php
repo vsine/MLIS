@@ -33,16 +33,18 @@ class TaskController extends Controller
     }
 
     public function test(){
-        $user_row=DB::table('users')->where('username',Session::get('username'));
-//        //$user_row->update(['cart'=>json_encode($this->cart_moudel)]);
-//        $array = json_decode($user_row
-//        ->value('cart'),true);
-        $user_row->update(
-            [
-                'marks'=>json_encode($this->marks_moudel),
-            ]
-        );
-        return 'ok';
+//        $user_row=DB::table('users')->where('username',Session::get('username'));
+////        //$user_row->update(['cart'=>json_encode($this->cart_moudel)]);
+////        $array = json_decode($user_row
+////        ->value('cart'),true);
+//        $user_row->update(
+//            [
+//                'marks'=>json_encode($this->marks_moudel),
+//            ]
+//        );
+        \request()->cookie('mlis_session');
+
+        return $_COOKIE['mlis_session'];
     }
 
     public function cart(Request $request){

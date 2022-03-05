@@ -237,10 +237,10 @@
             <section class="panel">
                 <header class="panel-heading tab-bg-dark-navy-blue ">
                     <ul class="nav nav-tabs">
-                        <li class="active">
+                        <li id="home_li" class="">
                             <a data-toggle="tab" href="#home">出库</a>
                         </li>
-                        <li class="">
+                        <li id="about_li" class="">
                             <a data-toggle="tab" href="#about">入库</a>
                         </li>
                     </ul>
@@ -248,7 +248,7 @@
                 <div class="panel-body">
                     <div class="tab-content">
 
-                        <div id="home" class="tab-pane active">
+                        <div id="home" class="tab-pane">
                             <table class="table table-bordered table-striped table-condensed table-hover" id="main-table">
                                 <thead>
                                 <tr>
@@ -398,7 +398,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="about" class="tab-pane ">About</div>
+                        <div id="about" class="tab-pane">About</div>
 
 
                     </div>
@@ -419,6 +419,10 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $('#about_li').addClass('active');
+            $('#about').addClass('active');
+
             commonUtil.place_obj=$('.wrapper');
 
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
