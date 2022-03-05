@@ -627,10 +627,21 @@
                     return;
                 }
                 if ($('#request_use_time').val()==''){
-                    alert('使用时间,不能为空');
+                    $('#tip_text').text('时间选择,不能为空');
+                    $('#myModal2').modal('toggle');
+                    return;
+                }
+                if ($('#request_use_place').val()==''){
+                    $('#tip_text').text('使用场地,不能为空');
+                    $('#myModal2').modal('toggle');
                     return;
                 }
 
+                if (isNaN($('#request_use_people').val())||Number($('#request_use_people').val())<1){
+                    $('#tip_text').text('使用人数,不规范');
+                    $('#myModal2').modal('toggle');
+                    return;
+                }
                 var json={
                     '_token' : '{{ csrf_token() }}',
                     'oper': '1',
