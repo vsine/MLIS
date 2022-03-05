@@ -70,4 +70,8 @@ class AdminController extends Controller
             ->update(['last_token'=>'']);
         return redirect()->route('index.login');
     }
+
+    public function test(){
+        return 'dd';
+    }
 }
