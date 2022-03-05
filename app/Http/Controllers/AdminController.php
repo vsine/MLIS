@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function index(Request $request,$id)
     {   $user_row = DB::table('users')->where('username',Session::get('username'));
         $marks_array = json_decode($user_row->value('marks'),true);
-        $return_array=['id'=>$id,'mlist'=>$this->mlist,'marks'=>$marks_array,'tlist'=>$this->tlist,'times'=>4];
+        $return_array=['id'=>$id,'mlist'=>$this->mlist,'marks'=>$marks_array,'tlist'=>$this->tlist,'times'=>4,'requ'=>$request];
 
         //判断是否包含访问该页的权限，无权限则访问主页
         $is_contain = false;

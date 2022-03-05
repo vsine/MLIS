@@ -237,18 +237,18 @@
             <section class="panel">
                 <header class="panel-heading tab-bg-dark-navy-blue ">
                     <ul class="nav nav-tabs">
-                        <li id="home_li" class="">
-                            <a data-toggle="tab" href="#home">出库</a>
+                        <li  class="{{$requ->input('sel','out')=='out'?'active':''}}">
+                            <a href="{{setParams('sel','out')}}">出库</a>
                         </li>
-                        <li id="about_li" class="">
-                            <a data-toggle="tab" href="#about">入库</a>
+                        <li  class="{{$requ->input('sel','out')=='in'?'active':''}}">
+                            <a href="{{setParams('sel','in')}}">入库</a>
                         </li>
                     </ul>
                 </header>
                 <div class="panel-body">
                     <div class="tab-content">
 
-                        <div id="home" class="tab-pane">
+                        @if($requ->input('sel','out')=='out')
                             <table class="table table-bordered table-striped table-condensed table-hover" id="main-table">
                                 <thead>
                                 <tr>
@@ -397,8 +397,8 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div id="about" class="tab-pane">About</div>
+                        @endif
+
 
 
                     </div>
@@ -420,8 +420,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $('#about_li').addClass('active');
-            $('#about').addClass('active');
+
 
             commonUtil.place_obj=$('.wrapper');
 
