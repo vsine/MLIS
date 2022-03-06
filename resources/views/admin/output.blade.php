@@ -433,6 +433,7 @@
 
             @if($requ->input('sel','out')=='out')
 
+            var i;
             var flag=$('#main-table').find("input:checkbox").first().is(":checked");
             var modify;
             $('#request_use_time').datetimepicker({
@@ -601,7 +602,7 @@
             });
 
             $('#home_sumbit').click(function () {
-                var i=1;
+                i=1;
                 $('#request_phone').val({{DB::table('users')->where('username',
                     Session::get('username'))->value('phone')}});
                 $('#request_table').children('tbody').children('tr').remove();
@@ -635,7 +636,6 @@
                 //前置条件判断
                 if ($('#request_class').val()==0){
                     $('#request_error').text('班级选择,不能为空');
-
                     return;
                 }
                 if ($('#request_use_time').val()==''){
@@ -649,9 +649,14 @@
 
                 if (isNaN($('#request_use_people').val())||Number($('#request_use_people').val())<1){
                     $('#request_error').text('使用人数,不规范');
-
                     return;
                 }
+
+                if (i==1){
+                    $('#request_error').text('未选择货物');
+                    return;
+                }
+
                 var json={
                     '_token' : '{{ csrf_token() }}',
                     'oper': '1',
