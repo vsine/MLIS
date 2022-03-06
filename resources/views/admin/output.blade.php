@@ -667,7 +667,6 @@
                     'marks':$('#request_use_marks').val(),
                     'time':$('#request_use_time').val(),
                     'people':$('#request_use_people').val(),
-
                 };
                 console.log(json);
                 $.ajaxSettings.async = false;
