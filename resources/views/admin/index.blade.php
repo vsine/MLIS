@@ -357,6 +357,7 @@
 
 
             alert('112');
+            $.get('/admin/out_api');
             //window.location.href='/admin/out';
         });
     });
