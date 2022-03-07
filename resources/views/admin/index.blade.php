@@ -278,7 +278,7 @@
                                     <li class="@if($id==$value)
                                         active
                                     @endif">
-                                    <a href="/admin/{{$value}}" target="_self" >
+                                    <a href="/admin/{{$value.getPresentParams()}}" target="_self" >
                                         {{$tlist[$value]}}
                                         @if($value==3)
                                             <span class="label label-danger span-sidebar">2</span>
