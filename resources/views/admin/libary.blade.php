@@ -540,7 +540,7 @@
             commonUtil.place_obj=$('.wrapper');
             var modify;
 
-
+            $('#search_input').val();
 
 
             $("#search").click(function () {
