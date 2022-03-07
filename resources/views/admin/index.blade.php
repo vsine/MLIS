@@ -232,7 +232,7 @@
                         </li>
 
                         <li>
-                            <a href="/admin/out">
+                            <a id="login_out" href="/admin/out">
                                 <i class="fa fa-key">
                                 </i>
                                 退出登录
@@ -352,6 +352,9 @@
 <script type="text/javascript">
     //knob
     $(".knob").knob();
+    $(document).ready(function () {
+        
+    });
 
 </script>
 @yield('script','')
