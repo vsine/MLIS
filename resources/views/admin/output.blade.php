@@ -644,12 +644,10 @@
                     $('#request_error').text('使用场地,不能为空');
                     return;
                 }
-
                 if (isNaN($('#request_use_people').val())||Number($('#request_use_people').val())<1){
                     $('#request_error').text('使用人数,不规范');
                     return;
                 }
-
                 if (i==1){
                     $('#request_error').text('未选择货物');
                     return;
