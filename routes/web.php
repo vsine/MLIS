@@ -30,7 +30,6 @@ Route::post('login/verify',[\App\Http\Controllers\LoginController::class,'login_
 
 
 Route::prefix('admin')->middleware('check')->group(function (){
-    Route::get('out',[\App\Http\Controllers\AdminController::class,'loginout']);
     Route::get('out_api',[\App\Http\Controllers\AdminController::class,'loginout_api']);
     Route::get('',function (){
         return redirect('/admin/0');

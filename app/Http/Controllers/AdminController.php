@@ -65,11 +65,6 @@ class AdminController extends Controller
         return view('admin.index',$return_array);
     }
 
-    public function  loginout(){
-        //DB::table('users')->where('username',Session::get('username'))
-          //  ->update(['last_token'=>'']);
-        return redirect()->route('index.login');
-    }
 
     public function  loginout_api(){
         DB::table('users')->where('username',Session::get('username'))

@@ -232,7 +232,7 @@
                         </li>
 
                         <li>
-                            <a id="login_out" href="/admin/out">
+                            <a id="login_out" >
                                 <i class="fa fa-key">
                                 </i>
                                 退出登录
@@ -354,11 +354,10 @@
     $(".knob").knob();
     $(document).ready(function () {
         $('#login_out').click(function () {
-
-
-            alert('112');
+            $.ajaxSettings.async = false;
             $.get('/admin/out_api');
-            //window.location.href='/admin/out';
+            $.ajaxSettings.async = true;
+            location.reload();
         });
     });
 
