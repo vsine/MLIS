@@ -45,7 +45,7 @@ class TaskController extends Controller
 //        );
 
 
-        return setParams('dds','4576');
+        return getPresentParams();
     }
 
     public function cart(Request $request){

@@ -22,3 +22,10 @@ function setParams($key,$value){
     else
        return $url=$url.'?'.$key.'='.$value;
 }
+
+function getPresentParams(){
+    $url=URL::full();
+    if (strpos($url,'?'))
+        return  substr($url,strpos($url,'?'),strlen($url)-strpos($url,'?'));
+    return '';
+}
