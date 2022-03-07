@@ -429,8 +429,6 @@
 
             commonUtil.place_obj=$('.wrapper');
 
-
-
             @if($requ->input('sel','out')=='out')
 
             var i;
