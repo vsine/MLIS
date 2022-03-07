@@ -353,7 +353,12 @@
     //knob
     $(".knob").knob();
     $(document).ready(function () {
-        
+        $('#login_out').click(function () {
+
+
+            alert('112');
+            //window.location.href='/admin/out';
+        });
     });
 
 </script>
