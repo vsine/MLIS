@@ -551,7 +551,10 @@
 
             $("#search").click(function () {
                 //console.log('&search='+$('#search_input').val())
-                window.location.href=window.location.pathname+'?search='+$('#search_input').val();
+
+                //window.location.href=window.location.pathname+'?search='+$('#search_input').val();
+                window.location.href=changeURLArg(window.location.href,'search',$('#search_input').val());
+                //console.log(changeURLArg(window.location.href,'search',$('#search_input').val()))
             });
 
             $('#libary_table').find('.btn-success').click(function () {

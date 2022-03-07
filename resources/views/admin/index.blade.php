@@ -349,6 +349,8 @@
 <script src="/js/underscore-min.js"></script><!-- UNDERSCORE JS -->
 <script src="/assets/jquery-knob/js/jquery.knob.js" ></script><!-- JQUERY KNOB JS -->
 
+<script src="/js/helper.js" ></script><!-- JQUERY KNOB JS -->
+
 <script type="text/javascript">
     //knob
     $(".knob").knob();
