@@ -540,13 +540,11 @@
             commonUtil.place_obj=$('.wrapper');
             var modify;
 
-            $('#search_input').val();
+            $('#search_input').val(getUrlParam('search')==null?'':getUrlParam('search'));
 
 
             $("#search").click(function () {
-
                 window.location.href=changeURLArg(window.location.href,'search',$('#search_input').val());
-
             });
 
 
