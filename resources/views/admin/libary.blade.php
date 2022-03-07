@@ -539,6 +539,17 @@
         $(document).ready(function () {
             commonUtil.place_obj=$('.wrapper');
             var modify;
+
+
+
+
+            $("#search").click(function () {
+
+                window.location.href=changeURLArg(window.location.href,'search',$('#search_input').val());
+
+            });
+
+
             function disabled_modal(bol){
                 $("#modal_join").attr('disabled',bol);
                 $("#modal_in").attr('disabled',bol);
@@ -548,14 +559,6 @@
                 $('#modal_title_close').attr('disabled',bol);
                 $("#modal_join").text('提交中');
             }
-
-            $("#search").click(function () {
-                //console.log('&search='+$('#search_input').val())
-
-                //window.location.href=window.location.pathname+'?search='+$('#search_input').val();
-                window.location.href=changeURLArg(window.location.href,'search',$('#search_input').val());
-                //console.log(changeURLArg(window.location.href,'search',$('#search_input').val()))
-            });
 
             $('#libary_table').find('.btn-success').click(function () {
                 //alert();
