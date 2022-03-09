@@ -545,6 +545,7 @@
 
             $("#search").click(function () {
                 window.location.href=changeURLArg(window.location.href,'search',$('#search_input').val());
+                // console.log(changeURLArg(window.location.href,'search',$('#search_input').val()));
             });
 
 
