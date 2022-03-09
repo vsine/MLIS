@@ -29,17 +29,17 @@ function changeURLArg(url,arg,arg_val){
     var replaceText=arg+'='+arg_val;
     if(url.match(pattern)){
         var tmp='/('+ arg+'=)([^&]*)/gi';
-        if(arg_val!='')
+        if(!(arg_val==''||arg_val==false))
         tmp=url.replace(eval(tmp),replaceText);
         else tmp=delParam(arg);
         return tmp;
     }else{
         if(url.match('[\?]')){
-            if(arg_val!=''||arg_val!=false)
+            if(!(arg_val==''||arg_val==false))
             return url+'&'+replaceText;
             else return  url;
         }else{
-            if(arg_val!=''||arg_val!=false)
+            if(!(arg_val==''||arg_val==false))
             return url+'?'+replaceText;
             else return  url;
         }
