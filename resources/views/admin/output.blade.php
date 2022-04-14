@@ -619,6 +619,7 @@
                     i++;
                 });
                 $('#request_class').val('0');
+                $('#request_prf').val('未选择');
                 $('#request_error').text('\xa0');
                 $("#myModal1").modal('toggle');
 
