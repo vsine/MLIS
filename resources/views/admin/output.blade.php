@@ -395,7 +395,7 @@
                                     </button>
                                     &nbsp;
                                     <button id="home_sumbit" type="button" class="btn btn-success">
-                                        提交
+                                        耗材领用
                                     </button>
                                 </div>
                             </div>
