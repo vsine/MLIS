@@ -117,7 +117,6 @@ EOT;
      */
     public static function publicDecrypt($data,$publicKey){
         $data = str_split(self::urlSafeBase64decode($data), self::MAX_DECRYPT_BLOCK);
-
         $decrypted = '';
         foreach($data as & $chunk){
             if(!openssl_public_decrypt($chunk, $decryptData, $publicKey)){
